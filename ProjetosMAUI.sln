@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35506.116 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppNumeroDaSorte", "AppNumeroDaSorte\AppNumeroDaSorte.csproj", "{303D5AC4-6733-49C4-BA49-DA3E2A7AD3DE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App 01", "App 01", "{A6C20EE3-23A2-4E88-AF2C-2BD78B7303AC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{303D5AC4-6733-49C4-BA49-DA3E2A7AD3DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{303D5AC4-6733-49C4-BA49-DA3E2A7AD3DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{303D5AC4-6733-49C4-BA49-DA3E2A7AD3DE}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{303D5AC4-6733-49C4-BA49-DA3E2A7AD3DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{303D5AC4-6733-49C4-BA49-DA3E2A7AD3DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{303D5AC4-6733-49C4-BA49-DA3E2A7AD3DE}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{303D5AC4-6733-49C4-BA49-DA3E2A7AD3DE} = {A6C20EE3-23A2-4E88-AF2C-2BD78B7303AC}
+	EndGlobalSection
+EndGlobal
