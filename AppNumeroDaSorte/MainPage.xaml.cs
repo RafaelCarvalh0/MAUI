@@ -6,4 +6,11 @@ public partial class MainPage : ContentPage
 	{
 		InitializeComponent();
 	}
+
+    private void OnGenerateNumbers(object sender, EventArgs e)
+    {
+        //((Button)sender).Text = "";
+        AppName.IsVisible = false;
+        ContainerNumbers.IsVisible = true;
+    }
 }
