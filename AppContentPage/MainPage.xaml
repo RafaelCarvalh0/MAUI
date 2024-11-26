@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+    Namespace
+    xmlns:MeusControles = URL, Assemblies, Namespaces
+-->
+<meuComponente:ContentPage
+    x:Class="AppContentPage.MainPage"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:meuComponente="http://schemas.microsoft.com/dotnet/2021/maui"
+    Title="MainPage">
+    <meuComponente:VerticalStackLayout>
+        <meuComponente:Label
+            HorizontalOptions="Center"
+            Text="Welcome to .NET MAUI!"
+            VerticalOptions="Center" />
+    </meuComponente:VerticalStackLayout>
+</meuComponente:ContentPage>
