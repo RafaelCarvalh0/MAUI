@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AppFlyoutPage.Menu"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Menu"
+    BackgroundColor="LightGray">
+    <VerticalStackLayout>
+        <Label
+            FontSize="48"
+            HorizontalOptions="Center"
+            Text="Menu"
+            VerticalOptions="Center" />
+
+        <Button
+            BackgroundColor="Transparent"
+            Clicked="OnClickedPage1"
+            Text="Página 1" />
+        <Button
+            BackgroundColor="Transparent"
+            Clicked="OnClickedPage2"
+            Text="Página 2" />
+        <Button
+            BackgroundColor="Transparent"
+            Clicked="OnClickedPage3"
+            Text="Página 3" />
+    </VerticalStackLayout>
+</ContentPage>
