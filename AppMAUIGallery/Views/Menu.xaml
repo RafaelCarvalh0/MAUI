@@ -3,17 +3,24 @@
     x:Class="AppMAUIGallery.Views.Menu"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Title="Menu">
-    <VerticalStackLayout>
+    Title="Menu"
+    Padding="20"
+    BackgroundColor="#F3F3F3">
+    <VerticalStackLayout Spacing="10">
         <Label
+            Margin="30"
+            FontFamily="OpenSansSemibold"
+            FontSize="24"
             HorizontalOptions="Center"
-            Text="NET MAUI - Gallery"
+            Text="MAUI - Gallery"
             VerticalOptions="Center" />
-        <Label Text="Home" />
+        <Label Text="Home">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnTapHome" />
+            </Label.GestureRecognizers>
+        </Label>
         <Label Text="Extra" />
         <Label Text="Créditos" />
-        <VerticalStackLayout x:Name="MenuContainer">
-            
-        </VerticalStackLayout>
+        <VerticalStackLayout x:Name="MenuContainer" Margin="0,10,0,0" />
     </VerticalStackLayout>
 </ContentPage>

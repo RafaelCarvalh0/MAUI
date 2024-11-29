@@ -26,7 +26,7 @@ namespace AppMAUIGallery
 
             // Registro de serviços
             builder.Services.AddSingleton<ICategoryRepository, CategoryRepository>();
-            builder.Services.AddTransient<Menu>();
+            //builder.Services.AddTransient<Menu>();
 
             // Criação da aplicação MAUI
             _mauiApp = builder.Build();
