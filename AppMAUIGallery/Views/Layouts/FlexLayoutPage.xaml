@@ -5,29 +5,63 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="FlexLayoutPage">
     <FlexLayout
+        Wrap="Wrap"
         AlignItems="Start"
-        Direction="Column"
-        JustifyContent="SpaceEvenly">
+        Direction="Row"
+        AlignContent="Stretch"
+        JustifyContent="Start">
         <Label
             Padding="10"
             BackgroundColor="RosyBrown"
+            FlexLayout.Order="1"
+            FlexLayout.Grow="1"
             Text="Linha 1" />
         <Label
             Padding="10"
             BackgroundColor="SandyBrown"
             FlexLayout.AlignSelf="Center"
+            FlexLayout.Order="0"
+            FlexLayout.Basis="20%"
             Text="Linha 2" />
         <Label
             Padding="10"
             BackgroundColor="SaddleBrown"
             FlexLayout.AlignSelf="End"
             Text="Linha 3"
+            FlexLayout.Order="3"
             TextColor="White" />
         <Label
             Padding="10"
             BackgroundColor="Black"
             FlexLayout.AlignSelf="Stretch"
             Text="Linha 4"
+            FlexLayout.Grow="1"
+            FlexLayout.Order="2"
             TextColor="White" />
+        <Label
+            Text="Linha 5"
+            BackgroundColor="Aquamarine"
+            FlexLayout.Shrink="0"
+            Padding="10"/>
+        <Label
+            Text="Linha 6"
+            BackgroundColor="Aquamarine"
+            Padding="10"/>
+
+        <Label
+            Text="Linha 7"
+            BackgroundColor="Aquamarine"
+            Padding="10"/>
+
+        <Label
+            Text="Linha 8"
+            BackgroundColor="Aquamarine"
+            Padding="10"/>
+
+        <Label
+            Text="Linha 9"
+            BackgroundColor="Aquamarine"
+            Padding="10"
+            FlexLayout.Shrink="0"/>      
     </FlexLayout>
 </ContentPage>
