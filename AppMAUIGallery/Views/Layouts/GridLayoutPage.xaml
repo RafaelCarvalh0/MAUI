@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AppMAUIGallery.Views.GridLayoutPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="GridLayoutPage">
+    <Grid
+        Margin="20"
+        Padding="1"
+        BackgroundColor="Black"
+        ColumnDefinitions="6*, Auto, 2*, 2*"
+        ColumnSpacing="1"
+        RowDefinitions="50, 100, Auto"
+        RowSpacing="1">
+
+        <!--
+        Maneira verbosa
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100" />
+             Ocupa uma largura de 100px
+            <ColumnDefinition Width="Auto" />
+             Ocupa o restante do espaço disponível de forma automática
+            <ColumnDefinition Width="6*" />
+             Ocupa 60% do espaço disponível
+            <ColumnDefinition Width="4*" />
+            Ocupa 40% do espaço disponível
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="100" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        -->
+
+        <!--  Ordem de camada em cada linha do Grid  -->
+        <BoxView Grid.Column="0" Color="MediumAquamarine" />
+        <Label
+            HorizontalOptions="Center"
+            Text="Olá Mundo!"
+            VerticalOptions="Center" />
+
+        <!--  Coluna declarada com largura de "Auto" no pai e 50 nesse filho  -->
+        <BoxView
+            Grid.Row="0"
+            Grid.Column="1"
+            WidthRequest="50"
+            Color="ForestGreen" />
+
+        <!--  ColumnSpan mescla a coluna atual com a próxima coluna  -->
+        <!--  RowSpan mescla a linha atual com a próxima linha  -->
+        <BoxView
+            Grid.Row="0"
+            Grid.RowSpan="2"
+            Grid.Column="2"
+            Grid.ColumnSpan="2"
+            Color="DarkGreen" />
+
+        <!--  Mesclagem  (bagunçado)  -->
+        <Label
+            Grid.RowSpan="2"
+            Grid.Column="2"
+            Grid.ColumnSpan="2"
+            HorizontalOptions="Center"
+            Text="Olá mundo!"
+            TextColor="White"
+            VerticalOptions="Center" />
+
+        <BoxView Grid.Row="1" Color="Orange" />
+        <BoxView
+            Grid.Row="1"
+            Grid.Column="1"
+            Color="Red" />
+
+        <BoxView
+            Grid.Row="2"
+            Grid.ColumnSpan="4"
+            HeightRequest="20"
+            Color="White" />
+    </Grid>
+</ContentPage>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AppMAUIGallery.Views.Layouts.AbsoluteLayoutPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="AbsoluteLayoutPage">
+    <AbsoluteLayout>
+        <!--  LayoutBounds="x, y, w, h"  -->
+        <Label
+            AbsoluteLayout.LayoutBounds="150, 0, 100, 40"
+            BackgroundColor="Gray"
+            Text="Olá mundo!" />
+        <!--  LayoutFlags="XProportional" - Proporção para layouts absolutos  -->
+        <!--  LayoutFlags="PositionProportional" - Proporção para os eixos x e y  -->
+        <!--  LayoutFlags="All" - Proporção para todos os eixos  -->
+        <Button
+            AbsoluteLayout.LayoutBounds="0.5, 0.5, 200, 50"
+            AbsoluteLayout.LayoutFlags="PositionProportional"
+            Text="Clique-me" />
+        <BoxView
+            AbsoluteLayout.LayoutBounds="150, 200"
+            HeightRequest="50"
+            WidthRequest="50"
+            Color="Red" />
+        <BoxView
+            AbsoluteLayout.LayoutBounds="175, 225"
+            HeightRequest="50"
+            WidthRequest="50"
+            Color="Green" />
+        <BoxView
+            AbsoluteLayout.LayoutBounds="200, 250"
+            HeightRequest="50"
+            WidthRequest="50"
+            Color="Blue" />
+        <BoxView
+            AbsoluteLayout.LayoutBounds="225, 275"
+            HeightRequest="50"
+            WidthRequest="50"
+            Color="Gold" />
+        <BoxView
+            AbsoluteLayout.LayoutBounds="250, 300"
+            HeightRequest="50"
+            WidthRequest="50"
+            Color="Purple" />
+
+
+    </AbsoluteLayout>
+</ContentPage>
