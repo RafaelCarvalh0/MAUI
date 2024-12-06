@@ -1,5 +1,6 @@
 ﻿using AppMAUIGallery.Models;
 using AppMAUIGallery.Views;
+using AppMAUIGallery.Views.Components.Mains;
 using AppMAUIGallery.Views.Layouts;
 using System;
 using System.Collections.Generic;
@@ -58,8 +59,22 @@ namespace AppMAUIGallery.Repositories
                             Page = typeof(FlexLayoutPage)
                         }
                     }
+                },
+                new Category
+                {
+                    Name = "Componentes(Views)",
+                    Components = new List<Component>
+                    {
+                        new Component
+                        {
+                            Title = "BoxView",
+                            Description = "Um componente que cria uma caixa para ser apresentada.",
+                            Page = typeof(BoxViewPage)
+                        }
+                    }
                 }
             };
+            //categories.Add
 
             return categories;
         }
