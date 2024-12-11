@@ -44,7 +44,7 @@
 		<MauiIcon Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'" Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#F9F9F9" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#F9F9F9" BaseSize="154,188" />
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#F9F9F9" BaseSize="400, 400" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
@@ -68,6 +68,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Components\Mains\BoxViewPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Components\Mains\LabelPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Layouts\AbsoluteLayoutPage.xaml">

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AppMAUIGallery.Views.Components.Mains.LabelPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="LabelPage">
+    <VerticalStackLayout>
+        <Label
+            Text="Welcome to .NET MAUI!"
+            TextColor="#99FF0000"
+            TextDecorations="Underline"
+            TextTransform="Uppercase" />
+        <Label Text="Bem-vindo ao &#34;.NET MAUI!&#34; &lt;i&gt;Você está gostando do MAUI?&lt;/i&gt;" TextType="Html" />
+        <Label TextType="Html">
+            <Label.Text>
+                <![CDATA[
+                <div>
+                <i>Hello world!</i> <br /> <strong>How are you today ? </strong>
+                </>div
+                ]]>
+            </Label.Text>
+        </Label>
+    </VerticalStackLayout>
+</ContentPage>
