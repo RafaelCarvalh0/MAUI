@@ -7,7 +7,7 @@ namespace AppMAUIGallery
         public App()
         {
             InitializeComponent();
-
+            Application.Current.UserAppTheme = AppTheme.Light;
             MainPage = new AppFlyout();
         }
     }

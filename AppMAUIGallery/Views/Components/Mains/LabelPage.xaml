@@ -5,20 +5,79 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="LabelPage">
     <VerticalStackLayout>
+
         <Label
+            Padding="10"
             Text="Welcome to .NET MAUI!"
             TextColor="#99FF0000"
             TextDecorations="Underline"
             TextTransform="Uppercase" />
-        <Label Text="Bem-vindo ao &#34;.NET MAUI!&#34; &lt;i&gt;Você está gostando do MAUI?&lt;/i&gt;" TextType="Html" />
-        <Label TextType="Html">
-            <Label.Text>
-                <![CDATA[
+
+        <Label
+            Padding="10"
+            FontAttributes="Italic"
+            FontFamily="RobotoRegular"
+            FontSize="Title">
+            <Label.Text>Bem vindo ao .NET MAUI</Label.Text>
+        </Label>
+
+        <Label
+            LineBreakMode="TailTruncation"
+            LineHeight="1.2"
+            MaxLines="2"
+            Text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum." />
+
+        <Label Padding="10">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span
+                        FontAttributes="Bold"
+                        FontFamily="RobotoRegular"
+                        Text="Lorem Ipsum "
+                        TextColor="Blue"
+                        TextDecorations="Underline">
+                        <Span.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnTapLink" />
+                        </Span.GestureRecognizers>
+                    </Span>
+                    <Span FontAttributes="Italic" Text="is simply dummy text of the printing and typesetting industry." />
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+
+        <Label
+            Padding="10"
+            BackgroundColor="#F2F2F2"
+            FontAttributes="Bold"
+            FontSize="20"
+            HeightRequest="150"
+            HorizontalOptions="FillAndExpand"
+            HorizontalTextAlignment="Center"
+            Text=".NET MAUI"
+            VerticalOptions="FillAndExpand"
+            VerticalTextAlignment="Center" />
+
+        <VerticalStackLayout BackgroundColor="LightGray">
+            <Label
+                Padding="10"
+                BackgroundColor="Gray"
+                HorizontalOptions="FillAndExpand"
+                HorizontalTextAlignment="Center"
+                Text="HTML" />
+            <Label
+                Padding="10"
+                Text="Bem-vindo ao &#34;.NET MAUI!&#34; &lt;i&gt;Você está gostando do MAUI?&lt;/i&gt;"
+                TextType="Html" />
+            <Label TextType="Html">
+                <Label.Text>
+                    <![CDATA[
                 <div>
                 <i>Hello world!</i> <br /> <strong>How are you today ? </strong>
-                </>div
+                </div>
                 ]]>
-            </Label.Text>
-        </Label>
+                </Label.Text>
+            </Label>
+        </VerticalStackLayout>
+
     </VerticalStackLayout>
 </ContentPage>
