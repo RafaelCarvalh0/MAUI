@@ -9,8 +9,6 @@ public partial class Menu : ContentPage
     public Menu()
     {
         InitializeComponent();
-
-        Application.Current.UserAppTheme = AppTheme.Light;
         _categoryRepository = MauiProgram.Services.GetRequiredService<ICategoryRepository>();
 
         GetCategories();

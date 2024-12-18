@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AppJogoForca.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <ScrollView>
+        <FlexLayout Direction="Column" JustifyContent="SpaceBetween">
+            <Image
+                Margin="0,20,0,0"
+                Aspect="AspectFit"
+                HeightRequest="185"
+                Source="forca1.png" />
+
+            <Label
+                x:Name="dicaField"
+                FontSize="32"
+                Style="{StaticResource Headline}"
+                Text="" />
+
+            <Label
+                x:Name="wordField"
+                FontSize="34"
+                Style="{StaticResource SubHeadline}"
+                Text="" />
+
+            <VerticalStackLayout>
+                <HorizontalStackLayout
+                    Margin="0,0,0,5"
+                    HorizontalOptions="Center"
+                    Spacing="3">
+                    <Button HorizontalOptions="Fill" Text="Q" />
+                    <Button HorizontalOptions="Fill" Text="W" />
+                    <Button HorizontalOptions="Fill" Text="E" />
+                    <Button HorizontalOptions="Fill" Text="R" />
+                    <Button HorizontalOptions="Fill" Text="T" />
+                    <Button HorizontalOptions="Fill" Text="Y" />
+                    <Button HorizontalOptions="Fill" Text="U" />
+                    <Button HorizontalOptions="Fill" Text="I" />
+                    <Button HorizontalOptions="Fill" Text="O" />
+                    <Button HorizontalOptions="Fill" Text="P" />
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout
+                    Margin="0,0,0,5"
+                    HorizontalOptions="Center"
+                    Spacing="3">
+                    <Button HorizontalOptions="Fill" Text="A" />
+                    <Button HorizontalOptions="Fill" Text="S" />
+                    <Button HorizontalOptions="Fill" Text="D" />
+                    <Button HorizontalOptions="Fill" Text="F" />
+                    <Button HorizontalOptions="Fill" Text="G" />
+                    <Button HorizontalOptions="Fill" Text="H" />
+                    <Button HorizontalOptions="Fill" Text="J" />
+                    <Button HorizontalOptions="Fill" Text="K" />
+                    <Button HorizontalOptions="Fill" Text="L" />
+                    <Button HorizontalOptions="Fill" Text="Ç" />
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout
+                    Margin="0,0,0,10"
+                    HorizontalOptions="Center"
+                    Spacing="3">
+                    <Button HorizontalOptions="Fill" Text="Z" />
+                    <Button HorizontalOptions="Fill" Text="X" />
+                    <Button HorizontalOptions="Fill" Text="C" />
+                    <Button HorizontalOptions="Fill" Text="V" />
+                    <Button HorizontalOptions="Fill" Text="B" />
+                    <Button HorizontalOptions="Fill" Text="N" />
+                    <Button HorizontalOptions="Fill" Text="M" />
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+
+        </FlexLayout>
+    </ScrollView>
+
+</ContentPage>
