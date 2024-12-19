@@ -5,21 +5,35 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
     <ScrollView>
-        <FlexLayout Direction="Column" JustifyContent="SpaceBetween">
+        <FlexLayout
+            x:Name="container"
+            Direction="Column"
+            JustifyContent="SpaceBetween">
+
             <Image
+                x:Name="ImgMain"
                 Margin="0,20,0,0"
                 Aspect="AspectFit"
                 HeightRequest="185"
                 Source="forca1.png" />
 
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <Button
+                    x:Name="btnHeader"
+                    Released="wordHandle"
+                    Text="Next"
+                    WidthRequest="200" />
+            </HorizontalStackLayout>
+
             <Label
-                x:Name="dicaField"
+                x:Name="LblTips"
                 FontSize="32"
                 Style="{StaticResource Headline}"
                 Text="" />
 
             <Label
-                x:Name="wordField"
+                x:Name="LblText"
+                CharacterSpacing="5"
                 FontSize="34"
                 Style="{StaticResource SubHeadline}"
                 Text="" />
@@ -29,45 +43,126 @@
                     Margin="0,0,0,5"
                     HorizontalOptions="Center"
                     Spacing="3">
-                    <Button HorizontalOptions="Fill" Text="Q" />
-                    <Button HorizontalOptions="Fill" Text="W" />
-                    <Button HorizontalOptions="Fill" Text="E" />
-                    <Button HorizontalOptions="Fill" Text="R" />
-                    <Button HorizontalOptions="Fill" Text="T" />
-                    <Button HorizontalOptions="Fill" Text="Y" />
-                    <Button HorizontalOptions="Fill" Text="U" />
-                    <Button HorizontalOptions="Fill" Text="I" />
-                    <Button HorizontalOptions="Fill" Text="O" />
-                    <Button HorizontalOptions="Fill" Text="P" />
+                    <Button
+                        HorizontalOptions="Fill"
+                        Released="CharacterHandle"
+                        Text="Q" />
+                    <Button
+                        HorizontalOptions="Fill"
+                        Released="CharacterHandle"
+                        Text="W" />
+                    <Button
+                        HorizontalOptions="Fill"
+                        Released="CharacterHandle"
+                        Text="E" />
+                    <Button
+                        HorizontalOptions="Fill"
+                        Released="CharacterHandle"
+                        Text="R" />
+                    <Button
+                        HorizontalOptions="Fill"
+                        Released="CharacterHandle"
+                        Text="T" />
+                    <Button
+                        HorizontalOptions="Fill"
+                        Released="CharacterHandle"
+                        Text="Y" />
+                    <Button
+                        HorizontalOptions="Fill"
+                        Released="CharacterHandle"
+                        Text="U" />
+                    <Button
+                        HorizontalOptions="Fill"
+                        Released="CharacterHandle"
+                        Text="I" />
+                    <Button
+                        HorizontalOptions="Fill"
+                        Released="CharacterHandle"
+                        Text="O" />
+                    <Button
+                        HorizontalOptions="Fill"
+                        Released="CharacterHandle"
+                        Text="P" />
                 </HorizontalStackLayout>
 
                 <HorizontalStackLayout
                     Margin="0,0,0,5"
                     HorizontalOptions="Center"
                     Spacing="3">
-                    <Button HorizontalOptions="Fill" Text="A" />
-                    <Button HorizontalOptions="Fill" Text="S" />
-                    <Button HorizontalOptions="Fill" Text="D" />
-                    <Button HorizontalOptions="Fill" Text="F" />
-                    <Button HorizontalOptions="Fill" Text="G" />
-                    <Button HorizontalOptions="Fill" Text="H" />
-                    <Button HorizontalOptions="Fill" Text="J" />
-                    <Button HorizontalOptions="Fill" Text="K" />
-                    <Button HorizontalOptions="Fill" Text="L" />
-                    <Button HorizontalOptions="Fill" Text="Ç" />
+                    <Button
+                        HorizontalOptions="Fill"
+                        Released="CharacterHandle"
+                        Text="A" />
+                    <Button
+                        HorizontalOptions="Fill"
+                        Released="CharacterHandle"
+                        Text="S" />
+                    <Button
+                        HorizontalOptions="Fill"
+                        Released="CharacterHandle"
+                        Text="D" />
+                    <Button
+                        HorizontalOptions="Fill"
+                        Released="CharacterHandle"
+                        Text="F" />
+                    <Button
+                        HorizontalOptions="Fill"
+                        Released="CharacterHandle"
+                        Text="G" />
+                    <Button
+                        HorizontalOptions="Fill"
+                        Released="CharacterHandle"
+                        Text="H" />
+                    <Button
+                        HorizontalOptions="Fill"
+                        Released="CharacterHandle"
+                        Text="J" />
+                    <Button
+                        HorizontalOptions="Fill"
+                        Released="CharacterHandle"
+                        Text="K" />
+                    <Button
+                        HorizontalOptions="Fill"
+                        Released="CharacterHandle"
+                        Text="L" />
+                    <Button
+                        HorizontalOptions="Fill"
+                        Released="CharacterHandle"
+                        Text="Ç" />
                 </HorizontalStackLayout>
 
                 <HorizontalStackLayout
                     Margin="0,0,0,10"
                     HorizontalOptions="Center"
                     Spacing="3">
-                    <Button HorizontalOptions="Fill" Text="Z" />
-                    <Button HorizontalOptions="Fill" Text="X" />
-                    <Button HorizontalOptions="Fill" Text="C" />
-                    <Button HorizontalOptions="Fill" Text="V" />
-                    <Button HorizontalOptions="Fill" Text="B" />
-                    <Button HorizontalOptions="Fill" Text="N" />
-                    <Button HorizontalOptions="Fill" Text="M" />
+                    <Button
+                        HorizontalOptions="Fill"
+                        Released="CharacterHandle"
+                        Text="Z" />
+                    <Button
+                        HorizontalOptions="Fill"
+                        Released="CharacterHandle"
+                        Text="X" />
+                    <Button
+                        HorizontalOptions="Fill"
+                        Released="CharacterHandle"
+                        Text="C" />
+                    <Button
+                        HorizontalOptions="Fill"
+                        Released="CharacterHandle"
+                        Text="V" />
+                    <Button
+                        HorizontalOptions="Fill"
+                        Released="CharacterHandle"
+                        Text="B" />
+                    <Button
+                        HorizontalOptions="Fill"
+                        Released="CharacterHandle"
+                        Text="N" />
+                    <Button
+                        HorizontalOptions="Fill"
+                        Released="CharacterHandle"
+                        Text="M" />
                 </HorizontalStackLayout>
             </VerticalStackLayout>
 
