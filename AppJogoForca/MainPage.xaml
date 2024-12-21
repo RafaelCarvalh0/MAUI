@@ -10,6 +10,14 @@
             Direction="Column"
             JustifyContent="SpaceBetween">
 
+            <HorizontalStackLayout Margin="0,20,0,0" HorizontalOptions="Center">
+                <Button
+                    HorizontalOptions="Center"
+                    Released="RestartHandle"
+                    Text="Restart"
+                    WidthRequest="200" />
+            </HorizontalStackLayout>
+
             <Image
                 x:Name="ImgMain"
                 Margin="0,20,0,0"
@@ -17,26 +25,16 @@
                 HeightRequest="185"
                 Source="forca1.png" />
 
-            <HorizontalStackLayout HorizontalOptions="Center">
-                <Button
-                    x:Name="btnHeader"
-                    Released="wordHandle"
-                    Text="Next"
-                    WidthRequest="200" />
-            </HorizontalStackLayout>
-
             <Label
                 x:Name="LblTips"
                 FontSize="32"
-                Style="{StaticResource Headline}"
-                Text="" />
+                Style="{StaticResource Headline}" />
 
             <Label
                 x:Name="LblText"
                 CharacterSpacing="5"
                 FontSize="34"
-                Style="{StaticResource SubHeadline}"
-                Text="" />
+                Style="{StaticResource SubHeadline}" />
 
             <VerticalStackLayout>
                 <HorizontalStackLayout

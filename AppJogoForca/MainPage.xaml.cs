@@ -17,7 +17,16 @@ namespace AppJogoForca
             InitializeComponent();
             _wordRepository = MauiProgram.Services.GetRequiredService<IWordRepository>();
 
+            SetTextColorBasedOnTheme();
             GetWord();
+        }
+
+        private void SetTextColorBasedOnTheme()
+        {
+            if (Application.Current.RequestedTheme == AppTheme.Dark)
+                LblText.TextColor = Colors.White;
+            else
+                LblText.TextColor = Colors.Black;
         }
 
         private async void GetWord()
@@ -25,14 +34,10 @@ namespace AppJogoForca
             try
             {
                 LblText.Text = string.Empty;
-
                 _word = await _wordRepository.GetRandomWordSync();
                 LblTips.Text = _word.Tips;
 
-                for (int i = 0; i < _word.Text.Length; i++)
-                {
-                    LblText.Text = new String('_', _word.Text.Length);
-                }
+                for (int i = 0; i < _word.Text.Length; i++) LblText.Text = new String('_', _word.Text.Length);
             }
             catch (Exception ex)
             {
@@ -43,55 +48,84 @@ namespace AppJogoForca
         private async void CharacterHandle(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
+            btn.IsEnabled = false;
+
             char ch = Convert.ToChar(btn.Text);
 
             if (!_word.Text.Contains(ch))
-            {            
-                LblText.TextColor = Color.FromArgb("#E74D3C");              
-                btn.BackgroundColor = Color.FromArgb("#E74D3C");
-                _errors++;
-                ImgMain.Source = ImageSource.FromFile($"forca{_errors + 1}.png");
-
-                if(_errors == 6)
-                {
-                    await DisplayAlert("Perdeu!", "Você foi enforcado!", "New game");
-                    ClearStates();
-                    GetWord();
-                }
-            }
-            else
             {
-                for (int i = 0; i < _word.Text.Length; i++)
-                {
-                    if (ch == _word.Text[i])
-                    {
-                        LblText.TextColor = Color.FromArgb("#1BB45C");
-                        btn.BackgroundColor = Color.FromArgb("#1BB45C");
-                        LblText.Text = LblText.Text.Remove(i, 1).Insert(i, ch.ToString());
-                    }
-                }
+                ErrorHandle(btn);
+                await IsGameOver();
+                return;
             }
 
-            btn.IsEnabled = false;
+            for (int i = 0; i < _word.Text.Length; i++)
+            {
+                if (ch == _word.Text[i])
+                    SuccessHandle(btn, ch, i);
+            }
+
+            await HasWinner();
         }
 
-        private void wordHandle(object sender, EventArgs e)
-        {          
+        private void RestartHandle(object sender, EventArgs e)
+        {
             ClearStates();
             GetWord();
         }
+
+        #region Handler Success
+        private void SuccessHandle(Button btn, char ch, int i)
+        {
+            btn.Style = App.Current.Resources.MergedDictionaries.ElementAt(1)["Success"] as Style;
+            LblText.Text = LblText.Text.Remove(i, 1).Insert(i, ch.ToString());
+        }
+
+        private async Task HasWinner()
+        {
+            if (LblText.Text.Replace("_", "").Length == _word.Text.Length) //!LblText.Text.Contains("_")
+            {
+                await DisplayAlert("Parabéns!", "Você ganhou o jogo!", "New game");
+                ClearStates();
+                GetWord();
+            }
+        }
+
+        #endregion
+
+        #region Handler Error
+
+        private void ErrorHandle(Button btn)
+        {
+            btn.Style = App.Current.Resources.MergedDictionaries.ElementAt(1)["Fail"] as Style;
+            _errors++;
+            ImgMain.Source = ImageSource.FromFile($"forca{_errors + 1}.png");
+        }
+
+        private async Task IsGameOver()
+        {
+            if (_errors == 6)
+            {
+                await DisplayAlert("Perdeu!", "Você foi enforcado!", "New game");
+                ClearStates();
+                GetWord();
+            }
+        }
+
+        #endregion
+
+        #region Clear States
 
         private void ClearStates()
         {
             _errors = 0;
             ImgMain.Source = ImageSource.FromFile("forca1.png");
-            LblText.TextColor = Color.FromRgb(0, 0, 0);
+            SetTextColorBasedOnTheme();
 
             foreach (Button button in GetAllButtons(container))
             {
                 button.IsEnabled = true;
-                button.TextColor = Colors.Black;
-                button.BackgroundColor = Color.FromRgb(255, 255, 255);
+                button.Style = null;
             }
         }
 
@@ -113,5 +147,7 @@ namespace AppJogoForca
                 }
             }
         }
+
+        #endregion
     }
 }
