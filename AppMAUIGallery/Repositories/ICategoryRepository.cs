@@ -1,6 +1,7 @@
 ﻿using AppMAUIGallery.Models;
 using AppMAUIGallery.Views;
 using AppMAUIGallery.Views.Components.Mains;
+using AppMAUIGallery.Views.Components.Visuals;
 using AppMAUIGallery.Views.Layouts;
 using System;
 using System.Collections.Generic;
@@ -94,6 +95,31 @@ namespace AppMAUIGallery.Repositories
                             Title = "ImageButton",
                             Description = "Apresenta uma imagem com comportamento de botão.",
                             Page = typeof(ImageButtonPage)
+                        }
+                    }
+                },
+                new Category
+                {
+                    Name = "Visuais",
+                    Components = new List<Component>
+                    {
+                        new Component
+                        {
+                            Title = "Frame",
+                            Description = "Caixa que envolve outros elementos. (Deprecated)",
+                            Page = typeof(FramePage)
+                        },
+                        new Component
+                        {
+                            Title = "Border",
+                            Description = "Caixa que envolve outros elementos.",
+                            Page = typeof(BorderPage)
+                        },
+                        new Component
+                        {
+                            Title = "Shadow",
+                            Description = "Adiciona uma sombra ao elemento.",
+                            Page = typeof(ShadowPage)
                         }
                     }
                 }
