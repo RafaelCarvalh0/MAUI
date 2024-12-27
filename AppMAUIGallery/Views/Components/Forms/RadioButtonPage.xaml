@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AppMAUIGallery.Views.Components.Forms.RadioButtonPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="RadioButtonPage">
+    <VerticalStackLayout Padding="10">
+        <StackLayout RadioButtonGroup.GroupName="programmingLanguage">
+            <Label
+                HorizontalOptions="Center"
+                Text="Qual linguagem de programação você mais gosta?"
+                VerticalOptions="Center" />
+
+            <!--  Definindo o grupo de radio buttons  -->
+            <RadioButton
+                CheckedChanged="RadioButton_CheckedChanged"
+                Content="C#"
+                IsChecked="True"
+                Value="C#" />
+            <RadioButton
+                CheckedChanged="RadioButton_CheckedChanged"
+                Content="Java"
+                IsChecked="False" />
+            <RadioButton
+                BorderColor="Blue"
+                BorderWidth="1"
+                CheckedChanged="RadioButton_CheckedChanged"
+                Content="Python"
+                IsChecked="False" />
+            <Label x:Name="LblResultAsk01" TextColor="Black" />
+        </StackLayout>
+
+        <StackLayout RadioButtonGroup.GroupName="ide">
+            <Label
+                HorizontalOptions="Center"
+                Text="Qual IDE você mais gosta?"
+                VerticalOptions="Center" />
+
+            <!--  Definindo outro grupo de radio buttons  -->
+            <RadioButton
+                Content="Visual Studio"
+                IsChecked="True"
+                Value="C#" />
+            <RadioButton Content="IntelliJ IDEA" IsChecked="False" />
+            <RadioButton Content="PyCharm" IsChecked="False" />
+        </StackLayout>
+
+        <StackLayout RadioButtonGroup.GroupName="mascote">
+            <Label
+                HorizontalOptions="Center"
+                Text="Qual é o mascote do .NET MAUI?"
+                VerticalOptions="Center" />
+
+            <!--  Definindo outro grupo de radio buttons  -->
+            <RadioButton IsChecked="True" Value="Robot">
+                <RadioButton.Content>
+                    <HorizontalStackLayout>
+                        <Label Text="C#" />
+                        <Image HeightRequest="100" Source="dotnet_bot.png" />
+                    </HorizontalStackLayout>
+                </RadioButton.Content>
+            </RadioButton>
+            <RadioButton
+                BorderColor="Blue"
+                BorderWidth="1"
+                Content="Other"
+                CornerRadius="10"
+                IsChecked="False" />
+            <RadioButton Content="Other" IsChecked="False" />
+        </StackLayout>
+    </VerticalStackLayout>
+</ContentPage>

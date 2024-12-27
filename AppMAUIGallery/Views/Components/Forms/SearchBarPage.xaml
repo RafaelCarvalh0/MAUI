@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AppMAUIGallery.Views.Components.Forms.SearchBarPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:AppMAUIGallery.ViewModels"
+    Title="SearchBarPage">
+    <ContentPage.BindingContext>
+        <vm:SearchBarViewModel />
+    </ContentPage.BindingContext>
+    <VerticalStackLayout Padding="10">
+        <SearchBar
+            CancelButtonColor="Red"
+            Placeholder="Search here..."
+            SearchButtonPressed="SearchBar_SearchButtonPressed"
+            Text="{Binding Text}"
+            TextColor="Black" />
+        <Label
+            x:Name="LblValue"
+            Text="{Binding StatusLabel}"
+            TextColor="Green" />
+    </VerticalStackLayout>
+</ContentPage>

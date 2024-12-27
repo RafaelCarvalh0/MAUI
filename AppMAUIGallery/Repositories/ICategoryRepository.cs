@@ -1,5 +1,6 @@
 ﻿using AppMAUIGallery.Models;
 using AppMAUIGallery.Views;
+using AppMAUIGallery.Views.Components.Forms;
 using AppMAUIGallery.Views.Components.Mains;
 using AppMAUIGallery.Views.Components.Visuals;
 using AppMAUIGallery.Views.Layouts;
@@ -120,6 +121,79 @@ namespace AppMAUIGallery.Repositories
                             Title = "Shadow",
                             Description = "Adiciona uma sombra ao elemento.",
                             Page = typeof(ShadowPage)
+                        }
+                    }
+                },
+                new Category
+                {
+                    Name = "Formulários",
+                    Components = new List<Component>
+                    {
+                        new Component
+                        {
+                            Title = "Entry",
+                            Description = "Cria uma caixa de entrada de texto.",
+                            Page = typeof(EntryPage)
+                        },
+                        new Component
+                        {
+                            Title = "Editor",
+                            Description = "Cria uma caixa de entrada de texto de múltiplas linhas.",
+                            Page = typeof(EditorPage)
+                        },
+                        new Component
+                        {
+                            Title = "Checkbox",
+                            Description = "Cria uma caixa de marcação.",
+                            Page = typeof(CheckBoxPage)
+                        },
+                        new Component
+                        {
+                            Title = "RadioButton",
+                            Description = "Cria uma caixa de marcação de escolha única.",
+                            Page = typeof(RadioButtonPage)
+                        },
+                        new Component
+                        {
+                            Title = "Switch",
+                            Description = "Caixa de marcação booleana.",
+                            Page = typeof(SwitchPage)
+                        },
+                        new Component
+                        {
+                            Title = "Stepper",
+                            Description = "Cria opções de incrementar ou decrementar um número.",
+                            Page = typeof(StepperPage)
+                        },
+                        new Component
+                        {
+                            Title = "Slider",
+                            Description = "Cria uma barra de rolagem de incrementar ou decrementar um número.",
+                            Page = typeof(SliderPage)
+                        },
+                        new Component
+                        {
+                            Title = "TimePicker",
+                            Description = "Seleção da Hora e minuto.",
+                            Page = typeof(TimerPickerPage)
+                        },
+                        new Component
+                        {
+                            Title = "DatePicker",
+                            Description = "Seleção da Data.",
+                            Page = typeof(DatePickerPage)
+                        },
+                        new Component
+                        {
+                            Title = "SearchBar",
+                            Description = "Campo de entrada de texto para pesquisa.",
+                            Page = typeof(SearchBarPage)
+                        },
+                        new Component
+                        {
+                            Title = "Picker",
+                            Description = "Selecionar um item da lista.",
+                            Page = typeof(PickerPage)
                         }
                     }
                 }

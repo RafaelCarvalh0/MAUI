@@ -5,22 +5,20 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="FlexLayoutPage">
     <FlexLayout
-        Wrap="Wrap"
+        AlignContent="Stretch"
         AlignItems="Start"
         Direction="Row"
-        AlignContent="Stretch"
-        JustifyContent="Start">
+        JustifyContent="Start"
+        Wrap="Wrap">
         <Label
             Padding="10"
             BackgroundColor="RosyBrown"
-            FlexLayout.Order="1"
             FlexLayout.Grow="1"
             Text="Linha 1" />
         <Label
             Padding="10"
             BackgroundColor="SandyBrown"
             FlexLayout.AlignSelf="Center"
-            FlexLayout.Order="0"
             FlexLayout.Basis="20%"
             Text="Linha 2" />
         <Label
@@ -28,40 +26,38 @@
             BackgroundColor="SaddleBrown"
             FlexLayout.AlignSelf="End"
             Text="Linha 3"
-            FlexLayout.Order="3"
             TextColor="White" />
         <Label
             Padding="10"
             BackgroundColor="Black"
             FlexLayout.AlignSelf="Stretch"
-            Text="Linha 4"
             FlexLayout.Grow="1"
-            FlexLayout.Order="2"
+            Text="Linha 4"
             TextColor="White" />
         <Label
-            Text="Linha 5"
+            Padding="10"
             BackgroundColor="Aquamarine"
             FlexLayout.Shrink="0"
-            Padding="10"/>
+            Text="Linha 5" />
         <Label
-            Text="Linha 6"
-            BackgroundColor="Aquamarine"
-            Padding="10"/>
-
-        <Label
-            Text="Linha 7"
-            BackgroundColor="Aquamarine"
-            Padding="10"/>
-
-        <Label
-            Text="Linha 8"
-            BackgroundColor="Aquamarine"
-            Padding="10"/>
-
-        <Label
-            Text="Linha 9"
-            BackgroundColor="Aquamarine"
             Padding="10"
-            FlexLayout.Shrink="0"/>      
+            BackgroundColor="Aquamarine"
+            Text="Linha 6" />
+
+        <Label
+            Padding="10"
+            BackgroundColor="Aquamarine"
+            Text="Linha 7" />
+
+        <Label
+            Padding="10"
+            BackgroundColor="Aquamarine"
+            Text="Linha 8" />
+
+        <Label
+            Padding="10"
+            BackgroundColor="Aquamarine"
+            FlexLayout.Shrink="0"
+            Text="Linha 9" />
     </FlexLayout>
 </ContentPage>
