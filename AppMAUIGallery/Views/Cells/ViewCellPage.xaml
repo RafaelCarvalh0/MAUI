@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AppMAUIGallery.Views.Cells.ViewCellPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="ViewCellPage">
+    <VerticalStackLayout>
+        <TableView HasUnevenRows="True" RowHeight="60">
+            <TableSection
+                x:Name="MyTableSection"
+                Title="Colaboradores"
+                TextColor="Black">
+                <ViewCell x:Name="item1">
+                    <Grid ColumnDefinitions="70, *, 100">
+                        <Image
+                            Grid.Column="0"
+                            Margin="10,0,0,0"
+                            HorizontalOptions="Center"
+                            Source="dotnet_bot.png"
+                            VerticalOptions="Center" />
+                        <VerticalStackLayout Grid.Column="1">
+                            <Label
+                                Margin="10,0,0,0"
+                                FontSize="18"
+                                Text="Rafael Henrique de Carvalho 1"
+                                TextColor="Red" />
+                            <Label
+                                Margin="10,0,0,0"
+                                FontSize="12"
+                                Text="Presidente (CEO)" />
+                        </VerticalStackLayout>
+                        <ImageButton
+                            Grid.Column="2"
+                            Clicked="ImageButton_Clicked"
+                            HeightRequest="20"
+                            HorizontalOptions="Center"
+                            Source="trash.png"
+                            VerticalOptions="Center"
+                            WidthRequest="20" />
+                    </Grid>
+                </ViewCell>
+                <ViewCell x:Name="item2">
+                    <Grid ColumnDefinitions="70, *, 100">
+                        <Image
+                            Grid.Column="0"
+                            Margin="10,0,0,0"
+                            Source="dotnet_bot.png" />
+                        <VerticalStackLayout Grid.Column="1">
+                            <Label
+                                Margin="10,0,0,0"
+                                FontSize="18"
+                                Text="Rafael Henrique de Carvalho 2"
+                                TextColor="Red" />
+                            <Label
+                                Margin="10,0,0,0"
+                                FontSize="12"
+                                Text="Presidente (CEO)" />
+                        </VerticalStackLayout>
+                        <ImageButton
+                            Grid.Column="2"
+                            Clicked="ImageButton_Clicked"
+                            HeightRequest="20"
+                            Source="trash.png"
+                            WidthRequest="20" />
+                    </Grid>
+                </ViewCell>
+                <ViewCell x:Name="item3">
+                    <Grid ColumnDefinitions="70, *, 100">
+                        <Image
+                            Grid.Column="0"
+                            Margin="10,0,0,0"
+                            Source="dotnet_bot.png" />
+                        <VerticalStackLayout Grid.Column="1">
+                            <Label
+                                Margin="10,0,0,0"
+                                FontSize="18"
+                                Text="Rafael Henrique de Carvalho 3"
+                                TextColor="Red" />
+                            <Label
+                                Margin="10,0,0,0"
+                                FontSize="12"
+                                Text="Presidente (CEO)" />
+                        </VerticalStackLayout>
+                        <ImageButton
+                            Grid.Column="2"
+                            Clicked="ImageButton_Clicked"
+                            HeightRequest="20"
+                            Source="trash.png"
+                            WidthRequest="20" />
+                    </Grid>
+                </ViewCell>
+            </TableSection>
+        </TableView>
+    </VerticalStackLayout>
+</ContentPage>

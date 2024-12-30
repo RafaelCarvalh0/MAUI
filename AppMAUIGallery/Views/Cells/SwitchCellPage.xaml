@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AppMAUIGallery.Views.Cells.SwitchCellPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="SwitchCellPage">
+    <VerticalStackLayout>
+        <TableView>
+            <TableSection Title="Configuration" TextColor="Black">
+                <SwitchCell OnColor="Gold" Text="Backup diário" />
+                <SwitchCell OnColor="Purple" Text="Dark mode" />
+                <SwitchCell OnColor="Green" Text="Wi-fi connection" />
+            </TableSection>
+        </TableView>
+    </VerticalStackLayout>
+</ContentPage>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AppMAUIGallery.Views.Cells.ImageCellPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="ImageCellPage">
+    <VerticalStackLayout>
+        <TableView>
+            <TableSection Title="Lista de Colaboladores" TextColor="Black">
+                <ImageCell
+                    Detail="Idade: 34, Cargo: PHP Developer"
+                    DetailColor="Gray"
+                    ImageSource="dotnet_bot.png"
+                    Text="João Rodrigues de Almeida"
+                    TextColor="Blue" />
+                <ImageCell
+                    Detail="Idade: 37, Cargo: Q.A Tester"
+                    DetailColor="Gray"
+                    ImageSource="dotnet_bot.png"
+                    Text="Maria Pereira da Silva"
+                    TextColor="Purple" />
+                <ImageCell
+                    Detail="Idade: 34, Cargo: .NET Developer"
+                    DetailColor="Gray"
+                    ImageSource="dotnet_bot.png"
+                    Text="Rafael Henrique de Carvalho"
+                    TextColor="Gold" />
+            </TableSection>
+        </TableView>
+    </VerticalStackLayout>
+</ContentPage>
