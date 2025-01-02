@@ -15,6 +15,7 @@ namespace AppMAUIGallery.Views.Lists.Models
         public TimeSpan Duration { get; set; }
         public short LaunchYear { get; set; }
 
+        // For this class i'm overriding the ToString() method
         public override string ToString()
         {
             return $"{Id} - {Title} - {LaunchYear}";

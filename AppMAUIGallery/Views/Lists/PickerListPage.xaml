@@ -5,7 +5,13 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="PickerListPage">
     <VerticalStackLayout>
-        <Picker x:Name="PickerControl" Title="Filmes" />
+        <Picker
+            x:Name="PickerControl"
+            Title="Filmes"
+            ItemDisplayBinding="{Binding Title}"
+            SelectedIndex="0"
+            SelectedItem="4"
+            TextColor="Black" />
         <Button
             BackgroundColor="Black"
             Clicked="Button_Clicked"

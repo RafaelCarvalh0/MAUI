@@ -6,21 +6,20 @@ public partial class Menu : ContentPage
 {
 	private readonly ICategoryRepository _categoryRepository;
 
-    public Menu()
+    // Construtor parametrizável para receber uma instância do meu objeto do contâiner DI.
+    public Menu(ICategoryRepository categoryRepository)
     {
         InitializeComponent();
-        _categoryRepository = MauiProgram.Services.GetRequiredService<ICategoryRepository>();
+        _categoryRepository = categoryRepository;
 
         GetCategories();
     }
 
- //   public Menu(ICategoryRepository categoryRepository)
-	//{
- //       InitializeComponent();
- //       _categoryRepository = categoryRepository;
-
-	//	GetCategories();
-	//}
+    // A view do xaml não sabe enviar parâmetros para o code behind, por isso o construtor deve ser vazio
+    public Menu() : this(MauiProgram.Services.GetRequiredService<ICategoryRepository>())
+    {
+        
+    }
 
     private async void GetCategories()
     {
@@ -66,15 +65,30 @@ public partial class Menu : ContentPage
 
     private void OnTapComponent(object sender, EventArgs e)
     {
-        var label = (Label)sender;
-        var tap = (TapGestureRecognizer)label.GestureRecognizers[0];
-        var page = (Type)tap.CommandParameter;
+        try
+        {
+            var label = (Label)sender;
+            var tap = (TapGestureRecognizer)label.GestureRecognizers[0];
+            var pageType = (Type)tap.CommandParameter;
 
-        ((FlyoutPage)App.Current.MainPage).Detail = new NavigationPage((Page)Activator.CreateInstance(page));
-        //((FlyoutPage)App.Current.MainPage).Title = page.Name;
-        ((FlyoutPage)App.Current.MainPage).IsPresented = false;
+            if (MauiProgram.Services.GetService(pageType) is Page page)
+            {
+                var navigationPage = new NavigationPage(page);
+
+                ((FlyoutPage)App.Current.MainPage).Detail = navigationPage;
+                ((FlyoutPage)App.Current.MainPage).IsPresented = false;
+            }
+            else
+            {
+                throw new InvalidOperationException($"Page of type {pageType.Name} not registered in DI.");
+            }
+        }
+        catch (Exception ex)
+        {
+            // Trate erros ou registre logs
+            Console.WriteLine($"Navigation error: {ex.Message}");
+        }
     }
-
     private void OnTapHome(object sender, TappedEventArgs e)
     {
         ((FlyoutPage)App.Current.MainPage).Detail = new NavigationPage(new AppMAUIGallery.Views.MainPage());

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AppMAUIGallery.Views.Lists.ListViewPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="ListViewPage">
+
+    <!--  Ao utilizar ListView é recomendado não usar Scroll view na mesma tela, pois podem haver problemas de múltiplos scrolls  -->
+    <ListView
+        x:Name="ListViewControl"
+        BackgroundColor="AliceBlue"
+        HasUnevenRows="True"
+        IsPullToRefreshEnabled="True"
+        ItemSelected="ListViewControl_ItemSelected"
+        RefreshControlColor="Purple"
+        Refreshing="ListViewControl_Refreshing"
+        SelectionMode="Single"
+        SeparatorColor="Gold"
+        SeparatorVisibility="Default">
+        <ListView.Header>
+            <Button
+                BackgroundColor="Black"
+                Clicked="Button_Clicked"
+                Text="Carregar"
+                WidthRequest="200" />
+        </ListView.Header>
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <VerticalStackLayout>
+                        <Label
+                            FontSize="18"
+                            Text="{Binding Title}"
+                            TextColor="Green" />
+                        <Label
+                            FontAttributes="Bold"
+                            Text="{Binding Description}"
+                            TextColor="Gray" />
+                        <HorizontalStackLayout>
+                            <Label
+                                Margin="10"
+                                Text="{Binding LaunchYear}"
+                                TextColor="Blue" />
+                            <Label
+                                Margin="10"
+                                Text="{Binding Duration}"
+                                TextColor="Red" />
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+        <ListView.Footer>
+            <Label
+                HorizontalTextAlignment="Center"
+                TextColor="Gray"
+                VerticalTextAlignment="Center">
+                Todos os direitos reservados
+            </Label>
+        </ListView.Footer>
+    </ListView>
+</ContentPage>
