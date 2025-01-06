@@ -9,12 +9,16 @@
     <ListView
         x:Name="ListViewControl"
         BackgroundColor="AliceBlue"
+        CachingStrategy="RetainElement"
         HasUnevenRows="True"
+        HorizontalScrollBarVisibility="Never"
+        IsGroupingEnabled="True"
         IsPullToRefreshEnabled="True"
         ItemSelected="ListViewControl_ItemSelected"
+        ItemTapped="ListViewControl_ItemTapped"
         RefreshControlColor="Purple"
         Refreshing="ListViewControl_Refreshing"
-        SelectionMode="Single"
+        SelectionMode="None"
         SeparatorColor="Gold"
         SeparatorVisibility="Default">
         <ListView.Header>
@@ -24,6 +28,18 @@
                 Text="Carregar"
                 WidthRequest="200" />
         </ListView.Header>
+        <ListView.GroupHeaderTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <VerticalStackLayout Padding="10" BackgroundColor="Purple">
+                        <Label
+                            FontAttributes="Bold"
+                            Text="{Binding CompanyName}"
+                            TextColor="White" />
+                    </VerticalStackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.GroupHeaderTemplate>
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>

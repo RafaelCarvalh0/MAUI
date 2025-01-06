@@ -21,4 +21,9 @@ namespace AppMAUIGallery.Views.Lists.Models
             return $"{Id} - {Title} - {LaunchYear}";
         }
     }
+
+    public class GroupMovie : List<Movie>
+    {
+        public string CompanyName { get; set; }
+    }
 }

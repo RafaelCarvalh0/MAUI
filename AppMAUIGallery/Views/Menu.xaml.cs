@@ -71,6 +71,11 @@ public partial class Menu : ContentPage
             var tap = (TapGestureRecognizer)label.GestureRecognizers[0];
             var pageType = (Type)tap.CommandParameter;
 
+            //Navegação sem utilizar páginas injetadas no container DI.
+            //((FlyoutPage)App.Current.MainPage).Detail = new NavigationPage((Page)Activator.CreateInstance(pageType));
+            //((FlyoutPage)App.Current.MainPage).IsPresented = false;
+
+            //Navegação utilizando páginas injetadas no container DI.
             if (MauiProgram.Services.GetService(pageType) is Page page)
             {
                 var navigationPage = new NavigationPage(page);

@@ -5,7 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="Menu"
     Padding="20"
-    BackgroundColor="#F3F3F3">
+    BackgroundColor="{AppThemeBinding Light={StaticResource DarkWhite}, Dark={StaticResource LightBlack}}">
     <ScrollView>
         <VerticalStackLayout Spacing="10">
             <Label

@@ -13,7 +13,6 @@ namespace AppMAUIGallery
 {
     public static class MauiProgram
     {
-        //private static MauiApp _mauiApp;
         public static IServiceProvider Services { get; private set; }
 
         public static MauiApp CreateMauiApp()
@@ -92,6 +91,9 @@ namespace AppMAUIGallery
             mauiAppBuilder.Services.AddTransient<TableViewPage>();
             mauiAppBuilder.Services.AddTransient<PickerListPage>();
             mauiAppBuilder.Services.AddTransient<ListViewPage>();
+            mauiAppBuilder.Services.AddTransient<CollectionViewPage>();
+            mauiAppBuilder.Services.AddTransient<CarouselViewPage>();
+            mauiAppBuilder.Services.AddTransient<BindableLayoutPage>();
 
             return mauiAppBuilder;
         }
