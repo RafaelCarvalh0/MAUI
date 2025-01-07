@@ -8,18 +8,23 @@
         <VerticalStackLayout x:Name="VerticalStackLayoutControl" BindableLayout.EmptyView="Nenhum registro!">
             <BindableLayout.ItemTemplate>
                 <DataTemplate>
-                    <Grid
-                        Padding="10"
-                        ColumnDefinitions="*, 40"
-                        RowDefinitions="Auto, Auto">
-                        <Label FontAttributes="Bold" Text="{Binding Title}" />
-                        <Label
-                            Grid.Row="1"
-                            Grid.ColumnSpan="2"
-                            Text="{Binding Description}"
-                            TextColor="Gray" />
-                        <Label Grid.Column="1" Text="{Binding LaunchYear}" />
-                    </Grid>
+                    <Border
+                        Margin="5"
+                        Padding="5"
+                        StrokeThickness="1">
+                        <Grid
+                            Padding="10"
+                            ColumnDefinitions="*, 40"
+                            RowDefinitions="Auto, Auto">
+                            <Label FontAttributes="Bold" Text="{Binding Title}" />
+                            <Label
+                                Grid.Row="1"
+                                Grid.ColumnSpan="2"
+                                Text="{Binding Description}"
+                                TextColor="Gray" />
+                            <Label Grid.Column="1" Text="{Binding LaunchYear}" />
+                        </Grid>
+                    </Border>
                 </DataTemplate>
             </BindableLayout.ItemTemplate>
         </VerticalStackLayout>

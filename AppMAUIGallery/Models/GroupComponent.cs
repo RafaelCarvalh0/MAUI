@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace AppMAUIGallery.Models
 {
-    public class Category
+    public class GroupComponent : List<Component>
     {
         public string Name { get; set; }
-        public List<Component> Components { get; set; }
     }
 }

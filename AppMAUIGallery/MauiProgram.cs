@@ -39,7 +39,7 @@ namespace AppMAUIGallery
 
         public static MauiAppBuilder RegisterAppServices(this MauiAppBuilder mauiAppBuilder)
         {
-            mauiAppBuilder.Services.AddSingleton<ICategoryRepository, CategoryRepository>();
+            mauiAppBuilder.Services.AddSingleton<IGroupComponentRepository, GroupComponentRepository>();
             mauiAppBuilder.Services.AddSingleton<IMovieRepository, MovieRepository>();
 
             return mauiAppBuilder;
@@ -94,6 +94,7 @@ namespace AppMAUIGallery
             mauiAppBuilder.Services.AddTransient<CollectionViewPage>();
             mauiAppBuilder.Services.AddTransient<CarouselViewPage>();
             mauiAppBuilder.Services.AddTransient<BindableLayoutPage>();
+            mauiAppBuilder.Services.AddTransient<DataTemplateSelectorPage>();
 
             return mauiAppBuilder;
         }

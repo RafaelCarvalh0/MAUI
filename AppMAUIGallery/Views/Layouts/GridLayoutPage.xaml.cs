@@ -1,4 +1,4 @@
-namespace AppMAUIGallery.Views;
+namespace AppMAUIGallery.Views.Layouts;
 
 public partial class GridLayoutPage : ContentPage
 {

@@ -30,11 +30,15 @@ public partial class CollectionViewPage : ContentPage
         //CollectionViewControl.ItemsSource = Movies;
     }
 
-    // Necessário
-    public CollectionViewPage() : this(MauiProgram.Services.GetRequiredService<IMovieRepository>())
-    {
+    // Necessário se for uma tela chamada/instânciada no proprio XAML
+    // Ref: AppFlyout.xaml
+    // <FlyoutPage.Flyout>
+    //    <pages:CollectionViewPage />
+    //</FlyoutPage.Flyout>
+    //public CollectionViewPage() : this(MauiProgram.Services.GetRequiredService<IMovieRepository>())
+    //{
 
-    }
+    //}
 
     private async Task GetMovies()
     {
@@ -53,6 +57,10 @@ public partial class CollectionViewPage : ContentPage
     {
         try
         {
+            if (CollectionViewControl.RemainingItemsThreshold > 0)
+                LblScrollType.Text = "Infinity Scroll";
+
+
             MovieRepository.GetGroupList().ForEach(groupMovie => GroupMovies.Add(groupMovie));
 
             //foreach (var groupMovie in groupMovies)

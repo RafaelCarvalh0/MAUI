@@ -4,72 +4,37 @@ namespace AppMAUIGallery.Views;
 
 public partial class Menu : ContentPage
 {
-	private readonly ICategoryRepository _categoryRepository;
+	private readonly IGroupComponentRepository _groupComponentRepository;
 
     // Construtor parametrizável para receber uma instância do meu objeto do contâiner DI.
-    public Menu(ICategoryRepository categoryRepository)
+    public Menu(IGroupComponentRepository groupComponentRepository)
     {
         InitializeComponent();
-        _categoryRepository = categoryRepository;
+        _groupComponentRepository = groupComponentRepository;
 
-        GetCategories();
+        LoadMenu();
     }
 
     // A view do xaml não sabe enviar parâmetros para o code behind, por isso o construtor deve ser vazio
-    public Menu() : this(MauiProgram.Services.GetRequiredService<ICategoryRepository>())
+    public Menu() : this(MauiProgram.Services.GetRequiredService<IGroupComponentRepository>())
     {
         
     }
 
-    private async void GetCategories()
+    private void LoadMenu()
     {
-		try
-		{
-            var categories = await _categoryRepository.GetCategories();
-
-            foreach (var category in categories)
-            {
-                var lblCategory = new Label();
-                lblCategory.Text = category.Name;
-                lblCategory.FontFamily = "OpenSansSemibold";
-
-                MenuContainer.Children.Add(lblCategory);
-
-                foreach(var component in category.Components)
-                {
-                    var tap = new TapGestureRecognizer();
-                    tap.CommandParameter = component.Page;
-                    tap.Tapped += OnTapComponent;
-
-                    var lblComponentTitle = new Label();    
-                    lblComponentTitle.Text = component.Title;
-                    lblComponentTitle.FontFamily = "OpenSansSemibold";
-                    lblComponentTitle.Margin = new Thickness(20, 10, 0, 0);
-                    lblComponentTitle.GestureRecognizers.Add(tap);
-
-                    var lblComponentDescription = new Label();  
-                    lblComponentDescription.Text = component.Description;
-                    lblComponentDescription.Margin = new Thickness(20, 0, 0, 0);
-                    lblComponentDescription.GestureRecognizers.Add(tap);
-
-                    MenuContainer.Children.Add(lblComponentTitle);  
-                    MenuContainer.Children.Add(lblComponentDescription);  
-                }
-            }
-        }
-		catch (Exception ex)
-		{
-			throw ex;
-		}
+        MenuCollection.ItemsSource = _groupComponentRepository.GetGroupComponents();
     }
 
-    private void OnTapComponent(object sender, EventArgs e)
+    private void OnTapComponent(object sender, TappedEventArgs e)
     {
         try
         {
-            var label = (Label)sender;
-            var tap = (TapGestureRecognizer)label.GestureRecognizers[0];
-            var pageType = (Type)tap.CommandParameter;
+            //[ OLD ]
+            //var label = (Label)sender;
+            //var tap = (TapGestureRecognizer)label.GestureRecognizers[0];
+            //(Type)tap.CommandParameter;
+            var pageType = (Type)e.Parameter; 
 
             //Navegação sem utilizar páginas injetadas no container DI.
             //((FlyoutPage)App.Current.MainPage).Detail = new NavigationPage((Page)Activator.CreateInstance(pageType));

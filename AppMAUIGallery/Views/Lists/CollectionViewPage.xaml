@@ -9,13 +9,33 @@
             <CollectionView
                 x:Name="CollectionViewControl"
                 IsGrouped="True"
-                RemainingItemsThreshold="-1"
+                RemainingItemsThreshold="3"
                 RemainingItemsThresholdReached="CollectionViewControl_RemainingItemsThresholdReached"
                 Scrolled="CollectionViewControl_Scrolled"
                 SelectionChanged="CollectionViewControl_SelectionChanged"
                 SelectionMode="Multiple">
                 <CollectionView.Header>
-                    <Label x:Name="LblSelectedMovies" />
+                    <VerticalStackLayout Padding="10" BackgroundColor="LightGray">
+                        <Border
+                            BackgroundColor="Red"
+                            HeightRequest="40"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            WidthRequest="150">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="10" />
+                            </Border.StrokeShape>
+                            <Label
+                                x:Name="LblScrollType"
+                                Padding="5"
+                                FontAttributes="Bold"
+                                HorizontalTextAlignment="Center"
+                                Text="Normal Scroll"
+                                TextColor="White"
+                                VerticalTextAlignment="Center" />
+                        </Border>
+                        <Label x:Name="LblSelectedMovies" />
+                    </VerticalStackLayout>
                 </CollectionView.Header>
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout Orientation="Vertical" />
