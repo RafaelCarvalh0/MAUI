@@ -5,6 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pages="clr-namespace:AppMAUIGallery.Views"
     Title="AppFlyout"
+    IsPresentedChanged="FlyoutPage_IsPresentedChanged"
     FlyoutLayoutBehavior="Popover">
     <FlyoutPage.Flyout>
         <pages:Menu />

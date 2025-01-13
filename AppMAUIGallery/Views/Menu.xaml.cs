@@ -15,7 +15,7 @@ public partial class Menu : ContentPage
         LoadMenu();
     }
 
-    // A view do xaml não sabe enviar parâmetros para o code behind, por isso o construtor deve ser vazio
+    // A view do xaml não sabe enviar parâmetros para o code behind, por isso o construtor vazio deve ser criado
     public Menu() : this(MauiProgram.Services.GetRequiredService<IGroupComponentRepository>())
     {
         

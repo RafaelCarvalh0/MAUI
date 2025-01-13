@@ -3,12 +3,23 @@
     x:Class="AppMAUIGallery.App"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:AppMAUIGallery">
+    xmlns:local="clr-namespace:AppMAUIGallery"
+    xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
-                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+                <ResourceDictionary x:Name="appColors" Source="Resources/Styles/Colors.xaml" />
+                <ResourceDictionary x:Name="appColorsUranium" Source="Resources/Styles/ColorsUranium.xaml" />
+
+                <ResourceDictionary x:Name="appStyles" Source="Resources/Styles/Styles.xaml" />
+
+                <!--<material:StyleResource ColorsOverride="{x:Reference appColors}">
+                    <material:StyleResource.Overrides>
+                        <ResourceDictionary x:Name="appStyles" Source="Resources/Styles/Styles.xaml" />
+                    </material:StyleResource.Overrides>
+                </material:StyleResource>-->
+
+                <material:StyleResource BasedOn="{x:Reference appStyles}" ColorsOverride="{x:Reference appColorsUranium}" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

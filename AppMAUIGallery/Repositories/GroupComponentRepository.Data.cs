@@ -58,10 +58,16 @@ namespace AppMAUIGallery.Repositories
                 }
             };
 
+            // É uma classe comun que herda de um List<Component>
             var group = new GroupComponent { Name = "Layout" };
+
+            // Por causa dessa herança que consigo utilizar o método AddRange
+            // Então ele irá adicionar uma lista no indice do primeiro group criado
+            // Parece um pouco confuso, mas entendendo de herança se torna simples
             group.AddRange(components);
 
-            components.AddRange(components);
+            // Adiciona um array de componentes de forma sequencial (Por ser lista, precisa usar o método AddRange)
+            _components.AddRange(components);
             _groupComponents.Add(group);
         }
 
@@ -104,7 +110,7 @@ namespace AppMAUIGallery.Repositories
             var group = new GroupComponent { Name = "Controles (Views)" };
             group.AddRange(components);
 
-            components.AddRange(components);
+            _components.AddRange(components);
             _groupComponents.Add(group);
         }
 
@@ -135,7 +141,7 @@ namespace AppMAUIGallery.Repositories
             var group = new GroupComponent { Name = "Visuais" };
             group.AddRange(components);
 
-            components.AddRange(components);
+            _components.AddRange(components);
             _groupComponents.Add(group);
         }
 
@@ -214,7 +220,7 @@ namespace AppMAUIGallery.Repositories
             var group = new GroupComponent { Name = "Formulários" };
             group.AddRange(components);
 
-            components.AddRange(components);
+            _components.AddRange(components);
             _groupComponents.Add(group);
         }
 
@@ -257,7 +263,7 @@ namespace AppMAUIGallery.Repositories
             var group = new GroupComponent { Name = "Células" };
             group.AddRange(components);
 
-            components.AddRange(components);
+            _components.AddRange(components);
             _groupComponents.Add(group);
         }
 
@@ -312,7 +318,7 @@ namespace AppMAUIGallery.Repositories
             var group = new GroupComponent { Name = "Listas e Coleções" };
             group.AddRange(components);
 
-            components.AddRange(components);
+            _components.AddRange(components);
             _groupComponents.Add(group);
         }
     }

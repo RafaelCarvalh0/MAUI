@@ -8,6 +8,7 @@ using AppMAUIGallery.Views.Components.Mains;
 using AppMAUIGallery.Views.Components.Visuals;
 using AppMAUIGallery.Views.Components.Forms;
 using AppMAUIGallery.Views.Cells;
+using UraniumUI;
 
 namespace AppMAUIGallery
 {
@@ -24,8 +25,11 @@ namespace AppMAUIGallery
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("Roboto-Regular.ttf", "RobotoRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                    fonts.AddFontAwesomeIconFonts();
                 })
                 .RegisterAppServices()
+                .UseUraniumUI()
+                .UseUraniumUIMaterial()
                 .RegisterViewModels()
                 .RegisterViews();
 
