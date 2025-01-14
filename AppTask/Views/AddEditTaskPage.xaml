@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AppTask.Views.AddEditTaskPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fa="clr-namespace:UraniumUI.Icons.FontAwesome;assembly=UraniumUI.Icons.FontAwesome"
+    xmlns:ur="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
+    Title="AddEditTaskPage">
+    <Grid>
+        <BoxView
+            HeightRequest="5"
+            VerticalOptions="Start"
+            Color="{StaticResource Black}" />
+        <VerticalStackLayout Padding="15">
+            <Button
+                Padding="0"
+                BackgroundColor="{StaticResource Tertiary}"
+                Clicked="CloseModal"
+                FontAttributes="Bold"
+                HorizontalOptions="End"
+                MinimumHeightRequest="31"
+                MinimumWidthRequest="31"
+                Text="X" />
+            <Entry FontSize="14" Placeholder="Tarefa" />
+            <ur:EditorField
+                Title="Descrição"
+                HeightRequest="100"
+                TitleFontSize="14" />
+            <DatePicker TextColor="{StaticResource Black}" />
+
+            <!--  Opção 1  -->
+            <FlexLayout JustifyContent="SpaceBetween">
+                <Label Text="Etapas (Subtarefas)" VerticalOptions="Center" />
+                <Button
+                    Padding="0"
+                    BackgroundColor="{StaticResource Tertiary}"
+                    Clicked="AddStep"
+                    FontAttributes="Bold"
+                    HorizontalOptions="EndAndExpand"
+                    MinimumHeightRequest="31"
+                    MinimumWidthRequest="31"
+                    Text="+" />
+            </FlexLayout>
+
+            <Grid ColumnDefinitions="30, *, 30">
+                <CheckBox Grid.Column="0" />
+                <Label
+                    Grid.Column="1"
+                    Text="Etapa"
+                    VerticalOptions="Center" />
+                <ImageButton
+                    Grid.Column="2"
+                    HeightRequest="20"
+                    VerticalOptions="Center"
+                    WidthRequest="20">
+                    <ImageButton.Source>
+                        <FontImageSource
+                            FontFamily="FASolid"
+                            Glyph="{x:Static fa:Solid.Trash}"
+                            Color="OrangeRed" />
+                    </ImageButton.Source>
+                </ImageButton>
+            </Grid>
+
+            <!--  Opção 2 para fazer a mesma coisa  -->
+            <!--<StackLayout Margin="20" Orientation="Horizontal">
+                <Label Text="Etapas (Subtarefas)" />
+                <Button HorizontalOptions="EndAndExpand" Text="+" />
+            </StackLayout>-->
+
+        </VerticalStackLayout>
+        <Button
+            Margin="15"
+            Clicked="SaveData"
+            HorizontalOptions="Center"
+            Text="Salvar"
+            VerticalOptions="End" />
+    </Grid>
+</ContentPage>
