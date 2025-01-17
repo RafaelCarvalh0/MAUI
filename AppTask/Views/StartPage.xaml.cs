@@ -17,4 +17,9 @@ public partial class StartPage : ContentPage
         //Utilizando o modal, não precisa pedir pra ocultar o header do navigation igual foi feito no xaml dessa page (linha 9)
         Navigation.PushModalAsync(new AddEditTaskPage());
     }
+
+    private void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
+    {
+        Entry_Search.Focus();
+    }
 }
