@@ -1,3 +1,5 @@
+using UraniumUI.Material.Controls;
+
 namespace AppTask.Views;
 
 public partial class AddEditTaskPage : ContentPage
@@ -22,4 +24,10 @@ public partial class AddEditTaskPage : ContentPage
         //Prompt de input de dados
         var stepName = await DisplayPromptAsync("Etapa(subtarefa)", "Digite o nome da etapa(subtarefa):", "Adicionar", "Cancelar");
     }
+
+    //private void EditorField_Focused(object sender, FocusEventArgs e)
+    //{
+    //    var textField = (EditorField)sender;
+    //    textField.MinimumHeightRequest = 200;
+    //}
 }

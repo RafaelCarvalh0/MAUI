@@ -11,7 +11,8 @@
             HeightRequest="5"
             VerticalOptions="Start"
             Color="{StaticResource Black}" />
-        <VerticalStackLayout Padding="15">
+
+        <VerticalStackLayout Padding="15" Spacing="10">
             <Button
                 Padding="0"
                 BackgroundColor="{StaticResource Tertiary}"
@@ -21,12 +22,21 @@
                 MinimumHeightRequest="31"
                 MinimumWidthRequest="31"
                 Text="X" />
-            <Entry FontSize="14" Placeholder="Tarefa" />
-            <ur:EditorField
-                Title="Descrição"
-                HeightRequest="100"
-                TitleFontSize="14" />
-            <DatePicker TextColor="{StaticResource Black}" />
+
+            <Border StrokeShape="RoundRectangle 10">
+                <Entry FontSize="14" Placeholder="Tarefa" />
+            </Border>
+
+            <Border StrokeShape="RoundRectangle 10">
+                <ur:EditorField
+                    Title="Descrição"
+                    BorderColor="Transparent"
+                    TitleFontSize="14" />
+            </Border>
+
+            <Border StrokeShape="RoundRectangle 10">
+                <DatePicker TextColor="{StaticResource Black}" />
+            </Border>
 
             <!--  Opção 1  -->
             <FlexLayout JustifyContent="SpaceBetween">
