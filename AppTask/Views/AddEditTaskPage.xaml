@@ -35,7 +35,7 @@
             </Border>
 
             <Border StrokeShape="RoundRectangle 10">
-                <DatePicker TextColor="{StaticResource Black}" />
+                <DatePicker x:Name="DatePicker_TaskDate" TextColor="{StaticResource Black}" />
             </Border>
 
             <!--  Opção 1  -->

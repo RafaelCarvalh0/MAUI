@@ -25,9 +25,11 @@ public partial class AddEditTaskPage : ContentPage
         var stepName = await DisplayPromptAsync("Etapa(subtarefa)", "Digite o nome da etapa(subtarefa):", "Adicionar", "Cancelar");
     }
 
-    //private void EditorField_Focused(object sender, FocusEventArgs e)
-    //{
-    //    var textField = (EditorField)sender;
-    //    textField.MinimumHeightRequest = 200;
-    //}
+    // Toda vez ao redimensionar a tela esse método é chamado, e entrega a largura e altura como parâmetros
+    protected override void OnSizeAllocated(double width, double height)
+    {   
+        base.OnSizeAllocated(width, height);
+
+        DatePicker_TaskDate.WidthRequest = width - 30;
+    }
 }
