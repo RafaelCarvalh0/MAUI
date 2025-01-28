@@ -65,6 +65,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\AppTask.Database\AppTask.Database.csproj" />
+	  <ProjectReference Include="..\AppTask.Models\AppTask.Models.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiXaml Update="Resources\Styles\ColorsUranium.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
