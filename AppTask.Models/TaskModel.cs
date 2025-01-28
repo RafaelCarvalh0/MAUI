@@ -7,6 +7,8 @@
         public required string Description { get; set; }
         public DateTime PrevisionDate { get; set; }
         public bool IsCompleted { get; set; }
+        public DateTime Created { get; set; }
+        public DateTime Updated { get; set; }
         public required List<SubTaskModel> SubTasks { get; set; }
 
         public class SubTaskModel 
