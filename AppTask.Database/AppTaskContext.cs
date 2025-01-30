@@ -29,9 +29,9 @@ namespace AppTask.Database
             base.OnConfiguring(optionsBuilder);
 
             // Caminho do banco de dados usando Environment.SpecialFolder.LocalApplicationData
-            var databasePath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "apptask.db");
+            //var databasePath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "apptask.db");
             
-            optionsBuilder.UseSqlite($"Filename={databasePath}");
+            //optionsBuilder.UseSqlite($"Filename={databasePath}");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

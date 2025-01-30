@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using AppTask.Database;
+using AppTask.Repositories;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using UraniumUI;
 
 namespace AppTask
@@ -17,6 +20,7 @@ namespace AppTask
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                     fonts.AddFontAwesomeIconFonts();
                 })
+                .RegisterAppServices()
                 .UseUraniumUI()
                 .UseUraniumUIMaterial();
 
@@ -24,8 +28,17 @@ namespace AppTask
     		builder.Logging.AddDebug();
 #endif
             var app = builder.Build();
-            //Services = app.Services; // Armazena o provedor de serviços
+            Services = app.Services; // Armazena o provedor de serviços
             return app;
+        }
+
+        public static MauiAppBuilder RegisterAppServices(this MauiAppBuilder mauiAppBuilder)
+        {
+            var databasePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "apptask.db");
+            mauiAppBuilder.Services.AddDbContext<AppTaskContext>(options =>
+            options.UseSqlite($"Filename={databasePath}"));
+
+            return mauiAppBuilder;
         }
     }
 }
