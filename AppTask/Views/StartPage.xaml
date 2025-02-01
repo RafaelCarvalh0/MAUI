@@ -26,7 +26,7 @@
             StrokeThickness="1">
 
             <Border.GestureRecognizers>
-                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                <TapGestureRecognizer Tapped="OnBorderClickedToFocusEntry" />
             </Border.GestureRecognizers>
 
             <StackLayout Orientation="Horizontal">
@@ -49,20 +49,73 @@
             Grid.Row="1"
             Padding="20,10,20,0"
             TextColor="Red" />-->
-        <Label
+
+        <!--  Inicio Segunda linha  -->
+        <CollectionView
+            x:Name="CollectionViewTasks"
+            Grid.Row="1"
+            EmptyView="Nenhuma tarefa encontrada"
+            ItemsSource="{Binding Tasks}"
+            SelectionMode="Single">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="70" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="70" />
+                        </Grid.ColumnDefinitions>
+
+                        <CheckBox Grid.Column="0" HorizontalOptions="Center" />
+                        <StackLayout Grid.Column="1">
+                            <Label FontAttributes="Bold" Text="{Binding Name}" />
+                            <Label Text="{Binding PrevisionDate}" />
+                        </StackLayout>
+                        <Image
+                            Grid.Column="2"
+                            Source="trash.png"
+                            WidthRequest="25">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer CommandParameter="{Binding .}" Tapped="OnImageClickedToDelete" />
+                            </Image.GestureRecognizers>
+                        </Image>
+
+                        <!--<Image
+                            Grid.Column="0"
+                            HeightRequest="30"
+                            Source="{Binding Priority, Converter={StaticResource PriorityToImageConverter}}"
+                            WidthRequest="30" />
+                        <StackLayout Grid.Column="1" Orientation="Vertical">
+                            <Label
+                                FontAttributes="Bold"
+                                Text="{Binding Title}"
+                                TextColor="{StaticResource Gray900}" />
+                            <Label
+                                FontSize="14"
+                                Text="{Binding Description}"
+                                TextColor="{StaticResource Gray600}" />
+                        </StackLayout>-->
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!--<Label
+            x:Name="LblEmptyText"
             Grid.Row="1"
             HorizontalOptions="Center"
             Text="O que você deseja fazer?"
             TextColor="{StaticResource Gray400}"
-            VerticalOptions="Center" />
+            VerticalOptions="Center" />-->
         <Button
             Grid.Row="1"
             Margin="15"
-            Clicked="Button_Clicked"
+            Clicked="OnButtonClickedToAdd"
             HorizontalOptions="Center"
             StyleClass="FilledButton"
             Text="+     Adicionar Tarefa"
             VerticalOptions="End"
             WidthRequest="200" />
+        <!--  Final Segunda linha  -->
     </Grid>
 </ContentPage>

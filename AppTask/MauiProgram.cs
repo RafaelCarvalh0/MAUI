@@ -38,6 +38,8 @@ namespace AppTask
             mauiAppBuilder.Services.AddDbContext<AppTaskContext>(options =>
             options.UseSqlite($"Filename={databasePath}"));
 
+            mauiAppBuilder.Services.AddSingleton<ITaskModelRepository, TaskModelRepository>();
+
             return mauiAppBuilder;
         }
     }

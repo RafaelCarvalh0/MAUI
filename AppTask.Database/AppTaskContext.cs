@@ -13,15 +13,21 @@ namespace AppTask.Database
         public DbSet<TaskModel> Tasks { get; set; }
         public DbSet<TaskModel.SubTaskModel> SubTasks { get; set; }
 
-        public AppTaskContext()
-        {
-            //Database.Migrate();
-            InitializeDatabaseAsync();
-        }
+        //public AppTaskContext()
+        //{
+        //    //Database.Migrate();
+        //    InitializeDatabaseAsync();
+        //}
 
-        public async Task InitializeDatabaseAsync()
+        //public async Task InitializeDatabaseAsync()
+        //{
+        //    await Database.MigrateAsync();
+        //}
+
+        public AppTaskContext(DbContextOptions<AppTaskContext> options)
+        : base(options)
         {
-            await Database.MigrateAsync();
+            Database.MigrateAsync();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

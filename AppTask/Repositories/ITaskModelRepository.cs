@@ -16,6 +16,7 @@ namespace AppTask.Repositories
         Task Add(TaskModel task);
         Task Update(TaskModel task);
         Task Delete(TaskModel task);
+        Task DeleteAll(List<TaskModel> tasks);
     }
 
     public class TaskModelRepository : ITaskModelRepository
@@ -30,7 +31,7 @@ namespace AppTask.Repositories
         {
             try
             {
-                var query = await _db.Tasks.ToListAsync();
+                var query = await _db.Tasks.OrderByDescending(a => a.PrevisionDate).ToListAsync();
                 return query;
             }
             catch (Exception ex)
@@ -92,6 +93,18 @@ namespace AppTask.Repositories
             }
         }
 
+        public async Task DeleteAll(List<TaskModel> tasks)
+        {
+            try
+            {
+                _db.Tasks.RemoveRange(tasks);
+                await _db.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 
 }
