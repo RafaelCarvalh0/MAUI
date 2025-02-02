@@ -64,6 +64,7 @@ public partial class StartPage : ContentPage
         });
 
         LoadData();
+
         //Utilizando o modal, não precisa pedir pra ocultar o header do navigation igual foi feito no xaml dessa page (linha 9)
         //Navigation.PushModalAsync(new AddEditTaskPage());
     }
@@ -91,5 +92,14 @@ public partial class StartPage : ContentPage
         await _taskModelRepository.DeleteAll(tasks);
 
         LoadData();
+    }
+
+    private async void OnCheckBoxClickedToComplete(object sender, CheckedChangedEventArgs e)
+    {
+        if (sender is CheckBox checkBox && checkBox.BindingContext is TaskModel task)
+        {
+            task.IsCompleted = e.Value;
+            await _taskModelRepository.Update(task);
+        }
     }
 }
