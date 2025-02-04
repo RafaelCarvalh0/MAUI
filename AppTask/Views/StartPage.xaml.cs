@@ -35,38 +35,38 @@ public partial class StartPage : ContentPage
 
     private async void OnButtonClickedToAdd(object sender, EventArgs e)
     {
-        await _taskModelRepository.Add(new TaskModel
-        {
-            Name = "Comprar Frutas",
-            Description = "Comprar abacate, laranja, maçã...",
-            IsCompleted = false,
-            Created = DateTime.Now,
-            PrevisionDate = DateTime.Now.AddDays(2),
+        //await _taskModelRepository.Add(new TaskModel
+        //{
+        //    Name = "Comprar Frutas",
+        //    Description = "Comprar abacate, laranja, maçã...",
+        //    IsCompleted = false,
+        //    Created = DateTime.Now,
+        //    PrevisionDate = DateTime.Now.AddDays(2),
 
-            SubTasks = new List<TaskModel.SubTaskModel>
-            {
-                //new TaskModel.SubTaskModel
-                //{
-                //    Name = "Comprar abacate",
-                //    IsCompleted = false
-                //},
-                //new TaskModel.SubTaskModel
-                //{
-                //    Name = "Comprar laranja",
-                //    IsCompleted = false
-                //},
-                //new TaskModel.SubTaskModel
-                //{
-                //    Name = "Comprar maçã",
-                //    IsCompleted = false
-                //}
-            }
-        });
+        //    SubTasks = new List<TaskModel.SubTaskModel>
+        //    {
+        //        //new TaskModel.SubTaskModel
+        //        //{
+        //        //    Name = "Comprar abacate",
+        //        //    IsCompleted = false
+        //        //},
+        //        //new TaskModel.SubTaskModel
+        //        //{
+        //        //    Name = "Comprar laranja",
+        //        //    IsCompleted = false
+        //        //},
+        //        //new TaskModel.SubTaskModel
+        //        //{
+        //        //    Name = "Comprar maçã",
+        //        //    IsCompleted = false
+        //        //}
+        //    }
+        //});
 
-        LoadData();
+        //LoadData();
 
         //Utilizando o modal, não precisa pedir pra ocultar o header do navigation igual foi feito no xaml dessa page (linha 9)
-        //Navigation.PushModalAsync(new AddEditTaskPage());
+        Navigation.PushModalAsync(new AddEditTaskPage());
     }
 
     private void OnBorderClickedToFocusEntry(object sender, TappedEventArgs e)

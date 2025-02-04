@@ -11,7 +11,7 @@ namespace AppTask.Database
     public class AppTaskContext : DbContext
     {
         public DbSet<TaskModel> Tasks { get; set; }
-        public DbSet<TaskModel.SubTaskModel> SubTasks { get; set; }
+        public DbSet<SubTaskModel> SubTasks { get; set; }
 
         //public AppTaskContext()
         //{
@@ -42,7 +42,7 @@ namespace AppTask.Database
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<TaskModel>().HasKey(x => x.Id);
-            modelBuilder.Entity<TaskModel.SubTaskModel>().HasKey(x => x.Id);
+            modelBuilder.Entity<SubTaskModel>().HasKey(x => x.Id);
         }
     }
 }

@@ -1,12 +1,23 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace AppTask.Models
 {
-    public class TaskModel : INotifyPropertyChanged
+    public class BaseNotify : INotifyPropertyChanged
+    {
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        protected void OnPropertyChanged(string propName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
+        }
+    }
+
+    public class TaskModel : BaseNotify
     {
         public int Id { get; set; }
-        public required string Name { get; set; }
-        public required string Description { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
         public DateTime PrevisionDate { get; set; }
 
         private bool _isCompleted;
@@ -24,21 +35,27 @@ namespace AppTask.Models
 
         public DateTime Created { get; set; }
         public DateTime Updated { get; set; }
-        public required List<SubTaskModel> SubTasks { get; set; }
-        public class SubTaskModel 
-        {
-            public int Id { get; set; }
-            public required string Name { get; set; }
-            public bool IsCompleted { get; set; }
-        }
 
-        public event PropertyChangedEventHandler? PropertyChanged;
+        //ObservableCollection observa se há mudanças na collection, + ou - items por ex:
+        // Deve ser implementado para notificar o componente visual (Bindable layout) corretamente.
+        public ObservableCollection<SubTaskModel> SubTasks { get; set; } = new ObservableCollection<SubTaskModel>();
+    }
 
-        private void OnPropertyChanged(string propName)
+    public class SubTaskModel : BaseNotify
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        private bool _isCompleted;
+
+        public bool IsCompleted
         {
-            //Apenas para garantir que não irá cair em exception de null
-            if (PropertyChanged is not null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propName));
+            get { return _isCompleted; } //( Ao buscar ) No get de "IsCompleted" é retornadoo valor de "_IsCompleted"
+            set
+            {
+                //Setter Chamar a Notificação
+                _isCompleted = value; // ( Ao setar ) No set de "IsCompleted" o valor é passado para "_IsCompleted"
+                OnPropertyChanged(nameof(IsCompleted)); // Chama o método que avisa sobre a propriedade alterada. 
+            }
         }
     }
 }
