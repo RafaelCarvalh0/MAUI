@@ -36,6 +36,12 @@
                         FontSize="14"
                         Placeholder="Tarefa" />
                 </Border>
+                <Label
+                    x:Name="Label_TaskName_Required"
+                    Margin="0,-7,0,5"
+                    IsVisible="false"
+                    Text="O Campo é obrigatório"
+                    TextColor="Red" />
 
                 <Border StrokeShape="RoundRectangle 10">
                     <Editor
@@ -49,6 +55,12 @@
                     BorderColor="Transparent"
                     TitleFontSize="14" />-->
                 </Border>
+                <Label
+                    x:Name="Label_TaskDescription_Required"
+                    Margin="0,-7,0,5"
+                    IsVisible="false"
+                    Text="O Campo é obrigatório"
+                    TextColor="Red" />
 
                 <Border StrokeShape="RoundRectangle 10">
                     <DatePicker x:Name="DatePicker_TaskDate" TextColor="{StaticResource Black}" />

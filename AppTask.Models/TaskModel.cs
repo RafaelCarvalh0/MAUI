@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace AppTask.Models
 {
@@ -16,8 +17,13 @@ namespace AppTask.Models
     public class TaskModel : BaseNotify
     {
         public int Id { get; set; }
+
+        [Required(ErrorMessage = "O Campo nome é obrigatório.")]
         public string Name { get; set; }
+
+        [Required(ErrorMessage = "O Campo descrição é obrigatório.")]
         public string Description { get; set; }
+
         public DateTime PrevisionDate { get; set; }
 
         private bool _isCompleted;

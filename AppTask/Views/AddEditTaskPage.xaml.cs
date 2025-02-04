@@ -1,16 +1,20 @@
 using AppTask.Models;
+using AppTask.Repositories;
+using System.Text;
 using UraniumUI.Material.Controls;
 
 namespace AppTask.Views;
 
 public partial class AddEditTaskPage : ContentPage
 {
+    private ITaskModelRepository _taskModelRepository;
     private TaskModel _task;
 	public AddEditTaskPage()
 	{
 		InitializeComponent();
         _task = new TaskModel();
 
+        _taskModelRepository = MauiProgram.Services.GetRequiredService<ITaskModelRepository>();
         BindableLayout.SetItemsSource(BindableLayout_Steps, _task.SubTasks);
 	}
 
@@ -21,7 +25,82 @@ public partial class AddEditTaskPage : ContentPage
 
     private void SaveData(object sender, EventArgs e)
     {
+        // Obter os dados
+        GetDataFromForm();
+
+        // Válidar os dados
+        bool valid = ValidateData();
+
+        // Salvar os dados 
+        if (valid)
+            SaveInDatabase();
+
+        // Fechar a tela
         Navigation.PopModalAsync();
+
+        // Solicitar a atualização da listagem da tela anterior
+        UpdateListInStartPage();
+
+        //Navigation.PopModalAsync();
+    }
+
+    private void GetDataFromForm()
+    {
+        _task.Name = Entry_TaskName.Text;
+        _task.Description = Editor_TaskDescription.Text;
+        _task.PrevisionDate = DatePicker_TaskDate.Date.AddHours(23).AddMinutes(59).AddSeconds(59).AddMilliseconds(999);
+
+        _task.Created = DateTime.Now;
+        _task.IsCompleted = false;
+    }
+
+    private bool ValidateData()
+    {
+        Label_TaskName_Required.IsVisible = false;
+        Label_TaskDescription_Required.IsVisible = false;
+        //StringBuilder sb = new StringBuilder();
+
+        bool validResult = true;
+        if (string.IsNullOrWhiteSpace(_task.Name))
+        {
+            //sb.AppendLine("Nome da tarefa é obrigatório.");
+            //Label_TaskName_Required.Text = "Nome da tarefa é obrigatório.";
+            Label_TaskName_Required.IsVisible = true;
+            validResult = false;
+        }
+        if (string.IsNullOrWhiteSpace(_task.Description))
+        {
+            //sb.AppendLine("Descrição da tarefa é obrigatório.");
+            //Label_TaskDescription_Required.Text = "Descrição da tarefa é obrigatório.";
+            Label_TaskDescription_Required.IsVisible = true;
+            validResult = false;
+        }
+        //if (_task.PrevisionDate < DateTime.Now)
+        //{
+        //    sb.AppendLine("Data de previsão deve ser maior que a data atual.");
+        //    validResult = false;
+        //}
+
+
+
+        return validResult;
+    }
+
+    private async void SaveInDatabase()
+    {
+        await _taskModelRepository.Add(_task);
+    }
+
+    private void UpdateListInStartPage()
+    {
+        //Busco a página Atual em App
+        var navPage = (NavigationPage)App.Current.MainPage;
+
+        // Busco a startPage, que é uma page dentro do navigationPage
+        var StartPage = (StartPage)navPage.CurrentPage;
+
+        // chamo o método LoadData() da startPage
+        StartPage.LoadData();
     }
 
     private async void AddStep(object sender, EventArgs e)

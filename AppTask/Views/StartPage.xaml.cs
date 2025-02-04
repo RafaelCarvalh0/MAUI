@@ -18,7 +18,7 @@ public partial class StartPage : ContentPage
         LoadData();
     }
 
-    private async void LoadData()
+    public async void LoadData()
     {
         var tasks = await _taskModelRepository.GetAll();
         CollectionViewTasks.ItemsSource = tasks;
