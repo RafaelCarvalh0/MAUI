@@ -1,5 +1,6 @@
 ﻿using Android.Graphics.Drawables;
 using AppTask.Views;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Maui.Platform;
 using UraniumUI.Material.Controls;
 
@@ -7,13 +8,13 @@ namespace AppTask
 {
     public partial class App : Application
     {
-        public App()
+        public App(IServiceProvider serviceProvider)
         {
             CustomHandler();
             InitializeComponent();
 
             // Setando como NavigationPage, poi queremos que há navegação entre as páginas.
-            MainPage = new NavigationPage(new StartPage());
+            MainPage = new NavigationPage(serviceProvider.GetRequiredService<StartPage>());
         }
 
         private void CustomHandler()

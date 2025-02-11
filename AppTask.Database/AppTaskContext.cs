@@ -39,6 +39,10 @@ namespace AppTask.Database
             
             //optionsBuilder.UseSqlite($"Filename={databasePath}");
         }
+
+        //Método cascade, personaliza o comportamento do banco de dados
+        // define como vamos tratar a alteração e exclusão em ralação aos filhos do objeto (TaskModel) 
+        // que no caso é (Subtaskmodel)
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<TaskModel>().HasKey(x => x.Id);

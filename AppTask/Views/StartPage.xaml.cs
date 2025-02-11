@@ -1,15 +1,20 @@
 using AppTask.Models;
+using AppTask.Navigation;
 using AppTask.Repositories;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace AppTask.Views;
 
 public partial class StartPage : ContentPage
 {
-    private ITaskModelRepository _taskModelRepository;
-    public StartPage()
+    private readonly ITaskModelRepository _taskModelRepository;
+    private readonly INavigationService _navigationService;
+
+    public StartPage(ITaskModelRepository taskModelRepository, INavigationService navigationService)
 	{
 		InitializeComponent();
-        _taskModelRepository = MauiProgram.Services.GetRequiredService<ITaskModelRepository>();
+        _navigationService = navigationService;
+        _taskModelRepository = taskModelRepository;
     }
 
     protected override async void OnAppearing()
@@ -35,38 +40,8 @@ public partial class StartPage : ContentPage
 
     private async void OnButtonClickedToAdd(object sender, EventArgs e)
     {
-        //await _taskModelRepository.Add(new TaskModel
-        //{
-        //    Name = "Comprar Frutas",
-        //    Description = "Comprar abacate, laranja, maçã...",
-        //    IsCompleted = false,
-        //    Created = DateTime.Now,
-        //    PrevisionDate = DateTime.Now.AddDays(2),
-
-        //    SubTasks = new List<TaskModel.SubTaskModel>
-        //    {
-        //        //new TaskModel.SubTaskModel
-        //        //{
-        //        //    Name = "Comprar abacate",
-        //        //    IsCompleted = false
-        //        //},
-        //        //new TaskModel.SubTaskModel
-        //        //{
-        //        //    Name = "Comprar laranja",
-        //        //    IsCompleted = false
-        //        //},
-        //        //new TaskModel.SubTaskModel
-        //        //{
-        //        //    Name = "Comprar maçã",
-        //        //    IsCompleted = false
-        //        //}
-        //    }
-        //});
-
-        //LoadData();
-
         //Utilizando o modal, não precisa pedir pra ocultar o header do navigation igual foi feito no xaml dessa page (linha 9)
-        Navigation.PushModalAsync(new AddEditTaskPage());
+        _navigationService.PushModalAsync<AddEditTaskPage>();
     }
 
     private void OnBorderClickedToFocusEntry(object sender, TappedEventArgs e)
@@ -101,5 +76,13 @@ public partial class StartPage : ContentPage
             task.IsCompleted = e.Value;
             await _taskModelRepository.Update(task);
         }
+    }
+
+    private async void OnTapToEdit(object sender, TappedEventArgs e)
+    {
+        var task = (TaskModel)e.Parameter;
+
+        // TODO - Melhorar esse código
+        Navigation.PushModalAsync(new AddEditTaskPage(await _taskModelRepository.GetById(task.Id)));
     }
 }

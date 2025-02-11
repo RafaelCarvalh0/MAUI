@@ -76,6 +76,10 @@
                             HorizontalOptions="Center"
                             IsChecked="{Binding IsCompleted}" />
                         <StackLayout Grid.Column="1">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer CommandParameter="{Binding}" Tapped="OnTapToEdit" />
+                            </StackLayout.GestureRecognizers>
+                            <!--  <StackLayout  -->
                             <Label
                                 FontAttributes="Bold"
                                 Text="{Binding Name}"

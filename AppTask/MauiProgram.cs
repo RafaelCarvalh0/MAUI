@@ -1,14 +1,16 @@
 ﻿using AppTask.Database;
+using AppTask.Navigation;
 using AppTask.Repositories;
+using AppTask.Views;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Microsoft.Maui.Hosting;
 using UraniumUI;
 
 namespace AppTask
 {
     public static class MauiProgram
     {
-        public static IServiceProvider Services { get; private set; }
         public static MauiApp CreateMauiApp()
         {
             var builder = MauiApp.CreateBuilder();
@@ -20,27 +22,30 @@ namespace AppTask
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                     fonts.AddFontAwesomeIconFonts();
                 })
-                .RegisterAppServices()
                 .UseUraniumUI()
                 .UseUraniumUIMaterial();
 
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
-            var app = builder.Build();
-            Services = app.Services; // Armazena o provedor de serviços
-            return app;
-        }
 
-        public static MauiAppBuilder RegisterAppServices(this MauiAppBuilder mauiAppBuilder)
-        {
+            #region D.I Database
             var databasePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "apptask.db");
-            mauiAppBuilder.Services.AddDbContext<AppTaskContext>(options =>
+            builder.Services.AddDbContext<AppTaskContext>(options =>
             options.UseSqlite($"Filename={databasePath}"));
+            #endregion
 
-            mauiAppBuilder.Services.AddSingleton<ITaskModelRepository, TaskModelRepository>();
+            #region D.I Interfaces
+            builder.Services.AddSingleton<INavigationService, NavigationService>();
+            builder.Services.AddSingleton<ITaskModelRepository, TaskModelRepository>();
+            #endregion
 
-            return mauiAppBuilder;
+            #region D.I Views
+            builder.Services.AddTransient<StartPage>();
+            builder.Services.AddTransient<AddEditTaskPage>();
+            #endregion
+
+            return builder.Build();
         }
     }
 }

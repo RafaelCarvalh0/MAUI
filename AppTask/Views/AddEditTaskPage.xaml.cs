@@ -7,16 +7,33 @@ namespace AppTask.Views;
 
 public partial class AddEditTaskPage : ContentPage
 {
-    private ITaskModelRepository _taskModelRepository;
+    private readonly ITaskModelRepository _taskModelRepository;
     private TaskModel _task;
-	public AddEditTaskPage()
+	public AddEditTaskPage(ITaskModelRepository taskModelRepository)
 	{
 		InitializeComponent();
         _task = new TaskModel();
+        _taskModelRepository = taskModelRepository;
 
-        _taskModelRepository = MauiProgram.Services.GetRequiredService<ITaskModelRepository>();
         BindableLayout.SetItemsSource(BindableLayout_Steps, _task.SubTasks);
 	}
+
+    // Construtor para EDIT
+    public AddEditTaskPage(TaskModel task)
+    {
+        InitializeComponent();
+        _task = task;
+        FillFields();
+
+        BindableLayout.SetItemsSource(BindableLayout_Steps, _task.SubTasks);
+    }
+
+    private void FillFields()
+    {
+        Entry_TaskName.Text = _task.Name;
+        Editor_TaskDescription.Text = _task.Description;
+        DatePicker_TaskDate.Date = _task.PrevisionDate;
+    }
 
     private void CloseModal(object sender, EventArgs e)
     {
@@ -33,15 +50,17 @@ public partial class AddEditTaskPage : ContentPage
 
         // Salvar os dados 
         if (valid)
+        {
             SaveInDatabase();
 
-        // Fechar a tela
-        Navigation.PopModalAsync();
+            // Fechar a tela
+            Navigation.PopModalAsync();
 
-        // Solicitar a atualização da listagem da tela anterior
-        UpdateListInStartPage();
+            // Solicitar a atualização da listagem da tela anterior
+            UpdateListInStartPage();
 
-        //Navigation.PopModalAsync();
+            //Navigation.PopModalAsync();
+        }
     }
 
     private void GetDataFromForm()
@@ -88,7 +107,11 @@ public partial class AddEditTaskPage : ContentPage
 
     private async void SaveInDatabase()
     {
-        await _taskModelRepository.Add(_task);
+        if (_task.Id is 0)
+            await _taskModelRepository.Add(_task);
+
+        else
+            await _taskModelRepository.Update(_task);
     }
 
     private void UpdateListInStartPage()

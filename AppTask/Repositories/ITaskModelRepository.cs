@@ -83,6 +83,14 @@ namespace AppTask.Repositories
         {
             try
             {
+                #region Se não utilizar OnModelCreating(), deve excluir os filhos primeiro
+                //task = await GetById(task.Id);
+                //foreach(var subtask in task.SubTasks)
+                //{
+                //    _db.SubTasks.Remove(subtask);
+                //}
+                #endregion
+
                 //Invés de remover pelo ID posso remover pelo objeto todo, pois o EF Core já faz a verificação do ID
                 _db.Tasks.Remove(task);
                 await _db.SaveChangesAsync();
