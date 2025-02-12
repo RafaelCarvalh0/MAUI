@@ -12,11 +12,6 @@ public partial class PickerListPage : ContentPage
 		_movieRepository = movieRepository;
     }
 
-	public PickerListPage(): this(MauiProgram.Services.GetRequiredService<IMovieRepository>())
-	{
-
-	}
-
     private async void Button_Clicked(object sender, EventArgs e)
     {
 		try

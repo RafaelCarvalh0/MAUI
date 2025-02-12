@@ -44,7 +44,7 @@
                     HorizontalOptions="FillAndExpand"
                     Placeholder="Pesquisar..."
                     PlaceholderColor="#A8A8A8"
-                    TextChanged="TextField_TextChanged" />
+                    TextChanged="OnTextChanged_FilterList" />
             </StackLayout>
         </Border>
 

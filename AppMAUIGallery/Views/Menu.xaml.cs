@@ -1,24 +1,21 @@
 using AppMAUIGallery.Repositories;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace AppMAUIGallery.Views;
 
 public partial class Menu : ContentPage
 {
-	private readonly IGroupComponentRepository _groupComponentRepository;
+    private readonly IServiceProvider _serviceProvider;
+    private readonly IGroupComponentRepository _groupComponentRepository;
 
     // Construtor parametrizável para receber uma instância do meu objeto do contâiner DI.
-    public Menu(IGroupComponentRepository groupComponentRepository)
+    public Menu(IGroupComponentRepository groupComponentRepository, IServiceProvider serviceProvider)
     {
         InitializeComponent();
         _groupComponentRepository = groupComponentRepository;
+        _serviceProvider = serviceProvider;
 
         LoadMenu();
-    }
-
-    // A view do xaml não sabe enviar parâmetros para o code behind, por isso o construtor vazio deve ser criado
-    public Menu() : this(MauiProgram.Services.GetRequiredService<IGroupComponentRepository>())
-    {
-        
     }
 
     private void LoadMenu()
@@ -41,7 +38,7 @@ public partial class Menu : ContentPage
             //((FlyoutPage)App.Current.MainPage).IsPresented = false;
 
             //Navegação utilizando páginas injetadas no container DI.
-            if (MauiProgram.Services.GetService(pageType) is Page page)
+            if (_serviceProvider.GetService(pageType) is Page page)
             {
                 var navigationPage = new NavigationPage(page);
 
@@ -61,7 +58,7 @@ public partial class Menu : ContentPage
     }
     private void OnTapHome(object sender, TappedEventArgs e)
     {
-        ((FlyoutPage)App.Current.MainPage).Detail = new NavigationPage(new AppMAUIGallery.Views.MainPage());
+        ((FlyoutPage)App.Current.MainPage).Detail = new NavigationPage(_serviceProvider.GetRequiredService<MainPage>());
         ((FlyoutPage)App.Current.MainPage).IsPresented = false;
     }
 }

@@ -13,12 +13,6 @@ public partial class CarouselViewPage : ContentPage
         GetMovies();
     }
 
-    // Necessário
-    public CarouselViewPage() : this(MauiProgram.Services.GetRequiredService<IMovieRepository>()) 
-    { 
-
-    }
-
     private async Task GetMovies()
     {
         try

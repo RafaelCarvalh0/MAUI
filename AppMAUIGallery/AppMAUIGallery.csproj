@@ -70,7 +70,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="AppFlyout.xaml">
+	  <Compile Update="MainFlyout.xaml.cs">
+	    <DependentUpon>MainFlyout.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="MainFlyout.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Platforms\Android\Resources\values\styles.xaml">

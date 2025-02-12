@@ -12,11 +12,6 @@ public partial class ListViewPage : ContentPage
         _movieRepository = movieRepository;
     }
 
-    public ListViewPage() : this(MauiProgram.Services.GetRequiredService<IMovieRepository>())
-    {
-
-    }
-
     private async void Button_Clicked(object sender, EventArgs e)
     {
         var movies = await _movieRepository.GetMoviesAsync();

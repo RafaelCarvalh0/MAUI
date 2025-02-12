@@ -9,21 +9,17 @@ namespace AppMAUIGallery.Views;
 
 public partial class MainPage : ContentPage
 {
+    private readonly IServiceProvider _serviceProvider;
     private readonly IGroupComponentRepository _groupComponentRepository;
     private List<Component> _fullList;
 
-    public MainPage(IGroupComponentRepository groupComponentRepository)
+    public MainPage(IGroupComponentRepository groupComponentRepository, IServiceProvider serviceProvider)
     {
         InitializeComponent();
         _groupComponentRepository = groupComponentRepository;
+        _serviceProvider = serviceProvider;
 
         GetComponents();
-    }
-
-    // A view do xaml não sabe enviar parâmetros para o code behind, por isso o construtor vazio deve ser criado
-    public MainPage() : this(MauiProgram.Services.GetRequiredService<IGroupComponentRepository>())
-    {
-
     }
 
     private void GetComponents()
@@ -38,7 +34,7 @@ public partial class MainPage : ContentPage
         var pageType = (Type)e.Parameter;
 
         //Navegação utilizando páginas injetadas no container DI.
-        if (MauiProgram.Services.GetService(pageType) is Page page)
+        if (_serviceProvider.GetService(pageType) is Page page)
         {
             var navigationPage = new NavigationPage(page);
 

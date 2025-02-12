@@ -2,6 +2,9 @@ using AppTask.Models;
 using AppTask.Navigation;
 using AppTask.Repositories;
 using Microsoft.Extensions.DependencyInjection;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Text.RegularExpressions;
 
 namespace AppTask.Views;
 
@@ -9,6 +12,7 @@ public partial class StartPage : ContentPage
 {
     private readonly ITaskModelRepository _taskModelRepository;
     private readonly INavigationService _navigationService;
+    private IList<TaskModel> _tasks;
 
     public StartPage(ITaskModelRepository taskModelRepository, INavigationService navigationService)
 	{
@@ -25,8 +29,8 @@ public partial class StartPage : ContentPage
 
     public async void LoadData()
     {
-        var tasks = await _taskModelRepository.GetAll();
-        CollectionViewTasks.ItemsSource = tasks;
+        _tasks = await _taskModelRepository.GetAll();
+        CollectionViewTasks.ItemsSource = new ObservableCollection<TaskModel>(_tasks); 
         //LblEmptyText.IsVisible = tasks.Count <= 0;
 
         //[DICA] - Remove diretamente do componente CollectionView, e reflete na tela caso precisar.
@@ -84,5 +88,38 @@ public partial class StartPage : ContentPage
 
         // TODO - Melhorar esse código
         Navigation.PushModalAsync(new AddEditTaskPage(await _taskModelRepository.GetById(task.Id)));
+    }
+
+    private void OnTextChanged_FilterList(object sender, TextChangedEventArgs e)
+    {
+        var searchText = e.NewTextValue.ToLower().Trim();
+        Clear();
+        Search(searchText);
+    }
+
+    private void Clear()
+    {
+        var limit = (CollectionViewTasks.ItemsSource as ObservableCollection<TaskModel>).Count;
+
+        for (int i = 0; i < limit; i++)
+        {
+            (CollectionViewTasks.ItemsSource as ObservableCollection<TaskModel>).RemoveAt(0);
+        }
+    }
+
+    private void Search(string searchText)
+    {
+        //_tasks.Where(a => )
+        var filtredList = _tasks.Where(component => Regex.IsMatch(component.Name.ToLower().Trim(), @"^" + string.Join(@"\s+", searchText.Split(' ')))).ToList();
+
+        foreach (var component in filtredList)
+        {
+            (CollectionViewTasks.ItemsSource as ObservableCollection<TaskModel>).Add(component);
+        }
+
+        if ((CollectionViewTasks.ItemsSource as ObservableCollection<TaskModel>).Count == 0)
+            CollectionViewTasks.EmptyView = "Não foram encontrados dados na busca";
+        else
+            CollectionViewTasks.EmptyView = string.Empty; // Limpa a mensagem de erro, caso haja resultados
     }
 }

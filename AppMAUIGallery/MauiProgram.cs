@@ -14,7 +14,7 @@ namespace AppMAUIGallery
 {
     public static class MauiProgram
     {
-        public static IServiceProvider Services { get; private set; }
+        //public static IServiceProvider Services { get; private set; }
 
         public static MauiApp CreateMauiApp()
         {
@@ -27,80 +27,82 @@ namespace AppMAUIGallery
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                     fonts.AddFontAwesomeIconFonts();
                 })
-                .RegisterAppServices()
+                .RegisterInterfaces()
                 .UseUraniumUI()
                 .UseUraniumUIMaterial()
                 .RegisterViewModels()
                 .RegisterViews();
 
-            Routing.RegisterRoute("Menu", typeof(Menu));
+            //Routing.RegisterRoute("Menu", typeof(Menu));
 
-            var app = builder.Build();
-            Services = app.Services; // Armazena o provedor de serviços
-            return app;
+            return builder.Build();
         }
 
 
-        public static MauiAppBuilder RegisterAppServices(this MauiAppBuilder mauiAppBuilder)
+        public static MauiAppBuilder RegisterInterfaces(this MauiAppBuilder builder)
         {
-            mauiAppBuilder.Services.AddSingleton<IGroupComponentRepository, GroupComponentRepository>();
-            mauiAppBuilder.Services.AddSingleton<IMovieRepository, MovieRepository>();
+            builder.Services.AddSingleton<IGroupComponentRepository, GroupComponentRepository>();
+            builder.Services.AddSingleton<IMovieRepository, MovieRepository>();
 
-            return mauiAppBuilder;
+            return builder;
         }
 
-        public static MauiAppBuilder RegisterViewModels(this MauiAppBuilder mauiAppBuilder)
+        public static MauiAppBuilder RegisterViewModels(this MauiAppBuilder builder)
         {
-            mauiAppBuilder.Services.AddSingleton<ViewModels.MainViewModel>();
-            mauiAppBuilder.Services.AddSingleton<ViewModels.SearchBarViewModel>();
+            builder.Services.AddSingleton<ViewModels.MainViewModel>();
+            builder.Services.AddSingleton<ViewModels.SearchBarViewModel>();
 
-            return mauiAppBuilder;
+            return builder;
         }
 
-        public static MauiAppBuilder RegisterViews(this MauiAppBuilder mauiAppBuilder)
+        public static MauiAppBuilder RegisterViews(this MauiAppBuilder builder)
         {
-            mauiAppBuilder.Services.AddTransient<StackLayoutPage>();
-            mauiAppBuilder.Services.AddTransient<GridLayoutPage>();
-            mauiAppBuilder.Services.AddTransient<AbsoluteLayoutPage>();
-            mauiAppBuilder.Services.AddTransient<FlexLayoutPage>();
+            builder.Services.AddSingleton<MainFlyout>();
+            builder.Services.AddSingleton<MainPage>();
+            builder.Services.AddSingleton<Menu>();
 
-            mauiAppBuilder.Services.AddTransient<BoxViewPage>();
-            mauiAppBuilder.Services.AddTransient<LabelPage>();
-            mauiAppBuilder.Services.AddTransient<ButtonPage>();
-            mauiAppBuilder.Services.AddTransient<ImagePage>();
-            mauiAppBuilder.Services.AddTransient<ImageButtonPage>();
+            builder.Services.AddTransient<StackLayoutPage>();
+            builder.Services.AddTransient<GridLayoutPage>();
+            builder.Services.AddTransient<AbsoluteLayoutPage>();
+            builder.Services.AddTransient<FlexLayoutPage>();
 
-            mauiAppBuilder.Services.AddTransient<FramePage>();
-            mauiAppBuilder.Services.AddTransient<BorderPage>();
-            mauiAppBuilder.Services.AddTransient<ShadowPage>();
+            builder.Services.AddTransient<BoxViewPage>();
+            builder.Services.AddTransient<LabelPage>();
+            builder.Services.AddTransient<ButtonPage>();
+            builder.Services.AddTransient<ImagePage>();
+            builder.Services.AddTransient<ImageButtonPage>();
+      
+            builder.Services.AddTransient<FramePage>();
+            builder.Services.AddTransient<BorderPage>();
+            builder.Services.AddTransient<ShadowPage>();
+          
+            builder.Services.AddTransient<EntryPage>();
+            builder.Services.AddTransient<EditorPage>();
+            builder.Services.AddTransient<CheckBoxPage>();
+            builder.Services.AddTransient<RadioButtonPage>();
+            builder.Services.AddTransient<SwitchPage>();
+            builder.Services.AddTransient<StepperPage>();
+            builder.Services.AddTransient<SliderPage>();
+            builder.Services.AddTransient<TimerPickerPage>();
+            builder.Services.AddTransient<DatePickerPage>();
+            builder.Services.AddTransient<SearchBarPage>();
+            builder.Services.AddTransient<PickerPage>();
+         
+            builder.Services.AddTransient<TextCellPage>();
+            builder.Services.AddTransient<ImageCellPage>();
+            builder.Services.AddTransient<SwitchCellPage>();
+            builder.Services.AddTransient<EntryCellPage>();
+            builder.Services.AddTransient<ViewCellPage>();
+       
+            builder.Services.AddTransient<TableViewPage>();
+            builder.Services.AddTransient<PickerListPage>();
+            builder.Services.AddTransient<ListViewPage>();
+            builder.Services.AddTransient<CollectionViewPage>();
+            builder.Services.AddTransient<CarouselViewPage>();
+            builder.Services.AddTransient<BindableLayoutPage>();
+            builder.Services.AddTransient<DataTemplateSelectorPage>();
 
-            mauiAppBuilder.Services.AddTransient<EntryPage>();
-            mauiAppBuilder.Services.AddTransient<EditorPage>();
-            mauiAppBuilder.Services.AddTransient<CheckBoxPage>();
-            mauiAppBuilder.Services.AddTransient<RadioButtonPage>();
-            mauiAppBuilder.Services.AddTransient<SwitchPage>();
-            mauiAppBuilder.Services.AddTransient<StepperPage>();
-            mauiAppBuilder.Services.AddTransient<SliderPage>();
-            mauiAppBuilder.Services.AddTransient<TimerPickerPage>();
-            mauiAppBuilder.Services.AddTransient<DatePickerPage>();
-            mauiAppBuilder.Services.AddTransient<SearchBarPage>();
-            mauiAppBuilder.Services.AddTransient<PickerPage>();
-
-            mauiAppBuilder.Services.AddTransient<TextCellPage>();
-            mauiAppBuilder.Services.AddTransient<ImageCellPage>();
-            mauiAppBuilder.Services.AddTransient<SwitchCellPage>();
-            mauiAppBuilder.Services.AddTransient<EntryCellPage>();
-            mauiAppBuilder.Services.AddTransient<ViewCellPage>();
-
-            mauiAppBuilder.Services.AddTransient<TableViewPage>();
-            mauiAppBuilder.Services.AddTransient<PickerListPage>();
-            mauiAppBuilder.Services.AddTransient<ListViewPage>();
-            mauiAppBuilder.Services.AddTransient<CollectionViewPage>();
-            mauiAppBuilder.Services.AddTransient<CarouselViewPage>();
-            mauiAppBuilder.Services.AddTransient<BindableLayoutPage>();
-            mauiAppBuilder.Services.AddTransient<DataTemplateSelectorPage>();
-
-            return mauiAppBuilder;
+            return builder;
         }
     }
 }
