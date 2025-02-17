@@ -38,17 +38,17 @@ public partial class Menu : ContentPage
             //((FlyoutPage)App.Current.MainPage).IsPresented = false;
 
             //Navegação utilizando páginas injetadas no container DI.
-            if (_serviceProvider.GetService(pageType) is Page page)
-            {
-                var navigationPage = new NavigationPage(page);
+            //if (_serviceProvider.GetService(pageType) is Page page)
+            //{
+                var navigationPage = new NavigationPage((Page)Activator.CreateInstance(pageType));
 
                 ((FlyoutPage)App.Current.MainPage).Detail = navigationPage;
                 ((FlyoutPage)App.Current.MainPage).IsPresented = false;
-            }
-            else
-            {
-                throw new InvalidOperationException($"Page of type {pageType.Name} not registered in DI.");
-            }
+            //}
+            //else
+            //{
+            //    throw new InvalidOperationException($"Page of type {pageType.Name} not registered in DI.");
+            //}
         }
         catch (Exception ex)
         {

@@ -5,6 +5,7 @@ using AppMAUIGallery.Views.Components.Mains;
 using AppMAUIGallery.Views.Components.Visuals;
 using AppMAUIGallery.Views.Layouts;
 using AppMAUIGallery.Views.Lists;
+using AppMAUIGallery.Views.Styles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,7 @@ namespace AppMAUIGallery.Repositories
             LoadForms();
             LoadCells();
             LoadCollections();
+            LoadStyles();
         }
 
         private void LoadLayouts()
@@ -318,6 +320,37 @@ namespace AppMAUIGallery.Repositories
             var group = new GroupComponent { Name = "Listas e Coleções" };
             group.AddRange(components);
 
+            _components.AddRange(components);
+            _groupComponents.Add(group);
+        }
+
+        private void LoadStyles()
+        {
+            var components = new List<Component>
+            {
+                new Component
+                {
+                    Title = "Implicit & Explicit Styles",
+                    Description = "Explicar como funciona os estilos.",
+                    Page = typeof(ImplicitExplicitStyles)
+                },
+                new Component
+                {
+                    Title = "Global Style",
+                    Description = "Aplica estilo global para todo o projeto.",
+                    Page = typeof(GlobalStyle)
+                }
+            };
+
+            // É uma classe comun que herda de um List<Component>
+            var group = new GroupComponent { Name = "Styles" };
+
+            // Por causa dessa herança que consigo utilizar o método AddRange
+            // Então ele irá adicionar uma lista no indice do primeiro group criado
+            // Parece um pouco confuso, mas entendendo de herança se torna simples
+            group.AddRange(components);
+
+            // Adiciona um array de componentes de forma sequencial (Por ser lista, precisa usar o método AddRange)
             _components.AddRange(components);
             _groupComponents.Add(group);
         }

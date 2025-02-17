@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AppMAUIGallery.Views.Styles.ImplicitExplicitStyles"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="ImplicitExplicitStyles">
+    <!--  Estilos (Somente para esta tela)  -->
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!--  Estilos Implicítos  -->
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="Red" />
+            </Style>
+
+            <!--  Estilos Explicítos  -->
+            <Style x:Key="StyleTitle" TargetType="Label">
+                <Setter Property="FontSize" Value="24" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="Margin" Value="0, 15, 0, 10" />
+            </Style>
+            <Style x:Key="StyleParagraph" TargetType="Label">
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="TextColor" Value="Blue" />
+                <Setter Property="Padding" Value="0, 5" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ScrollView Padding="20">
+        <VerticalStackLayout>
+            <Label Text="Label com estilo implicíto" />
+            <Label Style="{StaticResource StyleTitle}" Text="Artigo 1" />
+            <Label Style="{StaticResource StyleParagraph}" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris rutrum, arcu vitae volutpat gravida, enim nisl laoreet quam, at vestibulum orci ante eget neque. Nulla facilisi. Mauris gravida ex vel tristique tincidunt. Pellentesque bibendum molestie nisl, in volutpat tortor pharetra sollicitudin. Donec euismod ultricies feugiat. Nam scelerisque vestibulum enim venenatis scelerisque. Nulla nec vestibulum neque. Ut et mattis sapien. Morbi id facilisis velit, ac iaculis dui. Aliquam erat volutpat. Aenean dolor ante, dictum id fringilla et, malesuada vel ex. Vivamus mollis, erat vel dapibus convallis, sapien ligula ultricies elit, in pharetra nibh erat quis est. Vestibulum posuere, diam nec pulvinar aliquam, dui orci posuere enim, ut imperdiet lacus metus blandit tellus." />
+            <Label Style="{StaticResource StyleParagraph}" Text="Ut convallis mattis congue. In iaculis diam lacus, vitae consectetur nibh porta sagittis. In quis elit dolor. Nullam scelerisque mattis odio, eu placerat eros iaculis vel. Vestibulum ac magna in lacus egestas consectetur. In non faucibus nisi. Duis fringilla dui lorem, at gravida turpis facilisis sit amet. Donec fermentum molestie massa non sollicitudin. Cras a congue dolor." />
+            <Label Style="{StaticResource StyleTitle}" Text="Artigo 2" />
+            <Label Style="{StaticResource StyleParagraph}" Text="Aenean eu neque consectetur, viverra augue nec, porttitor arcu. Vestibulum eget interdum felis, a accumsan dolor. Nulla ut aliquet turpis. Cras sagittis convallis diam, eu dapibus mi auctor ornare. Duis feugiat dictum mauris, et rhoncus neque tristique vel. Sed ac magna ultricies, eleifend felis id, dictum quam. Praesent elementum interdum egestas. Etiam a augue fermentum, luctus mi ut, dignissim nibh. Etiam malesuada leo eu erat ultrices faucibus. Integer lobortis placerat diam, a accumsan metus mollis ac." />
+            <Label Style="{StaticResource StyleParagraph}" Text="Suspendisse suscipit et tortor ut auctor. Sed interdum luctus urna, non interdum leo mattis tincidunt. Pellentesque diam metus, euismod in lorem non, ultricies mattis urna. Nam congue turpis eu lacinia condimentum. Integer maximus non augue dictum tempus. Nullam viverra, nulla eu gravida euismod, tellus lacus dignissim arcu, a dapibus tellus purus et ante. Fusce venenatis velit at quam varius malesuada. Sed eget odio ex. Nam commodo semper dolor nec placerat. Suspendisse sagittis sem id dui ultricies, ac malesuada lacus commodo. Praesent egestas cursus tincidunt." />
+            <Label Style="{StaticResource StyleParagraph}" Text="Mauris augue dui, pharetra eu pharetra vel, lacinia at arcu. Sed porttitor, risus quis iaculis pulvinar, nunc nisl posuere nunc, ac varius quam orci eget elit. Donec et varius ante. Cras dolor nulla, ultricies tincidunt porttitor sit amet, dictum et erat. Pellentesque consequat accumsan ligula. Nullam dignissim nisi vel ex malesuada pellentesque. Aliquam non urna nec arcu pretium porta non dictum ligula. Cras hendrerit laoreet enim. Nunc tempus enim eget turpis gravida, id elementum libero cursus. Vivamus eget mi sit amet mauris convallis scelerisque et in ipsum. Etiam nec est in leo tristique placerat. Duis eros orci, mollis vel porta eu, malesuada tincidunt nisi." />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

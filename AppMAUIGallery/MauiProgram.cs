@@ -9,6 +9,7 @@ using AppMAUIGallery.Views.Components.Visuals;
 using AppMAUIGallery.Views.Components.Forms;
 using AppMAUIGallery.Views.Cells;
 using UraniumUI;
+using AppMAUIGallery.Views.Styles;
 
 namespace AppMAUIGallery
 {
@@ -57,6 +58,7 @@ namespace AppMAUIGallery
 
         public static MauiAppBuilder RegisterViews(this MauiAppBuilder builder)
         {
+            // Initial screens
             builder.Services.AddSingleton<MainFlyout>();
             builder.Services.AddSingleton<MainPage>();
             builder.Services.AddSingleton<Menu>();
@@ -101,6 +103,9 @@ namespace AppMAUIGallery
             builder.Services.AddTransient<CarouselViewPage>();
             builder.Services.AddTransient<BindableLayoutPage>();
             builder.Services.AddTransient<DataTemplateSelectorPage>();
+
+            builder.Services.AddTransient<ImplicitExplicitStyles>();
+            builder.Services.AddTransient<GlobalStyle>();
 
             return builder;
         }

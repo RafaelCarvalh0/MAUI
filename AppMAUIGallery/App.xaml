@@ -7,6 +7,21 @@
     xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material">
     <Application.Resources>
         <ResourceDictionary>
+
+            <!--  Implicít  -->
+            <Style TargetType="Label">
+                <Setter Property="FontSize" Value="14" />
+            </Style>
+            <!--  End  -->
+
+            <!--  Estilos globais criados na mão (Recurso do App)  Explicíto  -->
+            <Style x:Key="Title" TargetType="Label">
+                <Setter Property="FontSize" Value="32" />
+                <Setter Property="TextColor" Value="Red" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <!--  END  -->
+
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary x:Name="appColors" Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary x:Name="appColorsUranium" Source="Resources/Styles/ColorsUranium.xaml" />
