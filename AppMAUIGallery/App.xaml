@@ -34,6 +34,10 @@
 
                 <ResourceDictionary x:Name="appStyles" Source="Resources/Styles/Styles.xaml" />
 
+                <!--  Recursos criados para Temas Light e Dark  -->
+                <ResourceDictionary Source="Resources/Styles/LightTheme.xaml" />
+                <!--<ResourceDictionary Source="Resources/Styles/DarkTheme.xaml" />-->
+
                 <!--<material:StyleResource ColorsOverride="{x:Reference appColors}">
                     <material:StyleResource.Overrides>
                         <ResourceDictionary x:Name="appStyles" Source="Resources/Styles/Styles.xaml" />

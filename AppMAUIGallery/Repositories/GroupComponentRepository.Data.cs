@@ -351,6 +351,24 @@ namespace AppMAUIGallery.Repositories
                     Title = "Inheritance Style",
                     Description = "Como criar estilos derivados de outros.",
                     Page = typeof(InheritanceStyle)
+                },
+                new Component
+                {
+                    Title = "Style Class",
+                    Description = "Cria classes de estilos para serem aplicados aos componentes.",
+                    Page = typeof(StyleClassPage)
+                },
+                new Component
+                {
+                    Title = "StaticResource/DynamicResource",
+                    Description = "Define se o estilo pode ser alterado em tempo real.",
+                    Page = typeof(StaticDynamicResource)
+                },
+                new Component
+                {
+                    Title = "Tema",
+                    Description = "Define um tema padrão para o nosso projeto.",
+                    Page = typeof(Theme)
                 }
             };
 
