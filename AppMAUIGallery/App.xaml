@@ -8,6 +8,12 @@
     <Application.Resources>
         <ResourceDictionary>
 
+            <!--  Derivado  (Aplicando para todos os componentes derivado de ContentPage  -->
+            <!--<Style ApplyToDerivedTypes="True" TargetType="ContentPage">
+                <Setter Property="BackgroundColor" Value="Red" />
+            </Style>-->
+            <!--  End  -->
+
             <!--  Implicít  -->
             <Style TargetType="Label">
                 <Setter Property="FontSize" Value="14" />

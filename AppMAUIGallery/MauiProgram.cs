@@ -106,6 +106,8 @@ namespace AppMAUIGallery
 
             builder.Services.AddTransient<ImplicitExplicitStyles>();
             builder.Services.AddTransient<GlobalStyle>();
+            builder.Services.AddTransient<ApplyDerivedTypes>();
+            builder.Services.AddTransient<InheritanceStyle>();
 
             return builder;
         }

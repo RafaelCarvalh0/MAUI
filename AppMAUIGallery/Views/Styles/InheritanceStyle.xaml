@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AppMAUIGallery.Views.Styles.InheritanceStyle"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="InheritanceStyle">
+    <ContentPage.Resources>
+        <Style x:Key="Paragraph" TargetType="Label">
+            <Setter Property="Padding" Value="20, 10" />
+            <Setter Property="FontSize" Value="12" />
+        </Style>
+        <Style
+            x:Key="Paragraph2"
+            BasedOn="{StaticResource Paragraph}"
+            TargetType="Label">
+            <Setter Property="TextColor" Value="Blue" />
+            <Setter Property="FontSize" Value="20" />
+        </Style>
+    </ContentPage.Resources>
+    <VerticalStackLayout>
+        <Label Style="{StaticResource Paragraph}" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris rutrum, arcu vitae volutpat gravida, enim nisl laoreet quam, at vestibulum orci ante eget neque. Nulla facilisi. Mauris gravida ex vel tristique tincidunt. Pellentesque bibendum molestie nisl, in volutpat tortor pharetra sollicitudin. Donec euismod ultricies feugiat. Nam scelerisque vestibulum enim venenatis scelerisque. Nulla nec vestibulum neque. Ut et mattis sapien. Morbi id facilisis velit, ac iaculis dui. Aliquam erat volutpat. Aenean dolor ante, dictum id fringilla et, malesuada vel ex. Vivamus mollis, erat vel dapibus convallis, sapien ligula ultricies elit, in pharetra nibh erat quis est. Vestibulum posuere, diam nec pulvinar aliquam, dui orci posuere enim, ut imperdiet lacus metus blandit tellus." />
+        <Label Style="{StaticResource Paragraph}" Text="Ut convallis mattis congue. In iaculis diam lacus, vitae consectetur nibh porta sagittis. In quis elit dolor. Nullam scelerisque mattis odio, eu placerat eros iaculis vel. Vestibulum ac magna in lacus egestas consectetur. In non faucibus nisi. Duis fringilla dui lorem, at gravida turpis facilisis sit amet. Donec fermentum molestie massa non sollicitudin. Cras a congue dolor." />
+        <Label Style="{StaticResource Paragraph2}" Text="HERANÇA DE ESTILO. In iaculis diam lacus, vitae consectetur nibh porta sagittis. In quis elit dolor. Nullam scelerisque mattis odio, eu placerat eros iaculis vel. Vestibulum ac magna in lacus egestas consectetur. In non faucibus nisi. Duis fringilla dui lorem, at gravida turpis facilisis sit amet. Donec fermentum molestie massa non sollicitudin. Cras a congue dolor." />
+    </VerticalStackLayout>
+</ContentPage>

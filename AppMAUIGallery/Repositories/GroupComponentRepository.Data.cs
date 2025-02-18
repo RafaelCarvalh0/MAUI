@@ -339,6 +339,18 @@ namespace AppMAUIGallery.Repositories
                     Title = "Global Style",
                     Description = "Aplica estilo global para todo o projeto.",
                     Page = typeof(GlobalStyle)
+                },
+                new Component
+                {
+                    Title = "ApplyToDerivedTypes",
+                    Description = "Aplicar um estilo aos elementos derivados da classe/componente atual.",
+                    Page = typeof(ApplyDerivedTypes)
+                },
+                new Component
+                {
+                    Title = "Inheritance Style",
+                    Description = "Como criar estilos derivados de outros.",
+                    Page = typeof(InheritanceStyle)
                 }
             };
 
