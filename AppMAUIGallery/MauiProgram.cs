@@ -111,6 +111,8 @@ namespace AppMAUIGallery
             builder.Services.AddTransient<StyleClassPage>();
             builder.Services.AddTransient<StaticDynamicResource>();
             builder.Services.AddTransient<Theme>();
+            builder.Services.AddTransient<AppThemeBindingPage>();
+            builder.Services.AddTransient<VisualStateManagerPage>();
 
             return builder;
         }

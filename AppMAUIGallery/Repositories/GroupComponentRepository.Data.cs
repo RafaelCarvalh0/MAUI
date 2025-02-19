@@ -369,6 +369,18 @@ namespace AppMAUIGallery.Repositories
                     Title = "Tema",
                     Description = "Define um tema padrão para o nosso projeto.",
                     Page = typeof(Theme)
+                },
+                new Component
+                {
+                    Title = "AppThemeBinding",
+                    Description = "Adapta o tema ao modo claro/escuro do sistema operacional.",
+                    Page = typeof(AppThemeBindingPage)
+                },
+                new Component
+                {
+                    Title = "Visual State Manager (VSM)",
+                    Description = "Personalizar a apresentação de acordo com o estado do componente.",
+                    Page = typeof(VisualStateManagerPage)
                 }
             };
 

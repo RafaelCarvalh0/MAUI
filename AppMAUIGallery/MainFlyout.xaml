@@ -5,6 +5,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pages="clr-namespace:AppMAUIGallery.Views"
     Title="MainFlyout"
+    BackgroundColor="{AppThemeBinding Light={DynamicResource DarkWhite},
+                                      Dark={DynamicResource LightBlack}}"
     FlyoutLayoutBehavior="Popover"
     IsPresentedChanged="FlyoutPage_IsPresentedChanged">
     <FlyoutPage.Detail>

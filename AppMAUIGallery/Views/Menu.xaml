@@ -3,9 +3,7 @@
     x:Class="AppMAUIGallery.Views.Menu"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Title="Menu"
-    BackgroundColor="{AppThemeBinding Light={DynamicResource DarkWhite},
-                                      Dark={DynamicResource LightBlack}}">
+    Title="Menu">
     <CollectionView x:Name="MenuCollection" IsGrouped="True">
         <CollectionView.Header>
             <VerticalStackLayout Padding="20,0" Spacing="10">
@@ -31,8 +29,8 @@
                     Margin="30,20"
                     FontAttributes="Bold"
                     Text="{Binding Name}"
-                    TextColor="{AppThemeBinding Light={StaticResource TertiaryBrush},
-                                                Dark={StaticResource White}}" />
+                    TextColor="{AppThemeBinding Light={StaticResource PrimaryUraniun},
+                                                Dark={StaticResource SecondaryDarkTextUraniun}}" />
             </DataTemplate>
         </CollectionView.GroupHeaderTemplate>
         <CollectionView.ItemTemplate>
@@ -41,8 +39,8 @@
                     <VerticalStackLayout.GestureRecognizers>
                         <TapGestureRecognizer CommandParameter="{Binding Page}" Tapped="OnTapComponent" />
                     </VerticalStackLayout.GestureRecognizers>
-                    <Label Text="{Binding Title}" />
-                    <Label Text="{Binding Description}" TextColor="{StaticResource Gray500}" />
+                    <Label Text="{Binding Title}" TextColor="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource Gray300}}" />
+                    <Label Text="{Binding Description}" TextColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray500}}" />
                 </VerticalStackLayout>
             </DataTemplate>
         </CollectionView.ItemTemplate>
