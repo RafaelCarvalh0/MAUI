@@ -31,28 +31,25 @@ public partial class Menu : ContentPage
             //var label = (Label)sender;
             //var tap = (TapGestureRecognizer)label.GestureRecognizers[0];
             //(Type)tap.CommandParameter;
-            var pageType = (Type)e.Parameter; 
+            var pageType = (Type)e.Parameter;
 
             //Navegação sem utilizar páginas injetadas no container DI.
             //((FlyoutPage)App.Current.MainPage).Detail = new NavigationPage((Page)Activator.CreateInstance(pageType));
             //((FlyoutPage)App.Current.MainPage).IsPresented = false;
 
             //Navegação utilizando páginas injetadas no container DI.
-            //if (_serviceProvider.GetService(pageType) is Page page)
-            //{
-                var navigationPage = new NavigationPage((Page)Activator.CreateInstance(pageType));
+            if (_serviceProvider.GetService(pageType) is Page page)
+            {
+                var navigationPage = new NavigationPage(page);
 
                 ((FlyoutPage)App.Current.MainPage).Detail = navigationPage;
                 ((FlyoutPage)App.Current.MainPage).IsPresented = false;
-            //}
-            //else
-            //{
-            //    throw new InvalidOperationException($"Page of type {pageType.Name} not registered in DI.");
-            //}
+            }
         }
         catch (Exception ex)
         {
             // Trate erros ou registre logs
+            DisplayAlert("Erro", ex.Message, "OK");
             Console.WriteLine($"Navigation error: {ex.Message}");
         }
     }

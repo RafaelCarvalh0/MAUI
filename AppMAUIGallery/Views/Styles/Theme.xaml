@@ -7,6 +7,6 @@
     BackgroundColor="{DynamicResource BackgroundColor}">
     <VerticalStackLayout>
         <Label Text="Welcome to .NET MAUI!" TextColor="{DynamicResource PrimaryColor}" />
-        <Button Text="Alterar" Clicked="Button_Clicked"/>
+        <Button Clicked="Button_Clicked" Text="Alterar" />
     </VerticalStackLayout>
 </ContentPage>
