@@ -1,4 +1,5 @@
 ﻿using AppMAUIGallery.Models;
+using AppMAUIGallery.Views.Animations;
 using AppMAUIGallery.Views.Cells;
 using AppMAUIGallery.Views.Components.Forms;
 using AppMAUIGallery.Views.Components.Mains;
@@ -28,6 +29,7 @@ namespace AppMAUIGallery.Repositories
             LoadCells();
             LoadCollections();
             LoadStyles();
+            LoadAnimations();
         }
 
         private void LoadLayouts()
@@ -390,6 +392,28 @@ namespace AppMAUIGallery.Repositories
             // Por causa dessa herança que consigo utilizar o método AddRange
             // Então ele irá adicionar uma lista no indice do primeiro group criado
             // Parece um pouco confuso, mas entendendo de herança se torna simples
+            group.AddRange(components);
+
+            // Adiciona um array de componentes de forma sequencial (Por ser lista, precisa usar o método AddRange)
+            _components.AddRange(components);
+            _groupComponents.Add(group);
+        }
+
+        private void LoadAnimations()
+        {
+            var components = new List<Component>
+            {
+                new Component
+                {
+                    Title = "Basic Animation",
+                    Description = "Animação básica do .NET MAUI.",
+                    Page = typeof(BasicAnimation)
+                }
+            };
+
+            // É uma classe comun que herda de um List<Component>
+            var group = new GroupComponent { Name = "Animations" };
+
             group.AddRange(components);
 
             // Adiciona um array de componentes de forma sequencial (Por ser lista, precisa usar o método AddRange)
