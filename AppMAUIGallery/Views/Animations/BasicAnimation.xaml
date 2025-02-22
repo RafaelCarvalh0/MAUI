@@ -1,12 +1,64 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppMAUIGallery.Views.Animations.BasicAnimation"
-             Title="BasicAnimation">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+<ContentPage
+    x:Class="AppMAUIGallery.Views.Animations.BasicAnimation"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="BasicAnimation">
+    <VerticalStackLayout Padding="10">
+        <Border HeightRequest="300">
+            <Image
+                x:Name="Image"
+                Opacity="1"
+                Rotation="45"
+                Scale="1"
+                Source="dotnet_bot.png"
+                TranslationX="10"
+                WidthRequest="200" />
+        </Border>
+        <Button
+            Margin="0,20,0,10"
+            BackgroundColor="Transparent"
+            BorderColor="Green"
+            BorderWidth="1"
+            Clicked="Normal"
+            FontAttributes="Bold"
+            Text="Normal"
+            TextColor="Green" />
+        <Button
+            Margin="0,0,0,10"
+            Clicked="Diminuir"
+            Text="Diminuir" />
+        <Button
+            Margin="0,0,0,10"
+            Clicked="Aumentar"
+            Text="Aumentar" />
+        <Button
+            Margin="0,0,0,10"
+            Clicked="Mover"
+            Text="Mover" />
+        <Button
+            Margin="0,0,0,10"
+            Clicked="Rotacao"
+            Text="Rotação" />
+        <Button
+            Margin="0,0,0,10"
+            Clicked="Transparencia"
+            Text="Transparência" />
+        <Border Margin="10" Padding="10">
+            <VerticalStackLayout>
+                <Button
+                    Margin="0,0,0,10"
+                    Clicked="Sequencial"
+                    Text="Sequencial" />
+                <Button
+                    Margin="0,0,0,10"
+                    Clicked="Paralelo"
+                    Text="Paralelo" />
+                <Button
+                    Margin="0,0,0,10"
+                    Clicked="Cancelamento"
+                    Text="Cancelamento" />
+            </VerticalStackLayout>
+        </Border>
     </VerticalStackLayout>
 </ContentPage>

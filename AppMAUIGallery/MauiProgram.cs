@@ -10,6 +10,7 @@ using AppMAUIGallery.Views.Components.Forms;
 using AppMAUIGallery.Views.Cells;
 using UraniumUI;
 using AppMAUIGallery.Views.Styles;
+using AppMAUIGallery.Views.Animations;
 
 namespace AppMAUIGallery
 {
@@ -113,6 +114,8 @@ namespace AppMAUIGallery
             builder.Services.AddTransient<Theme>();
             builder.Services.AddTransient<AppThemeBindingPage>();
             builder.Services.AddTransient<VisualStateManagerPage>();
+
+            builder.Services.AddTransient<BasicAnimation>();
 
             return builder;
         }
