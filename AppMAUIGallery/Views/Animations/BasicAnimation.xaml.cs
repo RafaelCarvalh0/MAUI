@@ -79,6 +79,28 @@ public partial class BasicAnimation : ContentPage
         Image.CancelAnimations();
     }
 
+    private void Custom(object sender, EventArgs e)
+    {
+        //[ANIMAÇÕES ANINHADAS]
+        // Animation permite que criamos várias animações individuais ou agrupadas
+        // No qual não precisa ser aplicado varios await como é feito no método mover();
+        var principal = new Animation();
+
+        var animacao01 = new Animation(v=> Image.TranslationX = v, 0, 120, Easing.Linear, null);
+        var animacao02 = new Animation(v=> Image.Rotation = v, 0, 360, Easing.BounceOut, null);
+
+        principal.Add(0, 1, animacao01);
+        principal.Add(0.5, 1, animacao02);
+
+        principal.Commit(this, "AnimacaoPersonalizada", 16, 10000, null, null, null);
+        //animacao01.Commit(this, "MoverCarro", 16, 3000, Easing.CubicOut, null, repeat: ()=> true);
+    }
+
+    private void Cor(object sender, EventArgs e)
+    {
+        Image.ColorTo(Color.FromArgb("#F2F2F2"), Colors.Violet, v => Image.BackgroundColor = v, 2000, easing: null);
+    }
+
     private void ClearState()
     {
         //Image.ScaleTo(1, 2000);
@@ -89,5 +111,6 @@ public partial class BasicAnimation : ContentPage
         Image.RotationX = 0;
         Image.RotationY = 0;
         Image.RotateTo(0, 1);
+        //Image.ColorTo(Colors.White, Color.FromArgb("#F2F2F2"), v => Image.BackgroundColor = v, 1);
     }
 }

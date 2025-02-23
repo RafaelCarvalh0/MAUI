@@ -13,7 +13,7 @@
                     Rotation="45"
                     Scale="1"
                     Source="dotnet_bot.png"
-                    TranslationX="10"
+                    TranslationX="0"
                     WidthRequest="200" />
             </Border>
             <Button
@@ -65,8 +65,12 @@
                 <VerticalStackLayout>
                     <Button
                         Margin="0,0,0,10"
-                        Clicked="Sequencial"
-                        Text="Sequencial" />
+                        Clicked="Custom"
+                        Text="Animação customizada" />
+                    <Button
+                        Margin="0,0,0,10"
+                        Clicked="Cor"
+                        Text="Animação da Cor" />
                 </VerticalStackLayout>
             </Border>
         </VerticalStackLayout>
