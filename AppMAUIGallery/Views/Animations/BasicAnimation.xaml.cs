@@ -1,3 +1,5 @@
+using Microsoft.Maui.Controls;
+
 namespace AppMAUIGallery.Views.Animations;
 
 public partial class BasicAnimation : ContentPage
@@ -5,6 +7,11 @@ public partial class BasicAnimation : ContentPage
     public BasicAnimation()
     {
         InitializeComponent();
+    }
+
+    private void Normal(object sender, EventArgs e)
+    {
+        ClearState();
     }
 
     private async void Diminuir(object sender, EventArgs e)
@@ -20,14 +27,16 @@ public partial class BasicAnimation : ContentPage
         await Image.ScaleTo(2, 2000);
     }
 
-    private void Normal(object sender, EventArgs e)
-    {
-        ClearState();
-    }
-
     private async void Mover(object sender, EventArgs e)
     {
-        await Image.TranslateTo(100, 100, 1000);
+        await Image.TranslateTo(120, 100, 1000, Easing.BounceIn);
+        await Image.RotateYTo(-180, 1000);
+        await Image.TranslateTo(-120, 100, 2000, Easing.BounceOut);
+        await Image.RotateYTo(0, 1000);
+        await Image.TranslateTo(-120, -100, 2000, Easing.BounceOut);
+        await Image.TranslateTo(120, -100, 2000, Easing.BounceOut);
+        await Image.TranslateTo(120, 100, 2000, Easing.BounceOut);
+        await Image.TranslateTo(0, 0, 2000, Easing.BounceOut);
     }
 
     private async void Rotacao(object sender, EventArgs e)
