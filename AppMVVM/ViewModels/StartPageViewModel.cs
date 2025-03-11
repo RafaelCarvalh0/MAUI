@@ -7,12 +7,35 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using static Java.Util.Jar.Attributes;
 
 namespace AppMVVM.ViewModels
 {
     public class StartPageViewModel : INotifyPropertyChanged
     {
+        public StartPageViewModel()
+        {
+            // 2º passo
+            SaveCommand = new Command(Save);
+            Person = new Person();
+            People = new ObservableCollection<Person>();
+        }
+
+        // 3º passo
+        private void Save()
+        {
+            // Só adiciona na lista se a instância não for nula e for válida
+            if (Person is not null && IsValid())
+            {
+                People.Add(Person);
+                Person = new Person();
+            }
+        }
+
+        public bool IsValid()
+        {
+            return !string.IsNullOrWhiteSpace(_person.Name) && !string.IsNullOrWhiteSpace(_person.Email);
+        }
+
         #region To Form
 
         private Person _person;
@@ -30,38 +53,15 @@ namespace AppMVVM.ViewModels
             }
         }
 
-        public bool IsValid()
-        {
-            return !string.IsNullOrWhiteSpace(_person.Name) && !string.IsNullOrWhiteSpace(_person.Email);
-        }
-
         // 1º passo
         public ICommand SaveCommand { get; set; }
         #endregion
 
-        #region List
+        #region ObservableCollection
         // Já implementa o INotifyPropertyChanged e o INotifyCollectionChanged
         // Ou seja, notifica quando a instância é alterada, ou quando items são adicionados a coleção
         public ObservableCollection<Person> People { get; set; }
         #endregion
-
-        public StartPageViewModel()
-        {
-            // 2º passo
-            SaveCommand = new Command(Save);
-            Person = new Person();
-            People = new ObservableCollection<Person>();
-        }
-
-        // 3º passo
-        private void Save()
-        {
-            if(Person is not null && IsValid())
-            {
-                People.Add(Person);
-                Person = new Person();
-            }
-        }
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
