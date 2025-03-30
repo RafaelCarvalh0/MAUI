@@ -7,7 +7,7 @@ namespace AppMVVMCommunityToolkit
         public App()
         {
             InitializeComponent();
-            MainPage = new StartPage();
+            MainPage = new NavigationPage(new StartPage());
         }
     }
 }
