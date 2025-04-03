@@ -35,6 +35,12 @@ namespace AppMVVMCommunityToolkit.ViewModels
                 //TODO - Lógica
                 Message = msg.Value;
             });
+
+            WeakReferenceMessenger.Default.Register<PersonMessage>(this, (obj, msg) =>
+            {
+                //TODO - Lógica
+                People.Add(msg.Value);
+            });
         }
 
         [RelayCommand]

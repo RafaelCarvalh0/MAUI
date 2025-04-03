@@ -1,4 +1,5 @@
 ﻿using AppMVVMCommunityToolkit.Libraries.Messages;
+using AppMVVMCommunityToolkit.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
@@ -19,6 +20,17 @@ namespace AppMVVMCommunityToolkit.ViewModels
         private void SendText()
         {
             WeakReferenceMessenger.Default.Send(new TextMessage(inputText));
+        }
+
+        [RelayCommand]
+        private void AddNewPerson()
+        {
+            var person = new Person()
+            {
+                Name = "Pessoa da segunda página",
+                email = "pessoa02@gmail.com"
+            };
+            WeakReferenceMessenger.Default.Send(new PersonMessage(person));
         }
     }
 }
