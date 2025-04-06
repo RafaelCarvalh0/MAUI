@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AppMAUIGallery.Utils
+namespace AppMAUIGallery.Helpers
 {
-    internal static class Utils
+    internal static class Helpers
     {
         public static T FindParent<T>(Element element) where T : Element
         {

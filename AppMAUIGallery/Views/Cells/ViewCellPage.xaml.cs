@@ -1,5 +1,5 @@
 using Microsoft.Maui.Controls.Internals;
-
+using AppMAUIGallery.Helpers;
 namespace AppMAUIGallery.Views.Cells;
 
 public partial class ViewCellPage : ContentPage
@@ -17,8 +17,8 @@ public partial class ViewCellPage : ContentPage
         //Grid grid = (Grid)btn.Parent;
 
         //Se não tiver certeza, faz uma busca recursiva
-        Grid grid = Utils.Utils.FindParent<Grid>(btn);
-        ViewCell viewCell = Utils.Utils.FindParent<ViewCell>(grid);
+        Grid grid = Helpers.Helpers.FindParent<Grid>(btn);
+        ViewCell viewCell = Helpers.Helpers.FindParent<ViewCell>(grid);
 
         // Remove a ViewCell correspondente da seção
         if (viewCell is not null && MyTableSection.Contains(viewCell))

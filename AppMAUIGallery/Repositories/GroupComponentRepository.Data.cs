@@ -7,6 +7,7 @@ using AppMAUIGallery.Views.Components.Visuals;
 using AppMAUIGallery.Views.Layouts;
 using AppMAUIGallery.Views.Lists;
 using AppMAUIGallery.Views.Styles;
+using AppMAUIGallery.Views.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,7 @@ namespace AppMAUIGallery.Repositories
             LoadCollections();
             LoadStyles();
             LoadAnimations();
+            LoadUtils();
         }
 
         private void LoadLayouts()
@@ -414,6 +416,37 @@ namespace AppMAUIGallery.Repositories
             // É uma classe comun que herda de um List<Component>
             var group = new GroupComponent { Name = "Animations" };
 
+            group.AddRange(components);
+
+            // Adiciona um array de componentes de forma sequencial (Por ser lista, precisa usar o método AddRange)
+            _components.AddRange(components);
+            _groupComponents.Add(group);
+        }
+
+        private void LoadUtils()
+        {
+            var components = new List<Component>
+            {
+                new Component
+                {
+                    Title = "Behavior",
+                    Description = "Lógica que pode ser associada a um componente da tela.",
+                    Page = typeof(BehaviorPage)
+                },
+                new Component
+                {
+                    Title = "Trigger",
+                    Description = "Gatilho que dispara uma alteração visual no componente.",
+                    Page = typeof(TriggerPage)
+                }
+            };
+
+            // É uma classe comun que herda de um List<Component>
+            var group = new GroupComponent { Name = "Útils" };
+
+            // Por causa dessa herança que consigo utilizar o método AddRange
+            // Então ele irá adicionar uma lista no indice do primeiro group criado
+            // Parece um pouco confuso, mas entendendo de herança se torna simples
             group.AddRange(components);
 
             // Adiciona um array de componentes de forma sequencial (Por ser lista, precisa usar o método AddRange)
