@@ -438,6 +438,18 @@ namespace AppMAUIGallery.Repositories
                     Title = "Trigger",
                     Description = "Gatilho que dispara uma alteração visual no componente.",
                     Page = typeof(TriggerPage)
+                },
+                new Component
+                {
+                    Title = "OnPlatform/OnIdiom",
+                    Description = "Define valores diferentes entre o S.O e também pelo tipo de dispositivo.",
+                    Page = typeof(PlatformIdiomPage)
+                },
+                new Component
+                {
+                    Title = "Fontes",
+                    Description = "Como usar fontes diferentes no nosso aplicativo.",
+                    Page = typeof(FontPage)
                 }
             };
 

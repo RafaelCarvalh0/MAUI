@@ -28,6 +28,8 @@ namespace AppMAUIGallery
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("Roboto-Regular.ttf", "RobotoRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                    fonts.AddFont("Foldit-Bold.ttf", "FolditBold");
+                    fonts.AddFont("Foldit-Medium.ttf", "FolditMedium");
                     fonts.AddFontAwesomeIconFonts();
                 })
                 .RegisterInterfaces()
@@ -120,6 +122,8 @@ namespace AppMAUIGallery
 
             builder.Services.AddTransient<BehaviorPage>();
             builder.Services.AddTransient<TriggerPage>();
+            builder.Services.AddTransient<PlatformIdiomPage>();
+            builder.Services.AddTransient<FontPage>();
 
             return builder;
         }

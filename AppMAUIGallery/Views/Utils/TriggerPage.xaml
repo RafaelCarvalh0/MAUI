@@ -3,35 +3,27 @@
     x:Class="AppMAUIGallery.Views.Utils.TriggerPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converter="clr-namespace:AppMAUIGallery.Views.Utils.Converters"
     xmlns:trigger="clr-namespace:AppMAUIGallery.Views.Utils.Triggers"
     Title="TriggerPage">
     <ContentPage.Resources>
-        <!--<Style TargetType="Entry">
+        <converter:MoreThanZeroConverter x:Key="MoreThanZeroConverter" />
+        <Style TargetType="Entry">
             <Style.Triggers>
                 <Trigger TargetType="Entry" Property="IsEnabled" Value="False">
-        -->
-        <!--  Se isEnabled == false  -->
-        <!--
+                    <!--  Se isEnabled == false  -->
                     <Setter Property="BackgroundColor" Value="LightGray" />
-        -->
-        <!--  Faça isso  -->
-        <!--
+                    <!--  Faça isso  -->
                     <Setter Property="PlaceholderColor" Value="Black" />
-        -->
-        <!--  Faça isso  -->
-        <!--
+                    <!--  Faça isso  -->
                 </Trigger>
                 <Trigger TargetType="Entry" Property="IsFocused" Value="True">
-        -->
-        <!--  Se isFocused == true  -->
-        <!--
-                    <Setter Property="BackgroundColor" Value="LightBlue" />
-        -->
-        <!--  Faça isso  -->
-        <!--
+                    <!--  Se isFocused == true  -->
+                    <Setter Property="BackgroundColor" Value="Gold" />
+                    <!--  Faça isso  -->
                 </Trigger>
             </Style.Triggers>
-        </Style>-->
+        </Style>
     </ContentPage.Resources>
     <VerticalStackLayout Padding="20">
 
@@ -45,13 +37,13 @@
             <Label Text="/1000" />
         </HorizontalStackLayout>
 
-        <Button IsEnabled="True" Text="Salvar">
+        <Button IsEnabled="False" Text="Salvar">
             <Button.Triggers>
                 <DataTrigger
-                    Binding="{Binding Source={x:Reference EntryName}, Path=Text.Length}"
+                    Binding="{Binding Source={x:Reference EntryName}, Path=Text.Length, Converter={StaticResource MoreThanZeroConverter}}"
                     TargetType="Button"
-                    Value="0">
-                    <Setter Property="IsEnabled" Value="False" />
+                    Value="True">
+                    <Setter Property="IsEnabled" Value="True" />
                 </DataTrigger>
             </Button.Triggers>
         </Button>
@@ -64,7 +56,7 @@
             </Entry.Triggers>
         </Entry>
 
-        <Entry Placeholder="Digite seu e-mail">
+        <Entry x:Name="EntryEmail" Placeholder="Digite seu e-mail">
             <Entry.Triggers>
                 <MultiTrigger TargetType="Entry">
                     <MultiTrigger.Conditions>
@@ -76,6 +68,19 @@
                 </MultiTrigger>
             </Entry.Triggers>
         </Entry>
+
+
+        <Button IsEnabled="False" Text="Salvar (MultiTrigger)">
+            <Button.Triggers>
+                <MultiTrigger TargetType="Button">
+                    <MultiTrigger.Conditions>
+                        <BindingCondition Binding="{Binding Source={x:Reference EntryAge}, Path=Text.Length, Converter={StaticResource MoreThanZeroConverter}}" Value="True" />
+                        <BindingCondition Binding="{Binding Source={x:Reference EntryEmail}, Path=Text.Length, Converter={StaticResource MoreThanZeroConverter}}" Value="True" />
+                    </MultiTrigger.Conditions>
+                    <Setter Property="IsEnabled" Value="True" />
+                </MultiTrigger>
+            </Button.Triggers>
+        </Button>
 
     </VerticalStackLayout>
 </ContentPage>
