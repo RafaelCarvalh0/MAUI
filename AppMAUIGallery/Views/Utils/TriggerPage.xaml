@@ -6,22 +6,32 @@
     xmlns:trigger="clr-namespace:AppMAUIGallery.Views.Utils.Triggers"
     Title="TriggerPage">
     <ContentPage.Resources>
-        <Style TargetType="Entry">
+        <!--<Style TargetType="Entry">
             <Style.Triggers>
                 <Trigger TargetType="Entry" Property="IsEnabled" Value="False">
-                    <!--  Se isEnabled == false  -->
+        -->
+        <!--  Se isEnabled == false  -->
+        <!--
                     <Setter Property="BackgroundColor" Value="LightGray" />
-                    <!--  Faça isso  -->
+        -->
+        <!--  Faça isso  -->
+        <!--
                     <Setter Property="PlaceholderColor" Value="Black" />
-                    <!--  Faça isso  -->
+        -->
+        <!--  Faça isso  -->
+        <!--
                 </Trigger>
                 <Trigger TargetType="Entry" Property="IsFocused" Value="True">
-                    <!--  Se isFocused == true  -->
-                    <Setter Property="BackgroundColor" Value="Gold" />
-                    <!--  Faça isso  -->
+        -->
+        <!--  Se isFocused == true  -->
+        <!--
+                    <Setter Property="BackgroundColor" Value="LightBlue" />
+        -->
+        <!--  Faça isso  -->
+        <!--
                 </Trigger>
             </Style.Triggers>
-        </Style>
+        </Style>-->
     </ContentPage.Resources>
     <VerticalStackLayout Padding="20">
 
@@ -46,11 +56,24 @@
             </Button.Triggers>
         </Button>
 
-        <Entry Placeholder="Digite sua idade">
+        <Entry x:Name="EntryAge" Placeholder="Digite sua idade">
             <Entry.Triggers>
                 <EventTrigger Event="TextChanged">
                     <trigger:AgeTrigger />
                 </EventTrigger>
+            </Entry.Triggers>
+        </Entry>
+
+        <Entry Placeholder="Digite seu e-mail">
+            <Entry.Triggers>
+                <MultiTrigger TargetType="Entry">
+                    <MultiTrigger.Conditions>
+                        <BindingCondition Binding="{Binding Source={x:Reference EntryAge}, Path=Text}" Value="18" />
+                        <PropertyCondition Property="Text" Value="rafaelhenriquecarvalho@outlook.com" />
+                    </MultiTrigger.Conditions>
+                    <Setter Property="TextColor" Value="Green" />
+                    <Setter Property="BackgroundColor" Value="LightGray" />
+                </MultiTrigger>
             </Entry.Triggers>
         </Entry>
 
