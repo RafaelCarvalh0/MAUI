@@ -12,6 +12,7 @@ using UraniumUI;
 using AppMAUIGallery.Views.Styles;
 using AppMAUIGallery.Views.Animations;
 using AppMAUIGallery.Views.Utils;
+using CommunityToolkit.Maui;
 
 namespace AppMAUIGallery
 {
@@ -23,6 +24,7 @@ namespace AppMAUIGallery
         {
             var builder = MauiApp.CreateBuilder()
                 .UseMauiApp<App>()
+                .UseMauiCommunityToolkit()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("Icons.ttf", "Icons");
