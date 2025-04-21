@@ -25,6 +25,7 @@ namespace AppMAUIGallery
                 .UseMauiApp<App>()
                 .ConfigureFonts(fonts =>
                 {
+                    fonts.AddFont("Icons.ttf", "Icons");
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("Roboto-Regular.ttf", "RobotoRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
@@ -124,6 +125,7 @@ namespace AppMAUIGallery
             builder.Services.AddTransient<TriggerPage>();
             builder.Services.AddTransient<PlatformIdiomPage>();
             builder.Services.AddTransient<FontPage>();
+            builder.Services.AddTransient<ColorPage>();
 
             return builder;
         }

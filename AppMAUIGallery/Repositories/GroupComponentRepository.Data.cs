@@ -450,6 +450,12 @@ namespace AppMAUIGallery.Repositories
                     Title = "Fontes",
                     Description = "Como usar fontes diferentes no nosso aplicativo.",
                     Page = typeof(FontPage)
+                },
+                new Component
+                {
+                    Title = "Color/Brush",
+                    Description = "Como colocar as cores nos seus componentes.",
+                    Page = typeof(ColorPage)
                 }
             };
 
