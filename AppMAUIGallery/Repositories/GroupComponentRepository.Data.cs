@@ -1,6 +1,7 @@
 ﻿using AppMAUIGallery.Models;
 using AppMAUIGallery.Views.Animations;
 using AppMAUIGallery.Views.Cells;
+using AppMAUIGallery.Views.CommunityMaui;
 using AppMAUIGallery.Views.Components.Forms;
 using AppMAUIGallery.Views.Components.Mains;
 using AppMAUIGallery.Views.Components.Visuals;
@@ -32,6 +33,7 @@ namespace AppMAUIGallery.Repositories
             LoadStyles();
             LoadAnimations();
             LoadUtils();
+            LoadCommunityMaui();
         }
 
         private void LoadLayouts()
@@ -461,6 +463,31 @@ namespace AppMAUIGallery.Repositories
 
             // É uma classe comun que herda de um List<Component>
             var group = new GroupComponent { Name = "Útils" };
+
+            // Por causa dessa herança que consigo utilizar o método AddRange
+            // Então ele irá adicionar uma lista no indice do primeiro group criado
+            // Parece um pouco confuso, mas entendendo de herança se torna simples
+            group.AddRange(components);
+
+            // Adiciona um array de componentes de forma sequencial (Por ser lista, precisa usar o método AddRange)
+            _components.AddRange(components);
+            _groupComponents.Add(group);
+        }
+
+        private void LoadCommunityMaui()
+        {
+            var components = new List<Component>
+            {
+                new Component
+                {
+                    Title = "Snackbar e Toast",
+                    Description = "Formas de emitir alertas para o usuário.",
+                    Page = typeof(AlertsPage)
+                }
+            };
+
+            // É uma classe comun que herda de um List<Component>
+            var group = new GroupComponent { Name = ".NET MAUI Community Toolkit" };
 
             // Por causa dessa herança que consigo utilizar o método AddRange
             // Então ele irá adicionar uma lista no indice do primeiro group criado

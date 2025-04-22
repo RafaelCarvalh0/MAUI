@@ -13,6 +13,7 @@ using AppMAUIGallery.Views.Styles;
 using AppMAUIGallery.Views.Animations;
 using AppMAUIGallery.Views.Utils;
 using CommunityToolkit.Maui;
+using AppMAUIGallery.Views.CommunityMaui;
 
 namespace AppMAUIGallery
 {
@@ -128,6 +129,8 @@ namespace AppMAUIGallery
             builder.Services.AddTransient<PlatformIdiomPage>();
             builder.Services.AddTransient<FontPage>();
             builder.Services.AddTransient<ColorPage>();
+
+            builder.Services.AddTransient<AlertsPage>();
 
             return builder;
         }
