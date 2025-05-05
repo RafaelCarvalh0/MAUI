@@ -110,6 +110,9 @@
 	  <MauiXaml Update="Views\Cells\ViewCellPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\CommunityMaui\AlertsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\Components\Forms\CheckBoxPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

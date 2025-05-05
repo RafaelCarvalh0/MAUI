@@ -2,6 +2,7 @@
 using AppMAUIGallery.Shells;
 using AppMAUIGallery.Views.Animations;
 using AppMAUIGallery.Views.Cells;
+using AppMAUIGallery.Views.CommunityMaui;
 using AppMAUIGallery.Views.Components.Forms;
 using AppMAUIGallery.Views.Components.Mains;
 using AppMAUIGallery.Views.Components.Visuals;
@@ -33,7 +34,11 @@ namespace AppMAUIGallery.Repositories
             LoadStyles();
             LoadAnimations();
             LoadUtils();
+<<<<<<< HEAD
             LoadShell();
+=======
+            LoadCommunityMaui();
+>>>>>>> 3adf68c48fc4642a4be4ca8776ddc973a810d0aa
         }
 
         private void LoadLayouts()
@@ -473,21 +478,36 @@ namespace AppMAUIGallery.Repositories
             _components.AddRange(components);
             _groupComponents.Add(group);
         }
+<<<<<<< HEAD
         private void LoadShell()
+=======
+
+        private void LoadCommunityMaui()
+>>>>>>> 3adf68c48fc4642a4be4ca8776ddc973a810d0aa
         {
             var components = new List<Component>
             {
                 new Component
                 {
+<<<<<<< HEAD
                     Title = "Shell",
                     Description = "Uma nova forma de estruturar as páginas do nosso projeto.",
                     Page = typeof(AppShell),
                     IsReplaceMainPage = true
+=======
+                    Title = "Snackbar e Toast",
+                    Description = "Formas de emitir alertas para o usuário.",
+                    Page = typeof(AlertsPage)
+>>>>>>> 3adf68c48fc4642a4be4ca8776ddc973a810d0aa
                 }
             };
 
             // É uma classe comun que herda de um List<Component>
+<<<<<<< HEAD
             var group = new GroupComponent { Name = "Shell" };
+=======
+            var group = new GroupComponent { Name = ".NET MAUI Community Toolkit" };
+>>>>>>> 3adf68c48fc4642a4be4ca8776ddc973a810d0aa
 
             // Por causa dessa herança que consigo utilizar o método AddRange
             // Então ele irá adicionar uma lista no indice do primeiro group criado
@@ -498,6 +518,9 @@ namespace AppMAUIGallery.Repositories
             _components.AddRange(components);
             _groupComponents.Add(group);
         }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3adf68c48fc4642a4be4ca8776ddc973a810d0aa
     }
 }
