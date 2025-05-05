@@ -1,4 +1,5 @@
 ﻿using AppMAUIGallery.Models;
+using AppMAUIGallery.Shells;
 using AppMAUIGallery.Views.Animations;
 using AppMAUIGallery.Views.Cells;
 using AppMAUIGallery.Views.Components.Forms;
@@ -32,6 +33,7 @@ namespace AppMAUIGallery.Repositories
             LoadStyles();
             LoadAnimations();
             LoadUtils();
+            LoadShell();
         }
 
         private void LoadLayouts()
@@ -471,5 +473,31 @@ namespace AppMAUIGallery.Repositories
             _components.AddRange(components);
             _groupComponents.Add(group);
         }
+        private void LoadShell()
+        {
+            var components = new List<Component>
+            {
+                new Component
+                {
+                    Title = "Shell",
+                    Description = "Uma nova forma de estruturar as páginas do nosso projeto.",
+                    Page = typeof(AppShell),
+                    IsReplaceMainPage = true
+                }
+            };
+
+            // É uma classe comun que herda de um List<Component>
+            var group = new GroupComponent { Name = "Shell" };
+
+            // Por causa dessa herança que consigo utilizar o método AddRange
+            // Então ele irá adicionar uma lista no indice do primeiro group criado
+            // Parece um pouco confuso, mas entendendo de herança se torna simples
+            group.AddRange(components);
+
+            // Adiciona um array de componentes de forma sequencial (Por ser lista, precisa usar o método AddRange)
+            _components.AddRange(components);
+            _groupComponents.Add(group);
+        }
+
     }
 }

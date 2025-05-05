@@ -1,5 +1,7 @@
+using AppMAUIGallery.Models;
 using AppMAUIGallery.Repositories;
 using Microsoft.Extensions.DependencyInjection;
+using System.Security.AccessControl;
 
 namespace AppMAUIGallery.Views;
 
@@ -31,20 +33,28 @@ public partial class Menu : ContentPage
             //var label = (Label)sender;
             //var tap = (TapGestureRecognizer)label.GestureRecognizers[0];
             //(Type)tap.CommandParameter;
-            var pageType = (Type)e.Parameter;
+            var component = (Component)e.Parameter;
 
-            //Navegação sem utilizar páginas injetadas no container DI.
-            //((FlyoutPage)App.Current.MainPage).Detail = new NavigationPage((Page)Activator.CreateInstance(pageType));
-            //((FlyoutPage)App.Current.MainPage).IsPresented = false;
-
-            //Navegação utilizando páginas injetadas no container DI.
-            if (_serviceProvider.GetService(pageType) is Page page)
+            if (!component.IsReplaceMainPage)
             {
-                var navigationPage = new NavigationPage(page);
+                //Navegação sem utilizar páginas injetadas no container DI.
+                //((FlyoutPage)App.Current.MainPage).Detail = new NavigationPage((Page)Activator.CreateInstance(pageType));
+                //((FlyoutPage)App.Current.MainPage).IsPresented = false;
 
-                ((FlyoutPage)App.Current.MainPage).Detail = navigationPage;
-                ((FlyoutPage)App.Current.MainPage).IsPresented = false;
+                //Navegação utilizando páginas injetadas no container DI.
+                if (_serviceProvider.GetService(component.Page) is Page page)
+                {
+                    var navigationPage = new NavigationPage(page);
+
+                    ((FlyoutPage)App.Current.MainPage).Detail = navigationPage;
+                    ((FlyoutPage)App.Current.MainPage).IsPresented = false;
+                }
             }
+            else
+            {
+                App.Current.MainPage = (Page)Activator.CreateInstance(component.Page);
+            }
+            
         }
         catch (Exception ex)
         {

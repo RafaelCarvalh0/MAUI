@@ -31,19 +31,22 @@ public partial class MainPage : ContentPage
     private void OnTapComponent(object sender, TappedEventArgs e)
     {
         KeyboardFix.HideKeyboard();
-        var pageType = (Type)e.Parameter;
 
-        //Navegação utilizando páginas injetadas no container DI.
-        if (_serviceProvider.GetService(pageType) is Page page)
+        var component = (Component)e.Parameter;
+        if (!component.IsReplaceMainPage)
         {
-            var navigationPage = new NavigationPage(page);
+            //Navegação utilizando páginas injetadas no container DI.
+            if (_serviceProvider.GetService(component.Page) is Page page)
+            {
+                var navigationPage = new NavigationPage(page);
 
-            ((FlyoutPage)App.Current.MainPage).Detail = navigationPage;
-            ((FlyoutPage)App.Current.MainPage).IsPresented = false;
+                ((FlyoutPage)App.Current.MainPage).Detail = navigationPage;
+                ((FlyoutPage)App.Current.MainPage).IsPresented = false;
+            }
         }
         else
         {
-            throw new InvalidOperationException($"Page of type {pageType.Name} not registered in DI.");
+            App.Current.MainPage = (Page)Activator.CreateInstance(component.Page);
         }
     }
 
