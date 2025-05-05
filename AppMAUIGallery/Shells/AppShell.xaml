@@ -4,9 +4,45 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pages="clr-namespace:AppMAUIGallery.Shells.Pages"
-    Title="AppShell">
+    Title="AppShell"
+    Shell.TabBarIsVisible="False">
 
-    <TabBar>
+    <!--
+    <FlyoutItem Title="Página 01" FlyoutIcon="one.png">
+        <ShellContent ContentTemplate="{DataTemplate pages:Page01}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Página 02" FlyoutIcon="two.png">
+        <ShellContent ContentTemplate="{DataTemplate pages:Page02}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Página 03" FlyoutIcon="three.png">
+        <ShellContent ContentTemplate="{DataTemplate pages:Page03}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Página 04" FlyoutIcon="four.png">
+        <ShellContent ContentTemplate="{DataTemplate pages:Page04}" />
+    </FlyoutItem>-->
+
+    <!--  Cabeçalho  -->
+    <Shell.FlyoutHeader>
+        <StackLayout Padding="20">
+            <Image HeightRequest="70" Source="clock.png" />
+            <Label
+                FontSize="10"
+                HorizontalOptions="Center"
+                Text="Rafael Carvalho"
+                TextColor="Black" />
+            <Label
+                FontSize="8"
+                HorizontalOptions="Center"
+                Text="rafaelhenriquecarvalho@outlook.com" />
+        </StackLayout>
+    </Shell.FlyoutHeader>
+
+    <!--  Itens de navegação  -->
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
+
         <ShellContent
             Title="Página 01"
             ContentTemplate="{DataTemplate pages:Page01}"
@@ -22,10 +58,65 @@
             ContentTemplate="{DataTemplate pages:Page03}"
             Icon="three.png" />
 
-    </TabBar>
+        <Tab Title="4 e 5" Icon="four.png">
+            <ShellContent Title="Página 04" ContentTemplate="{DataTemplate pages:Page04}" />
+            <ShellContent
+                Title="Página 05"
+                ContentTemplate="{DataTemplate pages:Page05}"
+                Shell.TabBarIsVisible="False" />
+        </Tab>
 
-    <!--<ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:HomePage}"
-        Route="home" />-->
+    </FlyoutItem>
+
+    <!--  Itens programáticos extras  -->
+    <MenuItem
+        Clicked=""
+        Command=""
+        CommandParameter=""
+        IconImageSource="five.png"
+        Text="Menu Item" />
+    <MenuItem
+        Clicked=""
+        Command=""
+        CommandParameter=""
+        IconImageSource="five.png"
+        Text="Sobre" />
+
+    <!--  Rodapé  -->
+    <Shell.FlyoutFooter>
+        <Label
+            Padding="10"
+            FontSize="12"
+            Text="Versão 1.0.0" />
+    </Shell.FlyoutFooter>
+
+    <!-- Backup
+    <TabBar>
+
+        <ShellContent
+            Title="Página 01"
+            ContentTemplate="{DataTemplate pages:Page01}"
+            Icon="one.png" />
+
+        <ShellContent
+            Title="Página 02"
+            ContentTemplate="{DataTemplate pages:Page02}"
+            Icon="two.png" />
+
+        <ShellContent
+            Title="Página 03"
+            ContentTemplate="{DataTemplate pages:Page03}"
+            Icon="three.png" />
+
+        <Tab Title="4 e 5" Icon="four.png">
+            <ShellContent Title="Página 04" ContentTemplate="{DataTemplate pages:Page04}" />
+            <ShellContent
+                Title="Página 05"
+                ContentTemplate="{DataTemplate pages:Page05}"
+                Shell.TabBarIsVisible="False" />
+        </Tab>
+
+    </TabBar>
+    -->
+
 </Shell>
