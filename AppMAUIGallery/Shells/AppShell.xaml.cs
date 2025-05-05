@@ -1,6 +1,6 @@
 namespace AppMAUIGallery.Shells;
 
-public partial class AppShell : ContentPage
+public partial class AppShell : Shell
 {
 	public AppShell()
 	{
