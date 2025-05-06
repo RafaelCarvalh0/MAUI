@@ -5,10 +5,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pages="clr-namespace:AppMAUIGallery.Shells.Pages"
     Title="AppShell"
+    FlyoutWidth="250"
     Shell.TabBarIsVisible="False">
 
-    <!--
-    <FlyoutItem Title="Página 01" FlyoutIcon="one.png">
+    <!--<FlyoutItem Title="Página 01" FlyoutIcon="one.png">
         <ShellContent ContentTemplate="{DataTemplate pages:Page01}" />
     </FlyoutItem>
 
@@ -23,7 +23,36 @@
     <FlyoutItem Title="Página 04" FlyoutIcon="four.png">
         <ShellContent ContentTemplate="{DataTemplate pages:Page04}" />
     </FlyoutItem>-->
-
+    <!--  Para os itens do flyoutItem linha 76 eu defino o template aqui  -->
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <Grid Padding="20,0" ColumnDefinitions="*, 40">
+                <Label
+                    Text="{Binding Title}"
+                    TextColor="Black"
+                    VerticalOptions="Center" />
+                <Image
+                    Grid.Column="1"
+                    Margin="5"
+                    Source="{Binding Icon}" />
+            </Grid>
+        </DataTemplate>
+    </Shell.ItemTemplate>
+    <!--  Para os menus itens das linhas 103 e 104 eu defino o template aqui  -->
+    <Shell.MenuItemTemplate>
+        <DataTemplate>
+            <Grid Padding="20,0" ColumnDefinitions="*, 40">
+                <Label
+                    Text="{Binding Title}"
+                    TextColor="Black"
+                    VerticalOptions="Center" />
+                <Image
+                    Grid.Column="1"
+                    Margin="5"
+                    Source="{Binding Icon}" />
+            </Grid>
+        </DataTemplate>
+    </Shell.MenuItemTemplate>
     <!--  Cabeçalho  -->
     <Shell.FlyoutHeader>
         <StackLayout Padding="20">
@@ -39,49 +68,58 @@
                 Text="rafaelhenriquecarvalho@outlook.com" />
         </StackLayout>
     </Shell.FlyoutHeader>
-
+    <!--  Shell FlyoutContent substitui o FlyoutItem abaixo  -->
+    <!--<Shell.FlyoutContent>
+        <Label Text="Conteúdo" />
+    </Shell.FlyoutContent>-->
     <!--  Itens de navegação  -->
     <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
-
         <ShellContent
             Title="Página 01"
             ContentTemplate="{DataTemplate pages:Page01}"
-            Icon="one.png" />
+            Icon="one.png"
+            Route="Page01" />
 
         <ShellContent
             Title="Página 02"
             ContentTemplate="{DataTemplate pages:Page02}"
-            Icon="two.png" />
+            Icon="two.png"
+            Route="Page02" />
 
         <ShellContent
             Title="Página 03"
             ContentTemplate="{DataTemplate pages:Page03}"
-            Icon="three.png" />
+            Icon="three.png"
+            Route="Page03" />
 
-        <Tab Title="4 e 5" Icon="four.png">
-            <ShellContent Title="Página 04" ContentTemplate="{DataTemplate pages:Page04}" />
+        <!--
+            Rotas
+            cadastro/passo1
+            cadastro/passo2
+        -->
+        <Tab
+            Title="4 e 5"
+            Icon="four.png"
+            Route="cadastro">
+            <ShellContent
+                Title="Página 04"
+                ContentTemplate="{DataTemplate pages:Page04}"
+                Icon="four.png"
+                Route="passo1"
+                Shell.TabBarIsVisible="False" />
+
             <ShellContent
                 Title="Página 05"
                 ContentTemplate="{DataTemplate pages:Page05}"
+                Icon="five.png"
+                Route="passo2"
                 Shell.TabBarIsVisible="False" />
         </Tab>
 
     </FlyoutItem>
-
     <!--  Itens programáticos extras  -->
-    <MenuItem
-        Clicked=""
-        Command=""
-        CommandParameter=""
-        IconImageSource="five.png"
-        Text="Menu Item" />
-    <MenuItem
-        Clicked=""
-        Command=""
-        CommandParameter=""
-        IconImageSource="five.png"
-        Text="Sobre" />
-
+    <MenuItem IconImageSource="five.png" Text="Menu Item" />
+    <MenuItem IconImageSource="five.png" Text="Sobre" />
     <!--  Rodapé  -->
     <Shell.FlyoutFooter>
         <Label
@@ -90,9 +128,8 @@
             Text="Versão 1.0.0" />
     </Shell.FlyoutFooter>
 
-    <!-- Backup
+    <!-- Bachup TabBar
     <TabBar>
-
         <ShellContent
             Title="Página 01"
             ContentTemplate="{DataTemplate pages:Page01}"
@@ -115,7 +152,6 @@
                 ContentTemplate="{DataTemplate pages:Page05}"
                 Shell.TabBarIsVisible="False" />
         </Tab>
-
     </TabBar>
     -->
 

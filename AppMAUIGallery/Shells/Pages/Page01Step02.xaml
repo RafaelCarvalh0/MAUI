@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AppMAUIGallery.Shells.Pages.Page01Step02"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Page01Step02">
+    <VerticalStackLayout Spacing="10">
+        <Label
+            HorizontalOptions="Center"
+            Text="Página 01 Passo 02"
+            VerticalOptions="Center" />
+        <Button Clicked="GoBack" Text="Voltar" />
+        <Button Clicked="GoToRegisterStep02" Text="Vá para o passo 2 do cadastro(Page05)" />
+        <Button Clicked="GoToRegisterStep01" Text="Vá para o passo 1 do cadastro usando a pesquisa(Page04)" />
+    </VerticalStackLayout>
+</ContentPage>

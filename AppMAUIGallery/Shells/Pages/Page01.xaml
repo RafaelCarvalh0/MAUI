@@ -9,5 +9,6 @@
             HorizontalOptions="Center"
             Text="01"
             VerticalOptions="Center" />
+        <Button Clicked="GoToStep01" Text="Vá para o passo 01" />
     </VerticalStackLayout>
 </ContentPage>
