@@ -48,7 +48,7 @@
                     VerticalOptions="Center" />
                 <Image
                     Grid.Column="1"
-                    Margin="5"
+                    Margin="8"
                     Source="{Binding Icon}" />
             </Grid>
         </DataTemplate>
@@ -118,8 +118,11 @@
 
     </FlyoutItem>
     <!--  Itens programáticos extras  -->
-    <MenuItem IconImageSource="five.png" Text="Menu Item" />
     <MenuItem IconImageSource="five.png" Text="Sobre" />
+    <MenuItem
+        Clicked="BackToGallery"
+        IconImageSource="logout.png"
+        Text="Sair" />
     <!--  Rodapé  -->
     <Shell.FlyoutFooter>
         <Label

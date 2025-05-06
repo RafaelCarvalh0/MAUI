@@ -1,8 +1,10 @@
+using AppMAUIGallery.Models;
 using System.Web;
 
 namespace AppMAUIGallery.Shells.Pages;
 
 [QueryProperty(nameof(Texto), "msg")]
+[QueryProperty(nameof(Person), "person")]
 public partial class Page02Step01WithParameters : ContentPage
 {
 	private string _texto;
@@ -12,10 +14,22 @@ public partial class Page02Step01WithParameters : ContentPage
 		set 
 		{ 
 			_texto = HttpUtility.UrlDecode(value);
-			LblParameter.Text = _texto;
+			LblMsgParameter.Text = _texto;
 		}
 	}
-	public Page02Step01WithParameters()
+
+    private Person _person;
+    public Person Person
+    {
+        get { return _person; }
+        set
+        {
+            _person = value;
+            LblPersonParameter.Text = $"A Pessoa recebida é: {_person.Name} ({_person.Email})";
+        }
+    }
+
+    public Page02Step01WithParameters()
 	{
 		InitializeComponent();
 	}
