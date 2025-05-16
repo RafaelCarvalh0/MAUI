@@ -44,7 +44,7 @@
 		<MauiIcon Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'" Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#F9F9F9" />
 
 		<!-- Splash Screen -->
-    <MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#F9F9F9" BaseSize="350,350" />
+    <MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#00000000" BaseSize="350,350" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
@@ -55,6 +55,10 @@
 
 		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <AndroidResource Remove="Platforms\Android\Resources\values\styles.xml" />
 	</ItemGroup>
 
 	<ItemGroup>

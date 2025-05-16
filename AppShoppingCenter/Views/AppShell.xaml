@@ -15,22 +15,22 @@
             Title="Lojas"
             ContentTemplate="{DataTemplate stores:ListPage}"
             Icon="store.png"
-            Route="stores/list" />
+            Route="stores" />
         <ShellContent
             Title="Restaurantes"
             ContentTemplate="{DataTemplate restaurants:ListPage}"
             Icon="restaurant.png"
-            Route="restaurants/list" />
+            Route="restaurants" />
         <ShellContent
             Title="Cinemas"
             ContentTemplate="{DataTemplate cinemas:ListPage}"
             Icon="cinema.png"
-            Route="cinemas/list" />
+            Route="cinemas" />
         <ShellContent
             Title="Ticket"
             ContentTemplate="{DataTemplate tickets:ScanPage}"
             Icon="ticket.png"
-            Route="ticket/list" />
+            Route="tickets" />
     </TabBar>
 
 </Shell>

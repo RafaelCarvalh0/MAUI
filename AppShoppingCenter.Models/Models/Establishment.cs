@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AppShoppingCenter.Models.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -17,6 +18,7 @@ namespace AppShoppingCenter.Models.Models
         [Required]
         public string Localization { get; set; }
         public string Phone { get; set; }
+        public EstablishmentType Type { get; set; }
 
         [Required]
         public string Cover { get; set; }
