@@ -49,7 +49,7 @@ namespace AppShoppingCenter.Services
                     Phone = "(61) 3154-1234",
                     Type = Models.Enums.EstablishmentType.Store,
 
-                    Logo = "https://gsobmidia.com.br/uploads/lojas/1587/any-any_1607606261.png",
+                    Logo = "https://publicimages.brmalls.com.br/shoppings/AJNA-3OUVCZ.PNG",
                     Cover = "https://th.bing.com/th/id/R.3e7fcd5a62c507e0fe520211dc4da74e?rik=EVnAQuH8VECIyQ&riu=http%3a%2f%2f3.bp.blogspot.com%2f-OINRmqrcATk%2fVSepgubwKfI%2fAAAAAAAAL8Q%2fg_kjz4q1Owc%2fs1600%2fany_any_franquia.jpg&ehk=4BVqFRPzznt5pjxTpqgmiaXrWVjyv7uHZqsHG8OeMZk%3d&risl=&pid=ImgRaw&r=0"
                 },
                 new Establishment

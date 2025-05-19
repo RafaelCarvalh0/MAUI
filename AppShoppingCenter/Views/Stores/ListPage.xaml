@@ -11,14 +11,22 @@
         <vm:ListPageViewModel x:Name="vm" />
     </ContentPage.BindingContext>
     <Grid Padding="20" RowDefinitions="50, *">
-        <Entry
-            x:Name="txt"
-            Placeholder="Pesquisa por loja"
-            Text="{Binding TextSearch}">
-            <Entry.Behaviors>
-                <behaviors:EventToCommandBehavior Command="{Binding TextSearchChangedFilterListCommand}" EventName="TextChanged" />
-            </Entry.Behaviors>
-        </Entry>
+        <Border StrokeShape="RoundRectangle 5">
+            <Border.Stroke>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Offset="0.1" Color="#F5AF19" />
+                    <GradientStop Offset="1.0" Color="#FF0000" />
+                </LinearGradientBrush>
+            </Border.Stroke>
+            <Entry
+                x:Name="txt"
+                Placeholder="Pesquisa por loja"
+                Text="{Binding TextSearch}">
+                <Entry.Behaviors>
+                    <behaviors:EventToCommandBehavior Command="{Binding TextSearchChangedFilterListCommand}" EventName="TextChanged" />
+                </Entry.Behaviors>
+            </Entry>
+        </Border>
         <!--<Label Text="{Binding Source={x:Reference txt}, Path=Text}" />-->
         <CollectionView Grid.Row="1" ItemsSource="{Binding EstablishmentsFiltered}">
             <!--<CollectionView.Header>
@@ -26,15 +34,24 @@
             </CollectionView.Header>-->
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Label Padding="10" Text="{Binding Name}">
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding Source={x:Reference Name=vm}, Path=TapEstablishmentGoToDetailPageCommand}" CommandParameter="{Binding .}" />
+                    <Grid ColumnDefinitions="1*, 3*" RowDefinitions="Auto, Auto">
+                        <Image Source="{Binding Logo}" Grid.RowSpan="2" />
+                        <Label Grid.Column="1" Text="{Binding Name}">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={x:Reference Name=vm}, Path=TapEstablishmentGoToDetailPageCommand}" CommandParameter="{Binding .}" />
 
-                            <!--  Um nível antes na hierarquia, um name aplicado direto na ContentPage  -->
-                            <!--<TapGestureRecognizer Command="{Binding Source={x:Reference Name=page}, Path=BindingContext.TapEstablishmentGoToDetailPageCommand}" />-->
+                                <!--  Um nível antes na hierarquia, um name aplicado direto na ContentPage  -->
+                                <!--<TapGestureRecognizer Command="{Binding Source={x:Reference Name=page}, Path=BindingContext.TapEstablishmentGoToDetailPageCommand}" />-->
 
-                        </Label.GestureRecognizers>
-                    </Label>
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            MaxLines="2"
+                            Text="{Binding Description}"
+                            TextColor="Gray" />
+                    </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>

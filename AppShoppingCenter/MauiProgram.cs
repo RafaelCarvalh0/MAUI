@@ -14,16 +14,16 @@ namespace AppShoppingCenter
             var builder = MauiApp.CreateBuilder();
 
             // Adicione esse handler para remover bordas do Entry
-            EntryHandler.Mapper.AppendToMapping("NoBorder", (handler, view) =>
-            {
-            #if ANDROID
-                handler.PlatformView.SetBackgroundColor(Android.Graphics.Color.Transparent);
-                handler.PlatformView.Background = null;
-                handler.PlatformView.SetPadding(0, 0, 0, 0);
-            #elif IOS
-                handler.PlatformView.BorderStyle = UIKit.UITextBorderStyle.None;
-            #endif
-            });
+            //EntryHandler.Mapper.AppendToMapping("NoBorder", (handler, view) =>
+            //{
+            //#if ANDROID
+            //    handler.PlatformView.SetBackgroundColor(Android.Graphics.Color.Transparent);
+            //    handler.PlatformView.Background = null;
+            //    handler.PlatformView.SetPadding(0, 0, 0, 0);
+            //#elif IOS
+            //    handler.PlatformView.BorderStyle = UIKit.UITextBorderStyle.None;
+            //#endif
+            //});
 
             builder
                 .UseMauiApp<App>()
