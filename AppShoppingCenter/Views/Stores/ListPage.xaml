@@ -34,8 +34,14 @@
             </CollectionView.Header>-->
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Grid ColumnDefinitions="1*, 3*" RowDefinitions="Auto, Auto">
-                        <Image Source="{Binding Logo}" Grid.RowSpan="2" />
+                    <Grid
+                        Margin="0,10"
+                        ColumnDefinitions="1*, 3*"
+                        RowDefinitions="20,45">
+                        <Image
+                            Grid.RowSpan="2"
+                            Margin="0,0,15,0"
+                            Source="{Binding Logo}" />
                         <Label Grid.Column="1" Text="{Binding Name}">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding Source={x:Reference Name=vm}, Path=TapEstablishmentGoToDetailPageCommand}" CommandParameter="{Binding .}" />
@@ -50,7 +56,8 @@
                             Grid.Column="1"
                             MaxLines="2"
                             Text="{Binding Description}"
-                            TextColor="Gray" />
+                            TextColor="Gray"
+                            VerticalOptions="End" />
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
