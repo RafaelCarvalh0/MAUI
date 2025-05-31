@@ -49,7 +49,7 @@ namespace AppShoppingCenter.ViewModels.Stores
         }
 
         [RelayCommand]
-        private void OnTextSearchChangedFilterList() => EstablishmentsFiltered = establishmentsFiltered.Where(x => x.Name.ToLower().Contains(textSearch.ToLower())).ToList();
+        private void OnTextSearchChangedFilterList() => EstablishmentsFiltered = establishmentsFull.Where(x => x.Name.ToLower().Contains(textSearch.ToLower())).ToList();
 
         [RelayCommand]
         private async void OnTapEstablishmentGoToDetailPage(Establishment establishment)

@@ -6,11 +6,11 @@
     xmlns:behaviors="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:vm="clr-namespace:AppShoppingCenter.ViewModels.Stores"
     x:Name="page"
-    Title="ListPage">
+    Shell.PresentationMode="ModalAnimated">
     <ContentPage.BindingContext>
         <vm:ListPageViewModel x:Name="vm" />
     </ContentPage.BindingContext>
-    <Grid Padding="20" RowDefinitions="50, *">
+    <Grid Padding="20,20,20,0" RowDefinitions="50, *">
         <Border StrokeShape="RoundRectangle 5">
             <Border.Stroke>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
@@ -20,6 +20,7 @@
             </Border.Stroke>
             <Entry
                 x:Name="txt"
+                Margin="10"
                 Placeholder="Pesquisa por loja"
                 Text="{Binding TextSearch}">
                 <Entry.Behaviors>
@@ -28,7 +29,10 @@
             </Entry>
         </Border>
         <!--<Label Text="{Binding Source={x:Reference txt}, Path=Text}" />-->
-        <CollectionView Grid.Row="1" ItemsSource="{Binding EstablishmentsFiltered}">
+        <CollectionView
+            Grid.Row="1"
+            EmptyView="Nenhum registro encontrado!"
+            ItemsSource="{Binding EstablishmentsFiltered}">
             <!--<CollectionView.Header>
 
             </CollectionView.Header>-->
@@ -47,13 +51,16 @@
                             Grid.RowSpan="2"
                             Margin="0,0,15,0"
                             Source="{Binding Logo}" />
-                        <Label Grid.Column="1" Text="{Binding Name}" />
+                        <Label
+                            Grid.Column="1"
+                            Style="{StaticResource PrimaryText}"
+                            Text="{Binding Name}" />
                         <Label
                             Grid.Row="1"
                             Grid.Column="1"
                             MaxLines="2"
+                            Style="{StaticResource SecondaryText}"
                             Text="{Binding Description}"
-                            TextColor="Gray"
                             VerticalOptions="End" />
                     </Grid>
                 </DataTemplate>

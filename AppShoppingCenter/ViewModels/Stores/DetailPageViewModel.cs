@@ -1,5 +1,6 @@
 ﻿using AppShoppingCenter.Models.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,9 +15,10 @@ namespace AppShoppingCenter.ViewModels.Stores
         [ObservableProperty]
         private Establishment establishment;
 
-        public DetailPageViewModel()
-        {
-
+        [RelayCommand]
+        private async Task OnTapToBack()
+        {   
+            await Shell.Current.GoToAsync("..");
         }
     }
 }
