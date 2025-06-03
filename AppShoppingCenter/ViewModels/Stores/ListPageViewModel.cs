@@ -39,7 +39,7 @@ namespace AppShoppingCenter.ViewModels.Stores
             try
             {
                 establishmentsFull = await _storeService.GetStores();
-                establishmentsFiltered = establishmentsFull.ToList();
+                EstablishmentsFiltered = establishmentsFull.ToList();
             }
             catch (Exception ex)
             {

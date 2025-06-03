@@ -88,7 +88,6 @@
 	  <Folder Include="Libraries\Converters\" />
 	  <Folder Include="Libraries\Behaviors\" />
 	  <Folder Include="ViewModels\Cinemas\" />
-	  <Folder Include="ViewModels\Restaurants\" />
 	  <Folder Include="ViewModels\Tickets\" />
 	  <Folder Include="Views\Authentications\" />
 	  <Folder Include="Views\Authentications\" />
@@ -109,6 +108,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Cinemas\ListPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Restaurants\DetailPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Restaurants\ListPage.xaml">

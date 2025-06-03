@@ -3,11 +3,65 @@
     x:Class="AppShoppingCenter.Views.Restaurants.ListPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviors="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:vm="clr-namespace:AppShoppingCenter.ViewModels.Restaurants"
     Title="ListPage">
-    <VerticalStackLayout>
-        <Label
-            HorizontalOptions="Center"
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" />
-    </VerticalStackLayout>
+    <ContentPage.BindingContext>
+        <vm:ListPageViewModel x:Name="vm" />
+    </ContentPage.BindingContext>
+    <Grid Padding="20,20,20,0" RowDefinitions="50,*">
+        <Border StrokeShape="RoundRectangle 5">
+            <Border.Stroke>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Offset="0.1" Color="#F5AF19" />
+                    <GradientStop Offset="1.0" Color="#FF0000" />
+                </LinearGradientBrush>
+            </Border.Stroke>
+            <Entry
+                x:Name="txt"
+                Margin="10"
+                Placeholder="Pesquisa por loja"
+                Text="{Binding TextSearch}">
+                <Entry.Behaviors>
+                    <behaviors:EventToCommandBehavior Command="{Binding TextSearchChangedFilterListCommand}" EventName="TextChanged" />
+                </Entry.Behaviors>
+            </Entry>
+        </Border>
+        <Grid Grid.Row="1">
+            <CollectionView EmptyView="Nenhum restaurante foi encontrado!" ItemsSource="{Binding EstablishmentsFiltered}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="70" />
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Image
+                                Grid.RowSpan="2"
+                                Margin="10,0"
+                                Source="{Binding Logo}"
+                                WidthRequest="70" />
+
+                            <VerticalStackLayout
+                                Grid.Column="1"
+                                Padding="10,0"
+                                VerticalOptions="Center">
+                                <Label
+                                    FontAttributes="Bold"
+                                    Style="{StaticResource HeadingText}"
+                                    Text="{Binding Name}" />
+                                <Label Style="{StaticResource SecondaryText}" Text="{Binding Description}" />
+                            </VerticalStackLayout>
+
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </Grid>
 </ContentPage>
