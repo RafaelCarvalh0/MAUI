@@ -87,7 +87,6 @@
 	<ItemGroup>
 	  <Folder Include="Libraries\Converters\" />
 	  <Folder Include="Libraries\Behaviors\" />
-	  <Folder Include="ViewModels\Cinemas\" />
 	  <Folder Include="ViewModels\Tickets\" />
 	  <Folder Include="Views\Authentications\" />
 	  <Folder Include="Views\Authentications\" />

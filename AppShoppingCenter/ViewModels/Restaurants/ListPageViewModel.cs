@@ -26,7 +26,7 @@ namespace AppShoppingCenter.ViewModels.Restaurants
         public ListPageViewModel(IRestaurantService service)
         {
             _service = service ?? throw new ArgumentNullException(nameof(service));
-            GetStablishments();
+            GetRestaurants();
         }
 
         // Esse construtor extra faz ligação com o construtor acima, permitindo usar um BindingContext direto na View.xaml sem necessidade de parâmetro no construtor.
@@ -35,7 +35,7 @@ namespace AppShoppingCenter.ViewModels.Restaurants
 
         }
 
-        private async void GetStablishments()
+        private async void GetRestaurants()
         {
             try
             {

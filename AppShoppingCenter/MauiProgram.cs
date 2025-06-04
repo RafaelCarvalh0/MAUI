@@ -44,6 +44,7 @@ namespace AppShoppingCenter
             //Singleton : Cria uma única instância para toda a aplicação (Propriedades que não se alteram).
             builder.Services.AddSingleton<IStoreService, StoreService>();
             builder.Services.AddSingleton<IRestaurantService, RestaurantService>();
+            builder.Services.AddSingleton<ICinemaService, CinemaService>();
             #endregion
 
             #region D.I Views
