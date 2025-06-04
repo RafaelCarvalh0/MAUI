@@ -5,10 +5,29 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:behaviors="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:vm="clr-namespace:AppShoppingCenter.ViewModels.Restaurants"
-    Title="ListPage">
+    Title="Restaurantes">
+
     <ContentPage.BindingContext>
         <vm:ListPageViewModel x:Name="vm" />
     </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <Style TargetType="Grid">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="Transparent" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
+
     <Grid Padding="20,20,20,0" RowDefinitions="50,*">
         <Border StrokeShape="RoundRectangle 5">
             <Border.Stroke>
@@ -28,7 +47,12 @@
             </Entry>
         </Border>
         <Grid Grid.Row="1">
-            <CollectionView EmptyView="Nenhum restaurante foi encontrado!" ItemsSource="{Binding EstablishmentsFiltered}">
+            <CollectionView
+                EmptyView="Nenhum restaurante foi encontrado!"
+                ItemsSource="{Binding EstablishmentsFiltered}"
+                SelectionChangedCommand="{Binding SelectionChangedCommand}"
+                SelectionChangedCommandParameter="{Binding SelectedItem, Source={RelativeSource Self}}"
+                SelectionMode="Single">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid Padding="10">
@@ -57,7 +81,6 @@
                                     Text="{Binding Name}" />
                                 <Label Style="{StaticResource SecondaryText}" Text="{Binding Description}" />
                             </VerticalStackLayout>
-
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

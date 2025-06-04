@@ -1,4 +1,5 @@
-﻿using AppShoppingCenter.Models.Models;
+﻿using AppShoppingCenter.Constants;
+using AppShoppingCenter.Models.Models;
 using AppShoppingCenter.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -49,6 +50,19 @@ namespace AppShoppingCenter.ViewModels.Restaurants
 
         [RelayCommand]
         private void OnTextSearchChangedFilterList() => EstablishmentsFiltered = establishmentsFull.Where(x => x.Name.ToLower().Contains(textSearch.ToLower())).ToList();
-        
+
+        [RelayCommand]
+        private async Task SelectionChanged(Establishment establishment)
+        {
+            if (establishment is not null)
+            {
+                var navigationParameter = new Dictionary<string, object>()
+                {
+                    { "establishment", establishment }
+                };
+
+                await Shell.Current.GoToAsync($"detail", navigationParameter);
+            }
+        }
     }
 }
