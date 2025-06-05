@@ -35,8 +35,9 @@ namespace AppShoppingCenter.ViewModels.Cinemas
         }
 
         [RelayCommand]
-        private async void TapMovieGoDetailPage(Movie movie)
+        private async void TapMovieGoToDetailPage(Movie movie)
         {
+            //cinemas/detail
             var param = new Dictionary<string, object>
             {
                 { "movie", movie }
