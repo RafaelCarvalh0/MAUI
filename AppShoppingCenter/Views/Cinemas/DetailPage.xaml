@@ -12,10 +12,7 @@
     </ContentPage.BindingContext>
     <Grid>
 
-        <Image
-            HorizontalOptions="Center"
-            Source="{Binding Movie.Cover}"
-            VerticalOptions="Start" />
+
         <media:MediaElement
             x:Name="player"
             HeightRequest="320"
@@ -23,6 +20,8 @@
             ShouldShowPlaybackControls="False"
             Source="{Binding Movie.Trailer}"
             VerticalOptions="Start" />
+
+
         <Image
             Margin="15"
             HorizontalOptions="Start"
@@ -30,15 +29,16 @@
             VerticalOptions="Start"
             WidthRequest="29">
             <Image.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding TapClosedGoToMoviesListCommand}" />
+                <TapGestureRecognizer Command="{Binding TapClosedGoToMoviesListCommand}" CommandParameter="{x:Reference player}" />
             </Image.GestureRecognizers>
         </Image>
         <Image
             x:Name="btn_playpause"
             Margin="0,110,0,0"
+            Opacity="0.7"
             Source="play.png"
             VerticalOptions="Start"
-            WidthRequest="50">
+            WidthRequest="40">
             <Image.GestureRecognizers>
                 <TapGestureRecognizer Tapped="PlayPause" />
             </Image.GestureRecognizers>
@@ -63,26 +63,29 @@
         </Border>
 
         <Border
+            x:Name="MovieText"
             Margin="0,260,0,0"
             Padding="50"
             BackgroundColor="White"
             StrokeShape="RoundRectangle 30, 30, 0, 0"
             StrokeThickness="0">
 
-            <VerticalStackLayout>
-                <Label
-                    HorizontalOptions="Center"
-                    HorizontalTextAlignment="Center"
-                    Style="{StaticResource PrimaryText}"
-                    Text="{Binding Movie.Title}"
-                    VerticalOptions="Center" />
-                <Label
-                    Margin="0,35,0,0"
-                    HorizontalOptions="Center"
-                    Style="{StaticResource TertiaryText}"
-                    Text="{Binding Movie.Description}"
-                    VerticalOptions="Center" />
-            </VerticalStackLayout>
+            <ScrollView>
+                <VerticalStackLayout>
+                    <Label
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        Style="{StaticResource PrimaryText}"
+                        Text="{Binding Movie.Title}"
+                        VerticalOptions="Center" />
+                    <Label
+                        Margin="0,35,0,0"
+                        HorizontalOptions="Center"
+                        Style="{StaticResource TertiaryText}"
+                        Text="{Binding Movie.Description}"
+                        VerticalOptions="Center" />
+                </VerticalStackLayout>
+            </ScrollView>
 
         </Border>
 

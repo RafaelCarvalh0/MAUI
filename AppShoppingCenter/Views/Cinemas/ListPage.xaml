@@ -33,7 +33,7 @@
             <CarouselView
                 Grid.Row="1"
                 ItemsSource="{Binding Movies}"
-                PeekAreaInsets="70">
+                PeekAreaInsets="60">
                 <CarouselView.ItemsLayout>
                     <LinearItemsLayout
                         ItemSpacing="0"
