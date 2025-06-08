@@ -11,7 +11,7 @@
     </ContentPage.BindingContext>
     <Grid RowDefinitions="*">
         <Image
-            Aspect="Fill"
+            Aspect="AspectFill"
             Source="cinemafundo.jpg"
             VerticalOptions="Start" />
 
@@ -33,7 +33,7 @@
             <CarouselView
                 Grid.Row="1"
                 ItemsSource="{Binding Movies}"
-                PeekAreaInsets="60">
+                PeekAreaInsets="70">
                 <CarouselView.ItemsLayout>
                     <LinearItemsLayout
                         ItemSpacing="0"

@@ -3,11 +3,40 @@
     x:Class="AppShoppingCenter.Views.Tickets.ScanPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Title="ScanPage">
-    <VerticalStackLayout>
-        <Label
-            HorizontalOptions="Center"
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" />
-    </VerticalStackLayout>
+    xmlns:system="clr-namespace:System;assembly=System.Runtime"
+    Shell.NavBarIsVisible="False">
+    <ScrollView>
+        <Grid Padding="25" RowDefinitions="Auto,Auto,*">
+            <Label Grid.Row="0" FontSize="24">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <FormattedString.Spans>
+                            <Span Style="{StaticResource HeadingText01}" Text="Pague o seu" />
+                            <Span Text="{x:Static system:Environment.NewLine}" />
+                            <Span Style="{StaticResource HeadingText02}" Text="ESTACIONAMENTO" />
+                        </FormattedString.Spans>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Border
+                Grid.Row="1"
+                Margin="0,50,0,0"
+                Style="{StaticResource BorderStyle}">
+                <Grid Padding="10,0,0,0" ColumnDefinitions="*, Auto">
+                    <Entry Placeholder="Escanear ticket" />
+                    <Image
+                        Grid.Column="1"
+                        Margin="0,0,10,0"
+                        HeightRequest="28"
+                        Source="camera.png"
+                        VerticalOptions="Center" />
+                </Grid>
+            </Border>
+            <Button
+                Grid.Row="2"
+                Style="{StaticResource ButtonStyle}"
+                Text="Tickets pagos"
+                VerticalOptions="End" />
+        </Grid>
+    </ScrollView>
 </ContentPage>

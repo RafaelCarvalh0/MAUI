@@ -31,7 +31,7 @@ namespace AppShoppingCenter.ViewModels.Cinemas
 
         private async void GetMovies()
         {
-            movies = await _service.GetMovies();
+            Movies = await _service.GetMovies();
         }
 
         [RelayCommand]
@@ -43,7 +43,11 @@ namespace AppShoppingCenter.ViewModels.Cinemas
                 { "movie", movie }
             };
 
+            if(DeviceInfo.Idiom == DeviceIdiom.Phone)
             await Shell.Current.GoToAsync("detail", param);
+
+            else
+                await Shell.Current.GoToAsync("detaildesktop", param);
         }
     }
 }
