@@ -12,6 +12,9 @@ namespace AppShoppingCenter.Constants
         public const string CinemasDetail = "cinemas/detail";
         public const string CinemasDetailDesktop = "cinemas/detaildesktop";
         public const string RestaurantsDetail = "restaurants/detail";
-        public const string TicketsDetail = "tickets/detail";
+
+        public const string TicketsPay = "tickets/pay";
+        public const string TicketsList = "tickets/list";
+        public const string TicketsResult = "tickets/result";
     }
 }

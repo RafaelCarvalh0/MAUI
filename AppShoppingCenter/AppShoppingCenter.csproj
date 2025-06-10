@@ -85,9 +85,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Libraries\Converters\" />
 	  <Folder Include="Libraries\Behaviors\" />
-	  <Folder Include="ViewModels\Tickets\" />
 	  <Folder Include="Views\Authentications\" />
 	  <Folder Include="Views\Authentications\" />
 	</ItemGroup>
@@ -128,6 +126,12 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Tickets\ListPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Tickets\PayPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Tickets\ResultPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Tickets\ScanPage.xaml">

@@ -3,12 +3,16 @@
     x:Class="AppShoppingCenter.Resources.Styles.ExplicityStyles"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
     <Style x:Key="PrimaryText" TargetType="Label">
         <Setter Property="FontFamily" Value="OpenSansBold" />
         <Setter Property="FontSize" Value="14" />
-        <Setter Property="TextColor" Value="#000000" />
+        <Setter Property="TextColor">
+            <AppThemeBinding Dark="#FFFFFF" Light="#000000" />
+        </Setter>
         <Setter Property="TextTransform" Value="Uppercase" />
     </Style>
+
     <Style x:Key="SecondaryText" TargetType="Label">
         <Setter Property="FontFamily" Value="OpenSansLight" />
         <Setter Property="FontSize" Value="12" />
