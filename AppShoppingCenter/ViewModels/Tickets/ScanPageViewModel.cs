@@ -1,4 +1,5 @@
 ﻿using AppShoppingCenter.Constants;
+using AppShoppingCenter.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
@@ -11,8 +12,21 @@ namespace AppShoppingCenter.ViewModels.Tickets
 {
     public partial class ScanPageViewModel : ObservableObject
     {
+        private readonly ITicketService _ticketService;
+
         [ObservableProperty]
         private string ticketNumber;
+
+        public ScanPageViewModel(ITicketService ticketService)
+        {
+            _ticketService = ticketService;
+        }
+
+        // Esse construtor extra faz ligação com o construtor acima, permitindo usar um BindingContext direto na View.xaml sem necessidade de parâmetro no construtor.
+        public ScanPageViewModel() : this(App.Current.Handler.MauiContext.Services.GetRequiredService<ITicketService>() ?? throw new InvalidOperationException("Serviço não resolvido"))
+        {
+
+        }
 
         [RelayCommand]
         private async void Scan()
@@ -26,14 +40,31 @@ namespace AppShoppingCenter.ViewModels.Tickets
         [RelayCommand]
         private async void CheckTicketNumber()
         {
-            if (TicketNumber?.Trim()?.Length < 15)
+            if (TicketNumber?.Trim()?.Length < 12)
                 return;
 
-            //TODO Verificar se o código existe na API.
-            //TODO Navegar para a página Pay.
+            //TODO Verificar se o código existe no Banco/API/Mock.
+            var ticket = await _ticketService.GetTicket(TicketNumber);
+
             //TODO CASE Mensagem de alerta.
-            await Shell.Current.GoToAsync("pay", true);
-            TicketNumber = string.Empty;
+            if(ticket is null)
+            {
+                App.Current.MainPage.DisplayAlert("Ticket não encontrado!", $"Não localizamos um ticket com o número {TicketNumber}.", "OK");
+                return;
+            }
+
+            var param = new Dictionary<string, object>()
+            {
+                { "ticket", ticket }
+            };
+
+            //TODO Navegar para a página Pay.
+            if (TicketNumber?.Trim()?.Length is 12) //is 15
+            {
+                await Shell.Current.GoToAsync("pay", true, param);
+                TicketNumber = string.Empty;
+            }
+
         }
 
         [RelayCommand]

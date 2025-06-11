@@ -3,6 +3,7 @@
     x:Class="AppShoppingCenter.Views.Tickets.ScanPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:AppShoppingCenter.Libraries.Behaviors"
     xmlns:maui="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:system="clr-namespace:System;assembly=System.Runtime"
     xmlns:vm="clr-namespace:AppShoppingCenter.ViewModels.Tickets"
@@ -31,10 +32,14 @@
                     <TapGestureRecognizer Command="{Binding Source={x:Reference vm}, Path=ScanCommand}" CommandParameter="{Binding .}" />
                 </Border.GestureRecognizers>
                 <Grid Padding="10,0,0,0" ColumnDefinitions="*, Auto">
-                    <Entry Placeholder="Escanear ticket" Text="{Binding TicketNumber}">
+                    <Entry
+                        MaxLength="15"
+                        Placeholder="Escanear ticket"
+                        Text="{Binding TicketNumber}">
                         <Entry.Behaviors>
                             <maui:EventToCommandBehavior Command="{Binding CheckTicketNumberCommand}" EventName="TextChanged" />
                             <!--<maui:MaskedBehavior Mask="xxxx xxx xxx xxx" />-->
+                            <!--<local:TicketMaskedBehavior />-->
                         </Entry.Behaviors>
                     </Entry>
                     <Image

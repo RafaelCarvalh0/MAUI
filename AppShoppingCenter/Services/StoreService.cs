@@ -18,14 +18,6 @@ namespace AppShoppingCenter.Services
     {
         public async Task<List<Establishment>> GetStores()
         {
-            return MockStoreService.GetStore();
-        }
-    }
-
-    public class MockStoreService
-    {
-        public static List<Establishment> GetStore()
-        {
             return new List<Establishment>
             {
                 new Establishment

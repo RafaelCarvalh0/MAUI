@@ -18,7 +18,7 @@ namespace AppShoppingCenter.Libraries.Converters
 
             Ticket ticket = (Ticket)value;
 
-            var dif = ticket.DataOut.Ticks - ticket.DataIn.Ticks;
+            var dif = ticket.DateOut.Ticks - ticket.DateIn.Ticks;
             var difTS = new TimeSpan(dif);
 
             return string.Format("{0:D2}h {1:D2}m", difTS.Hours, difTS.Minutes);

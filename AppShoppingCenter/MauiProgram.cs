@@ -45,6 +45,7 @@ namespace AppShoppingCenter
             builder.Services.AddSingleton<IStoreService, StoreService>();
             builder.Services.AddSingleton<IRestaurantService, RestaurantService>();
             builder.Services.AddSingleton<ICinemaService, CinemaService>();
+            builder.Services.AddSingleton<ITicketService, TicketService>();
             #endregion
 
             #region D.I Views
