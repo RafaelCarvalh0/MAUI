@@ -8,13 +8,52 @@ namespace AppShoppingCenter.Constants
 {
     public static class Routes
     {
-        public const string StoresDetail = "stores/detail";
-        public const string CinemasDetail = "cinemas/detail";
-        public const string CinemasDetailDesktop = "cinemas/detaildesktop";
-        public const string RestaurantsDetail = "restaurants/detail";
+        public class RoutePath
+        {
+            public string Route { get; set; }
+            public string RelativePath { get; set; }
+        }
 
-        public const string TicketsPay = "tickets/pay";
-        public const string TicketsList = "tickets/list";
-        public const string TicketsResult = "tickets/result";
+        public static RoutePath StoresDetail = new RoutePath
+        {
+            Route = "stores/detail", // Especificando a rota pai, não gera conflitos de rotas com o mesmo nome 
+            RelativePath = "detail" // Caminho relativo de navegação partindo da rota que estou Ex: stores => detail
+        };
+
+        public static RoutePath CinemasDetail = new RoutePath
+        {
+            Route = "cinemas/detail",
+            RelativePath = "detail"
+        };
+
+        public static RoutePath CinemasDetailDesktop = new RoutePath
+        {
+            Route = "cinemas/detaildesktop",
+            RelativePath = "detaildesktop"
+        };
+
+        public static RoutePath RestaurantsDetail = new RoutePath
+        {
+            Route = "restaurants/detail",
+            RelativePath = "detail"
+        };
+
+        public static RoutePath TicketsPay = new RoutePath
+        {
+            Route = "tickets/pay",
+            RelativePath = "pay"
+        };
+
+        public static RoutePath TicketsList = new RoutePath
+        {
+            Route = "tickets/list",
+            RelativePath = "list"
+        };
+
+        public static RoutePath TicketsResult = new RoutePath
+        {
+            Route = "tickets/result",
+            RelativePath = "result"
+        };
     }
 }

@@ -1,4 +1,5 @@
-﻿using AppShoppingCenter.Models.Models;
+﻿using AppShoppingCenter.Constants;
+using AppShoppingCenter.Models.Models;
 using AppShoppingCenter.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -59,7 +60,7 @@ namespace AppShoppingCenter.ViewModels.Stores
                 { "establishment", establishment }
             };
 
-            await Shell.Current.GoToAsync("detail", navigationParameter);
+            await Shell.Current.GoToAsync(Routes.StoresDetail.RelativePath, true, navigationParameter);
         }
     }
 }

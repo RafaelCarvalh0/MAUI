@@ -61,7 +61,7 @@ namespace AppShoppingCenter.ViewModels.Restaurants
                     { "establishment", establishment }
                 };
 
-                await Shell.Current.GoToAsync($"detail", navigationParameter);
+                await Shell.Current.GoToAsync(Routes.RestaurantsDetail.RelativePath, true, navigationParameter);
             }
         }
     }

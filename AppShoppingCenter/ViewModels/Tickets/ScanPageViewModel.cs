@@ -61,7 +61,7 @@ namespace AppShoppingCenter.ViewModels.Tickets
             //TODO Navegar para a página Pay.
             if (TicketNumber?.Trim()?.Length is 12) //is 15
             {
-                await Shell.Current.GoToAsync("pay", true, param);
+                await Shell.Current.GoToAsync(Routes.TicketsPay.RelativePath, true, param);
                 TicketNumber = string.Empty;
             }
 
@@ -70,7 +70,7 @@ namespace AppShoppingCenter.ViewModels.Tickets
         [RelayCommand]
         private async void List()
         {
-            await Shell.Current.GoToAsync("list", true);
+            await Shell.Current.GoToAsync(Routes.TicketsList.RelativePath, true);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using AppShoppingCenter.Models.Models;
+﻿using AppShoppingCenter.Constants;
+using AppShoppingCenter.Models.Models;
 using AppShoppingCenter.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -44,10 +45,10 @@ namespace AppShoppingCenter.ViewModels.Cinemas
             };
 
             if(DeviceInfo.Idiom == DeviceIdiom.Phone)
-            await Shell.Current.GoToAsync("detail", param);
+            await Shell.Current.GoToAsync(Routes.CinemasDetail.RelativePath, true, param);
 
             else
-                await Shell.Current.GoToAsync("detaildesktop", param);
+                await Shell.Current.GoToAsync(Routes.CinemasDetailDesktop.RelativePath, true, param);
         }
     }
 }

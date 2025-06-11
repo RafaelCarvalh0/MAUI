@@ -85,11 +85,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Views\Authentications\" />
-	  <Folder Include="Views\Authentications\" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <ProjectReference Include="..\AppShoppingCenter.Models\AppShoppingCenter.Models.csproj" />
 	</ItemGroup>
 
@@ -101,6 +96,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Resources\Styles\LightTheme.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Authentications\LoginPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Cinemas\DetailDesktopPage.xaml">

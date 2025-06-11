@@ -99,7 +99,7 @@
                         <Label Text="QR Code" />
                         <Image />
                         <Label Text="Copie e Cole" />
-                        <Border Style="{StaticResource BorderStyle}">
+                        <Border Padding="10,0" Style="{StaticResource BorderStyle}">
                             <Entry IsReadOnly="True" Text="173128u312m9ij91y3173812321897d71j8317489172" />
                         </Border>
                         <Button Style="{StaticResource ButtonStyle}" Text="Copiar e Colar" />
