@@ -47,7 +47,11 @@
                         Margin="0,0,10,0"
                         HeightRequest="28"
                         Source="camera.png"
-                        VerticalOptions="Center" />
+                        VerticalOptions="Center">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ScanCommand}" />
+                        </Image.GestureRecognizers>
+                    </Image>
                 </Grid>
             </Border>
             <Button

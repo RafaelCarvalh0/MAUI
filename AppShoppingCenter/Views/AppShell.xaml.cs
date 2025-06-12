@@ -16,6 +16,7 @@ namespace AppShoppingCenter
             Routing.RegisterRoute(Routes.TicketsPay.Route, typeof(Views.Tickets.PayPage));
             Routing.RegisterRoute(Routes.TicketsList.Route, typeof(Views.Tickets.ListPage));
             Routing.RegisterRoute(Routes.TicketsResult.Route, typeof(Views.Tickets.ResultPage));
+            Routing.RegisterRoute(Routes.TicketsCamera.Route, typeof(Views.Tickets.CameraPage));
         }
     }
 }

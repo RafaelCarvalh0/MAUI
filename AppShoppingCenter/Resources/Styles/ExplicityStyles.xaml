@@ -70,4 +70,30 @@
         <Setter Property="FontFamily" Value="OpenSansRegular" />
         <Setter Property="FontSize" Value="16" />
     </Style>
+
+    <Style x:Key="BorderDotStyle" TargetType="Border">
+        <Setter Property="Stroke" Value="Black" />
+        <Setter Property="StrokeThickness" Value="1" />
+        <Setter Property="StrokeDashArray" Value="3,3" />
+    </Style>
+
+    <Style x:Key="SuccessText" TargetType="Label">
+        <Setter Property="TextColor" Value="#1BAB42" />
+        <Setter Property="FontSize" Value="24" />
+        <Setter Property="FontFamily" Value="OpenSansRegular" />
+    </Style>
+
+    <Style x:Key="ToleranceText" TargetType="Label">
+        <Setter Property="TextColor" Value="#000000" />
+        <Setter Property="FontSize" Value="24" />
+        <Setter Property="FontFamily" Value="OpenSansRegular" />
+    </Style>
+
+
+    <Style x:Key="ToleranceMinutesText" TargetType="Label">
+        <Setter Property="TextColor" Value="#FF5524" />
+        <Setter Property="FontSize" Value="48" />
+        <Setter Property="FontFamily" Value="OpenSansRegular" />
+    </Style>
+
 </ResourceDictionary>

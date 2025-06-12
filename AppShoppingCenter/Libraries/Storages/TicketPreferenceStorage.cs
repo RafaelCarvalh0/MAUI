@@ -13,7 +13,7 @@ namespace AppShoppingCenter.Libraries.Storages
     public class TicketPreferenceStorage
     {
         private readonly string key = "tickets";
-        public void Save(Ticket ticket)
+        public async Task Save(Ticket ticket)
         {
             List<Ticket> tickets;
 
@@ -30,7 +30,7 @@ namespace AppShoppingCenter.Libraries.Storages
             Preferences.Default.Clear();
             Preferences.Default.Set(key, JsonSerializer.Serialize(tickets));
         }
-        public List<Ticket> Load()
+        public async Task<List<Ticket>> Load()
         {
             if (Preferences.Default.ContainsKey(key))
             {

@@ -3,12 +3,17 @@
     x:Class="AppShoppingCenter.Views.Tickets.PayPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:AppShoppingCenter.Libraries.Converters"
     xmlns:system="clr-namespace:System;assembly=System.Runtime"
     xmlns:vm="clr-namespace:AppShoppingCenter.ViewModels.Tickets"
+    xmlns:zxing="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI.Controls"
     Title="PayPage">
     <ContentPage.BindingContext>
         <vm:PayPageViewModel x:Name="vm" />
     </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <converters:TimeSpanToTimeStringConverter x:Key="TimeSpanToTimeStringConverter" />
+    </ContentPage.Resources>
     <ScrollView>
         <Grid Padding="25" RowDefinitions="Auto,Auto, Auto">
             <Label Grid.Row="0" FontSize="24">
@@ -27,11 +32,10 @@
                 Grid.Row="1"
                 Margin="0,20,0,0"
                 Padding="15"
-                StrokeDashArray="4,2"
                 StrokeShape="Rectangle"
-                Style="{StaticResource BorderStyle}">
+                Style="{StaticResource BorderDotStyle}">
                 <Grid Padding="10,0,0,0" ColumnDefinitions="*, Auto">
-                    <VerticalStackLayout>
+                    <VerticalStackLayout Spacing="4">
                         <Label>
                             <Label.FormattedText>
                                 <FormattedString>
@@ -42,12 +46,12 @@
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
-                        <Label>
+                        <Label Margin="0,15,0,0">
                             <Label.FormattedText>
                                 <FormattedString>
                                     <FormattedString.Spans>
-                                        <Span Text="Permanência: " />
-                                        <Span Text="3h 10m" />
+                                        <Span Style="{StaticResource SecondaryText}" Text="Permanência: " />
+                                        <Span Style="{StaticResource SecondaryText}" Text="{Binding Ticket, Converter={StaticResource TimeSpanToTimeStringConverter}}" />
                                     </FormattedString.Spans>
                                 </FormattedString>
                             </Label.FormattedText>
@@ -56,8 +60,8 @@
                             <Label.FormattedText>
                                 <FormattedString>
                                     <FormattedString.Spans>
-                                        <Span Text="Entrada: " />
-                                        <Span Text="{Binding Ticket.DateIn}" />
+                                        <Span Style="{StaticResource SecondaryText}" Text="Entrada: " />
+                                        <Span Style="{StaticResource SecondaryText}" Text="{Binding Ticket.DateIn, StringFormat='{0:dd/MM/yyyy HH:mm}'}" />
                                     </FormattedString.Spans>
                                 </FormattedString>
                             </Label.FormattedText>
@@ -66,8 +70,8 @@
                             <Label.FormattedText>
                                 <FormattedString>
                                     <FormattedString.Spans>
-                                        <Span Text="Saída: " />
-                                        <Span Text="{Binding Ticket.DateOut}" />
+                                        <Span Style="{StaticResource SecondaryText}" Text="Saída: " />
+                                        <Span Style="{StaticResource SecondaryText}" Text="{Binding Ticket.DateOut, StringFormat='{0:dd/MM/yyyy HH:mm}'}" />
                                     </FormattedString.Spans>
                                 </FormattedString>
                             </Label.FormattedText>
@@ -76,8 +80,14 @@
                             <Label.FormattedText>
                                 <FormattedString>
                                     <FormattedString.Spans>
-                                        <Span FontAttributes="Bold" Text="Preço: " />
-                                        <Span FontAttributes="Bold" Text="{Binding Ticket.Price}" />
+                                        <Span
+                                            FontFamily="OpenSansBold"
+                                            Style="{StaticResource DetailText}"
+                                            Text="Valor: " />
+                                        <Span
+                                            FontFamily="OpenSansBold"
+                                            Style="{StaticResource DetailText}"
+                                            Text="{Binding Ticket.Price, StringFormat='{0:N2}'}" />
                                     </FormattedString.Spans>
                                 </FormattedString>
                             </Label.FormattedText>
@@ -88,21 +98,29 @@
 
             <Border
                 Grid.Row="2"
-                Margin="0,20,0,0"
+                Margin="0,15,0,0"
                 Padding="15"
-                StrokeDashArray="4,2"
                 StrokeShape="Rectangle"
-                Style="{StaticResource BorderStyle}">
-                <Grid Padding="10,0,0,0" ColumnDefinitions="*, Auto">
-                    <VerticalStackLayout>
+                Style="{StaticResource BorderDotStyle}">
+                <Grid Padding="10,0,0,0">
+                    <VerticalStackLayout Spacing="4">
                         <Label Text="PIX" />
-                        <Label Text="QR Code" />
-                        <Image />
+                        <Label Style="{StaticResource SecondaryText}" Text="QR Code" />
+                        <zxing:BarcodeGeneratorView
+                            Margin="3"
+                            ForegroundColor="Black"
+                            Format="QrCode"
+                            HeightRequest="300"
+                            Value="{Binding PixCode}" />
                         <Label Text="Copie e Cole" />
                         <Border Padding="10,0" Style="{StaticResource BorderStyle}">
-                            <Entry IsReadOnly="True" Text="173128u312m9ij91y3173812321897d71j8317489172" />
+                            <Entry IsReadOnly="True" Text="{Binding PixCode}" />
                         </Border>
-                        <Button Style="{StaticResource ButtonStyle}" Text="Copiar e Colar" />
+                        <Button
+                            Margin="0,15,0,0"
+                            Command="{Binding CopyAndPasteCommand}"
+                            Style="{StaticResource ButtonStyle}"
+                            Text="Copiar e Colar" />
                     </VerticalStackLayout>
                 </Grid>
             </Border>

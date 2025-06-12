@@ -1,7 +1,9 @@
-﻿using AppShoppingCenter.Services;
+﻿using AppShoppingCenter.Libraries.Storages;
+using AppShoppingCenter.Services;
 using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
 using Microsoft.Maui.Handlers;
+using ZXing.Net.Maui.Controls;
 
 namespace AppShoppingCenter
 {
@@ -27,6 +29,7 @@ namespace AppShoppingCenter
 
             builder
                 .UseMauiApp<App>()
+                .UseBarcodeReader()
                 .UseMauiCommunityToolkit()
                 .UseMauiCommunityToolkitMediaElement()
                 .ConfigureFonts(fonts =>
@@ -38,7 +41,11 @@ namespace AppShoppingCenter
 
             #if DEBUG
     		    builder.Logging.AddDebug();
-            #endif
+#endif
+
+            #region D.I Utilities
+            builder.Services.AddSingleton<TicketPreferenceStorage>();
+            #endregion
 
             #region D.I Interfaces
             //Singleton : Cria uma única instância para toda a aplicação (Propriedades que não se alteram).

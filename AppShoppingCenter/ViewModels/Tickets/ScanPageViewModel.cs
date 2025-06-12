@@ -31,7 +31,7 @@ namespace AppShoppingCenter.ViewModels.Tickets
         [RelayCommand]
         private async void Scan()
         { 
-            await Shell.Current.GoToAsync("pay", true, new Dictionary<string, object>
+            await Shell.Current.GoToAsync(Routes.TicketsCamera.RelativePath, true, new Dictionary<string, object>
             {
                 { "ticketNumber", TicketNumber }
             });
@@ -49,22 +49,17 @@ namespace AppShoppingCenter.ViewModels.Tickets
             //TODO CASE Mensagem de alerta.
             if(ticket is null)
             {
-                App.Current.MainPage.DisplayAlert("Ticket não encontrado!", $"Não localizamos um ticket com o número {TicketNumber}.", "OK");
+                await App.Current.MainPage.DisplayAlert("Ticket não encontrado!", $"Não localizamos um ticket com o número {TicketNumber}.", "OK");
                 return;
             }
 
-            var param = new Dictionary<string, object>()
-            {
-                { "ticket", ticket }
-            };
+            var param = new Dictionary<string, object>{{"ticket",ticket}};
 
             //TODO Navegar para a página Pay.
             if (TicketNumber?.Trim()?.Length is 12) //is 15
-            {
                 await Shell.Current.GoToAsync(Routes.TicketsPay.RelativePath, true, param);
-                TicketNumber = string.Empty;
-            }
 
+                TicketNumber = string.Empty;
         }
 
         [RelayCommand]

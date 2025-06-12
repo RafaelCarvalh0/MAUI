@@ -13,8 +13,8 @@ namespace AppShoppingCenter.Libraries.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value == null)
-                return "";
+            if (value is null)
+                return string.Empty;
 
             Ticket ticket = (Ticket)value;
 

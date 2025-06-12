@@ -55,5 +55,11 @@ namespace AppShoppingCenter.Constants
             Route = "tickets/result",
             RelativePath = "result"
         };
+
+        public static RoutePath TicketsCamera = new RoutePath
+        {
+            Route = "tickets/camera",
+            RelativePath = "camera"
+        };
     }
 }
