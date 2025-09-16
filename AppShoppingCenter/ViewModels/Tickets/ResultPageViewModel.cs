@@ -1,4 +1,4 @@
-﻿using AppShoppingCenter.Models.Models;
+using AppShoppingCenter.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
 using System;
 using System.Collections.Generic;

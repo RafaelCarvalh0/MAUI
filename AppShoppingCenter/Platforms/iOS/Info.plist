@@ -29,6 +29,6 @@
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/appicon.appiconset</string>
   <key>NSCameraUsageDescription</key>
-  <string>This app uses barcode scanning to...</string>
+  <string>Este aplicativo usa a câmera para escanear o QR Code do Ticket!</string>
 </dict>
 </plist>

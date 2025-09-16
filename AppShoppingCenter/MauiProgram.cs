@@ -58,10 +58,13 @@ namespace AppShoppingCenter
             #region D.I Views
             //Transient : Cria uma nova instância a cada vez que é solicitado (Propriedades que se alteram a cada vez que é solicitado).
             builder.Services.AddTransient<AppShoppingCenter.Views.Stores.ListPage>();
+            builder.Services.AddTransient<AppShoppingCenter.Views.Stores.DetailPage>();
             #endregion
 
             #region D.I ViewModels
             builder.Services.AddTransient<AppShoppingCenter.ViewModels.Stores.ListPageViewModel>();
+            builder.Services.AddTransient<AppShoppingCenter.ViewModels.Stores.DetailPageViewModel>();
+
             //builder.Services.AddTransient<AppShoppingCenter.ViewModels.Restaurants.ListPageViewModel>();
             //builder.Services.AddTransient<AppShoppingCenter.ViewModels.Cinemas.ListPageViewModel>();
             //builder.Services.AddTransient<AppShoppingCenter.ViewModels.Tickets.ListPageViewModel>();

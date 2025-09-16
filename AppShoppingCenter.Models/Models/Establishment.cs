@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AppShoppingCenter.Models.Models
+namespace AppShoppingCenter.Models
 {
     public class Establishment
     {

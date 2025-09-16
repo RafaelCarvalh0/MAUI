@@ -1,5 +1,5 @@
-﻿using AppShoppingCenter.Libraries.Storages;
-using AppShoppingCenter.Models.Models;
+using AppShoppingCenter.Libraries.Storages;
+using AppShoppingCenter.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
 using System;
 using System.Collections.Generic;

@@ -1,10 +1,11 @@
-﻿using AppShoppingCenter.Constants;
-using AppShoppingCenter.Models.Models;
+using AppShoppingCenter.Constants;
+﻿using AppShoppingCenter.Models;
 using AppShoppingCenter.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +20,7 @@ namespace AppShoppingCenter.ViewModels.Stores
         private List<Establishment> establishmentsFull; //Guarda todos os estabelecimentos, evitando sobrecarga e desgaste de API.
 
         [ObservableProperty]
-        private List<Establishment> establishmentsFiltered;
+        private ObservableCollection<Establishment> establishmentsFiltered;
 
         private readonly IStoreService _storeService;
         public ListPageViewModel(IStoreService storeService)
@@ -30,17 +31,17 @@ namespace AppShoppingCenter.ViewModels.Stores
         }
 
         // Esse construtor extra faz ligação com o construtor acima, permitindo usar um BindingContext direto na View.xaml sem necessidade de parâmetro no construtor.
-        public ListPageViewModel() : this(App.Current.Handler.MauiContext.Services.GetRequiredService<IStoreService>() ?? throw new InvalidOperationException("Serviço não resolvido"))
-        {
+        //public ListPageViewModel() : this(App.Current.Handler.MauiContext.Services.GetRequiredService<IStoreService>() ?? throw new InvalidOperationException("Serviço não resolvido"))
+        //{
 
-        }
+        //}
 
         private async void GetStores()
         {
             try
             {
                 establishmentsFull = await _storeService.GetStores();
-                EstablishmentsFiltered = establishmentsFull.ToList();
+                EstablishmentsFiltered = new ObservableCollection<Establishment>(establishmentsFull);
             }
             catch (Exception ex)
             {
@@ -50,7 +51,7 @@ namespace AppShoppingCenter.ViewModels.Stores
         }
 
         [RelayCommand]
-        private void OnTextSearchChangedFilterList() => EstablishmentsFiltered = establishmentsFull.Where(x => x.Name.ToLower().Contains(textSearch.ToLower())).ToList();
+        private async void OnTextSearchChangedFilterList() => EstablishmentsFiltered = new ObservableCollection<Establishment>(establishmentsFull.Where(x => x.Name.ToLower().Contains(textSearch.ToLower())).ToList());
 
         [RelayCommand]
         private async void OnTapEstablishmentGoToDetailPage(Establishment establishment)

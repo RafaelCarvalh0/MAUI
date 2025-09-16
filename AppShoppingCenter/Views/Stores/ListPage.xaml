@@ -4,12 +4,30 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:behaviors="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:model="clr-namespace:AppShoppingCenter.Models;assembly=AppShoppingCenter.Models"
     xmlns:vm="clr-namespace:AppShoppingCenter.ViewModels.Stores"
-    x:Name="page"
+    Title="Lojas"
+    x:DataType="vm:ListPageViewModel"
     Shell.PresentationMode="ModalAnimated">
-    <ContentPage.BindingContext>
-        <vm:ListPageViewModel x:Name="vm" />
-    </ContentPage.BindingContext>
+
+    <!--  MODIFICA COR DO ITEM SELECIONADO  -->
+    <ContentPage.Resources>
+        <Style TargetType="Grid">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="Transparent" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
+
     <Grid Padding="20,20,20,0" RowDefinitions="50, *">
         <Border StrokeShape="RoundRectangle 5">
             <Border.Stroke>
@@ -31,22 +49,17 @@
         <!--<Label Text="{Binding Source={x:Reference txt}, Path=Text}" />-->
         <CollectionView
             Grid.Row="1"
-            EmptyView="Nenhum registro encontrado!"
-            ItemsSource="{Binding EstablishmentsFiltered}">
-            <!--<CollectionView.Header>
-
-            </CollectionView.Header>-->
+            EmptyView="Nenhuma loja encontrada!"
+            ItemsSource="{Binding EstablishmentsFiltered}"
+            SelectionChangedCommand="{Binding TapEstablishmentGoToDetailPageCommand}"
+            SelectionChangedCommandParameter="{Binding SelectedItem, Source={RelativeSource Self}}"
+            SelectionMode="Single">
             <CollectionView.ItemTemplate>
-                <DataTemplate>
+                <DataTemplate x:DataType="model:Establishment">
                     <Grid
                         Margin="0,15"
                         ColumnDefinitions="1*, 3*"
                         RowDefinitions="20,45">
-                        <Grid.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding Source={x:Reference Name=vm}, Path=TapEstablishmentGoToDetailPageCommand}" CommandParameter="{Binding .}" />
-                            <!--  Um nível antes na hierarquia, um name aplicado direto na ContentPage  -->
-                            <!--<TapGestureRecognizer Command="{Binding Source={x:Reference Name=page}, Path=BindingContext.TapEstablishmentGoToDetailPageCommand}" />-->
-                        </Grid.GestureRecognizers>
                         <Image
                             Grid.RowSpan="2"
                             Margin="0,0,15,0"

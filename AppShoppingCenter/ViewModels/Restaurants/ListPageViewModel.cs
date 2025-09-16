@@ -1,5 +1,5 @@
 ﻿using AppShoppingCenter.Constants;
-using AppShoppingCenter.Models.Models;
+using AppShoppingCenter.Models;
 using AppShoppingCenter.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;

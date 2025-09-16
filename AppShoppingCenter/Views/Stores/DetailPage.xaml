@@ -3,18 +3,21 @@
     x:Class="AppShoppingCenter.Views.Stores.DetailPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:model="clr-namespace:AppShoppingCenter.Models;assembly=AppShoppingCenter.Models"
     xmlns:vm="clr-namespace:AppShoppingCenter.ViewModels.Stores"
     Title="DetailPage"
+    x:DataType="vm:DetailPageViewModel"
     Shell.PresentationMode="ModalAnimated">
-    <ContentPage.BindingContext>
-        <vm:DetailPageViewModel />
-    </ContentPage.BindingContext>
     <ScrollView>
         <Grid>
-            <Image Source="{Binding Establishment.Cover}" VerticalOptions="Start" />
+            <Image
+                SemanticProperties.Hint="Capa: geralmente contém a foto do estabelecimento ou uma imagem grande da logomarca."
+                Source="{Binding Establishment.Cover}"
+                VerticalOptions="Start" />
             <Image
                 Margin="20"
                 HorizontalOptions="Start"
+                SemanticProperties.Hint="Botão de Voltar"
                 Source="back.png"
                 VerticalOptions="Start"
                 WidthRequest="32">
@@ -35,10 +38,12 @@
                     <Image
                         Grid.ColumnSpan="2"
                         Margin="10,0"
+                        SemanticProperties.Hint="{Binding Establishment.Name, StringFormat='Logomarca da loja {0}'}"
                         Source="{Binding Establishment.Logo}" />
                     <Label
                         Grid.Column="2"
                         Margin="50,0,0,0"
+                        SemanticProperties.HeadingLevel="Level1"
                         Style="{StaticResource PrimaryText}"
                         Text="{Binding Establishment.Name}"
                         VerticalOptions="Center" />
@@ -53,12 +58,15 @@
                     <Image
                         Grid.Row="2"
                         Grid.RowSpan="2"
-                        Source="pin.png"
+                        SemanticProperties.Hint="Icone de localização(pin)"
+                        Source="{AppThemeBinding Light='pin.png',
+                                                 Dark='pin_light.png'}"
                         WidthRequest="21" />
                     <Label
                         Grid.Row="2"
                         Grid.Column="1"
                         Grid.ColumnSpan="2"
+                        SemanticProperties.HeadingLevel="Level2"
                         Style="{StaticResource HeadingText}"
                         Text="Localização" />
                     <Label
@@ -73,7 +81,9 @@
                     <Image
                         Grid.Row="4"
                         Grid.RowSpan="2"
-                        Source="phone.png"
+                        SemanticProperties.Hint="Icone de telefone"
+                        Source="{AppThemeBinding Light='phone.png',
+                                                 Dark='phone_light.png'}"
                         VerticalOptions="End"
                         WidthRequest="31" />
                     <Label
@@ -81,6 +91,7 @@
                         Grid.Column="1"
                         Grid.ColumnSpan="2"
                         Margin="0,40,0,0"
+                        SemanticProperties.HeadingLevel="Level2"
                         Style="{StaticResource HeadingText}"
                         Text="Telefone" />
                     <Label

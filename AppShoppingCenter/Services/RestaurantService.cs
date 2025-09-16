@@ -1,5 +1,5 @@
 ﻿using AppShoppingCenter.Models.Enums;
-using AppShoppingCenter.Models.Models;
+using AppShoppingCenter.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
